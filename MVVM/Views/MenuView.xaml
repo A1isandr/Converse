@@ -1,0 +1,102 @@
+﻿<reactiveui:ReactiveUserControl x:Class="YetAnotherMessenger.MVVM.Views.MenuView"
+                          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                          xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                          xmlns:local="clr-namespace:YetAnotherMessenger.MVVM.Views"
+                          xmlns:misc="clr-namespace:YetAnotherMessenger.Misc"
+                          xmlns:controls="clr-namespace:YetAnotherMessenger.Controls"
+                          xmlns:vm="clr-namespace:YetAnotherMessenger.MVVM.ViewModels"
+                          xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+                          xmlns:reactiveui="http://reactiveui.net"
+                          x:TypeArguments="vm:MenuViewModel"
+                          xmlns:yam="clr-namespace:YetAnotherMessenger"
+                          mc:Ignorable="d"
+                          d:DesignHeight="600" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <misc:RectConverter x:Key="RectConverter"/>
+    </UserControl.Resources>
+
+    <Border x:Name="MenuWrapper"
+            Style="{StaticResource MainViewWrapper}">
+
+        <Grid
+            UseLayoutRounding="True">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border x:Name="MenuBorder"
+                Padding="10, 5, 10, 5"
+                Margin="5"
+                CornerRadius="20"
+                Background="{StaticResource MenuBackgroundBrush}">
+                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button
+                        Grid.Column="0"
+                        Height="35"
+                        Cursor="Hand"
+                        VerticalAlignment="Center"
+                        Padding="7"
+                        Margin="0, 0, 10, 0"
+                        Style="{StaticResource CommonButton}">
+
+                        <Button.Content>
+                            <svgc:SvgViewbox
+                                Width="20"
+                                Source="pack://application:,,,/Resources/Images/menu.svg"/>
+                        </Button.Content>
+                    </Button>
+
+                    <controls:SearchBox
+                        Grid.Column="1"/>
+                </Grid>
+            </Border>
+
+            <Border x:Name="ChatPreviewBorder"
+                Grid.Row="1"
+                Padding="0, 20, 0, 0"
+                Margin="5"
+                Background="{StaticResource MenuBackgroundBrush}"
+                CornerRadius="20">
+
+                <Border.Clip>
+                    <RectangleGeometry 
+                        RadiusX="20"
+                        RadiusY="20">
+
+                        <RectangleGeometry.Rect>
+                            <MultiBinding Converter="{StaticResource RectConverter}">
+                                <Binding ElementName="ChatPreviewBorder" Path="ActualWidth"/>
+                                <Binding ElementName="ChatPreviewBorder" Path="ActualHeight"/>
+                            </MultiBinding>
+                        </RectangleGeometry.Rect>
+                    </RectangleGeometry>
+                </Border.Clip>
+
+                <ItemsControl x:Name="ChatPreviewsPresenter"
+                         HorizontalContentAlignment="Stretch"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         Background="Transparent"
+                         BorderThickness="0">
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel
+                                Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </Border>
+        </Grid>
+    </Border>
+</reactiveui:ReactiveUserControl>

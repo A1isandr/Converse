@@ -1,0 +1,48 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="SearchBoxBackgroundColor">#4d4d4d</Color>
+    <Color x:Key="SearchBoxGotFocusBackgroundColor">#e6e6e6</Color>
+
+    <Color x:Key="SearchBoxForegroundColor">White</Color>
+    <Color x:Key="SearchBoxGotFocusForegroundColor">Black</Color>
+
+    <Color x:Key="SearchBoxButtonBackgroundColor">#46c3db</Color>
+    <Color x:Key="SearchBoxButtonMouseOverBackgroundColor">#31d7f7</Color>
+    <Color x:Key="SearchBoxButtonMouseLeftButtonDownBackgroundColor">#70cadb</Color>
+
+    <Color x:Key="ChatPreviewBackgroundColor">Transparent</Color>
+    <Color x:Key="ChatPreviewMouseOverBackgroundColor">#4d4d4d</Color>
+    <Color x:Key="ChatPreviewMouseLeftButtonDownBackgroundColor">#404040</Color>
+    <Color x:Key="ChatPreviewIsCheckedBorderColor">#46c3db</Color>
+
+    <SolidColorBrush x:Key="MenuBackgroundBrush"
+                     Color="#1f1f1f"/>
+
+    <SolidColorBrush x:Key="SearchBoxBackgroundBrush"
+                     Color="{StaticResource SearchBoxBackgroundColor}"/>
+    <SolidColorBrush x:Key="SearchBoxForegroundBrush"
+                     Color="{StaticResource SearchBoxForegroundColor}"/>
+    <SolidColorBrush x:Key="SearchBoxBorderBrush"
+                     Color="#46c3db"/>
+    <SolidColorBrush x:Key="SearchBoxCaretBrush"
+                     Color="#70cadb"/>
+    <SolidColorBrush x:Key="SearchBoxLabelForegroundBrush"
+                     Color="#808080"/>
+    <SolidColorBrush x:Key="SearchBoxButtonBackgroundBrush"
+                     Color="{StaticResource SearchBoxButtonBackgroundColor}"/>
+
+    <SolidColorBrush x:Key="MenuButtonBackgroundBrush"
+                     Color="#4d4d4d"/>
+
+    <SolidColorBrush x:Key="ChatPreviewBackgroundBrush"
+                     Color="{StaticResource ChatPreviewBackgroundColor}"/>
+    <SolidColorBrush x:Key="ChatPreviewIsPressedBackgroundBrush"
+                     Color="#404040"/>
+    <SolidColorBrush x:Key="ChatPreviewForegroundBrush"
+                     Color="White"/>
+    <SolidColorBrush x:Key="ChatPreviewSecondaryForegroundBrush"
+                     Color="#808080"/>
+    <SolidColorBrush x:Key="ChatPreviewIsCheckedBorderBrush"
+                     Color="{StaticResource ChatPreviewIsCheckedBorderColor}"/>
+</ResourceDictionary>

@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="ChatBoxBackgroundColor">#4d4d4d</Color>
+    <Color x:Key="ChatBoxGotFocusBackgroundColor">#d9d9d9</Color>
+    
+    <Color x:Key="ChatBoxForegroundColor">White</Color>
+    <Color x:Key="ChatBoxGotFocusForegroundColor">Black</Color>
+
+    <SolidColorBrush x:Key="TopBarWrapperBackgroundBrush"
+                     Color="#1f1f1f"/>
+
+    <SolidColorBrush x:Key="ChatBackgroundBrush"
+                     Color="#1f1f1f"/>
+    
+    <SolidColorBrush x:Key="ChatBoxWrapperBackgroundBrush"
+                     Color="#1f1f1f"/>
+    <SolidColorBrush x:Key="ChatBoxBackgroundBrush"
+                     Color="{StaticResource ChatBoxBackgroundColor}"/>
+    <SolidColorBrush x:Key="ChatBoxForegroundBrush"
+                     Color="{StaticResource ChatBoxForegroundColor}"/>
+    <SolidColorBrush x:Key="ChatBoxLabelForegroundBrush"
+                     Color="#808080"/>
+    <SolidColorBrush x:Key="ChatBoxBorderBrush"
+                     Color="#46c3db"/>
+    <SolidColorBrush x:Key="ChatBoxCaretBrush"
+                     Color="#70cadb"/>
+</ResourceDictionary>

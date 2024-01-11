@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="HeaderButtonsBackgroundColor">#1f1f1f</Color>
+    <Color x:Key="CloseWindowButtonMouseOverBackgroundColor">#d11d26</Color>
+    <Color x:Key="MinMaxWindowButtonsMouseOverBackgroundColor">#4d4d4d</Color>
+
+    <Color x:Key="CommonButtonBackgroundColor">Transparent</Color>
+    <Color x:Key="CommonButtonMouseOverBackgroundColor">#4d4d4d</Color>
+    <Color x:Key="CommonButtonMouseLeftButtonDownBackgroundColor">#404040</Color>
+
+    <SolidColorBrush x:Key="WrapperBackgroundBrush"
+                     Color="#121212"/>
+    <SolidColorBrush x:Key="WrapperBorderBrush"
+                     Color="#262626"/>
+
+    <SolidColorBrush x:Key="HeaderBackgroundBrush"
+                     Color="#121212"/>
+
+    <SolidColorBrush x:Key="WindowTitleBackgroundBrush"
+                     Color="#1f1f1f"/>
+    <SolidColorBrush x:Key="WindowTitleForegroundBrush"
+                     Color="White"/>
+    <SolidColorBrush x:Key="WindowIconBackgroundBrush"
+                     Color="#1f1f1f"/>
+
+    <SolidColorBrush x:Key="HeaderButtonsForegroundBrush"
+                     Color="White"/>
+    <SolidColorBrush x:Key="HeaderButtonsBackgroundBrush"
+                     Color="{StaticResource HeaderButtonsBackgroundColor}"/>
+
+    <SolidColorBrush x:Key="CommonButtonBackgroundBrush"
+                     Color="{StaticResource CommonButtonBackgroundColor}"/>
+</ResourceDictionary>

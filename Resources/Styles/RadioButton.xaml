@@ -1,0 +1,85 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="MenuRadioButton" 
+           TargetType="RadioButton">
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="RadioButton">
+
+                    <Border x:Name="RadioButtonBorder"
+                        Padding="7"
+                        Background="{StaticResource ChatPreviewBackgroundBrush}"
+                        BorderThickness="2"
+                        BorderBrush="Transparent"
+                        CornerRadius="10">
+
+                        <ContentPresenter
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Stretch">
+
+                        </ContentPresenter>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="RadioButtonBorder"
+                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                        To="{StaticResource ChatPreviewMouseOverBackgroundColor}"
+                                        Duration="0:0:0.0"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="RadioButtonBorder"
+                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                        To="{StaticResource ChatPreviewBackgroundColor}"
+                                        Duration="0:0:0.0"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="RadioButtonBorder"
+                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                        To="{StaticResource ChatPreviewMouseLeftButtonDownBackgroundColor}"
+                                        Duration="0:0:0.0"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="PreviewMouseLeftButtonUp">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="RadioButtonBorder"
+                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                        To="{StaticResource ChatPreviewMouseOverBackgroundColor}"
+                                        Duration="0:0:0.0"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="RadioButtonBorder" 
+                                    Property="BorderBrush" 
+                                    Value="{StaticResource ChatPreviewIsCheckedBorderBrush}"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
