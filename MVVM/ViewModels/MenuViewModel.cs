@@ -1,7 +1,9 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using DynamicData.Tests;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using YetAnotherMessenger.Misc;
 
 namespace YetAnotherMessenger.MVVM.ViewModels
 {
@@ -20,8 +22,6 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 			}
 		}
 
-		[Reactive] public bool IsPresent { get; set; } = true;
-
 		public ObservableCollection<ChatPreviewViewModel> ChatPreviews { get; set; }
 
 		public MenuViewModel()
@@ -35,6 +35,15 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
 					LastMessage = "Hello",
 					LastMessageTime = "10:00"
+				},
+
+				new()
+				{
+					ChatId = 2,
+					Name = "Test2",
+					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
+					LastMessage = "Bye!",
+					LastMessageTime = "22:30"
 				}
 			};
 		}

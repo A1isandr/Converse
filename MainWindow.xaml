@@ -20,7 +20,7 @@
                             Title="Converse"
                             Icon="pack://application:,,,/Resources/Images/icon.png"
                             Height="600" Width="1000"
-                            MinHeight="600" MinWidth="400"
+                            MinHeight="500" MinWidth="700"
                             Background="Transparent">
 
     <WindowChrome.WindowChrome>
@@ -148,10 +148,10 @@
             </Grid>
 
             <Grid Name="Main"
-                Grid.Row="1">
+                Grid.Row="1"
+                Margin="10, 0, 10, 10">
 
-                <views:MainView x:Name="MainView"
-                    Margin="10, 0, 10, 10"/>
+                <views:MainView/>
             </Grid>
         </Grid>
     </Border>

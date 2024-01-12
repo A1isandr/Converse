@@ -1,4 +1,5 @@
-﻿using System.Reactive.Linq;
+﻿using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,6 +15,7 @@ using System.Windows.Shell;
 using ReactiveUI;
 using Splat;
 using YetAnotherMessenger.MVVM.ViewModels;
+using YetAnotherMessenger.MVVM.Views;
 
 namespace YetAnotherMessenger
 {
@@ -27,13 +29,7 @@ namespace YetAnotherMessenger
 			InitializeComponent();
 
 			ViewModel = new MainWindowViewModel();
-
-			//_minMenuWrapperWidth = (int)MainView.MainGrid.ColumnDefinitions[0].MinWidth;
-
-			this.WhenAnyValue(x => x.ActualWidth)
-				.Subscribe(width => ViewModel?.UpdateChatCollapseState(width));
 		}
-
 
 		private void Header_MouseDown(object sender, MouseButtonEventArgs e)
 		{
@@ -64,55 +60,5 @@ namespace YetAnotherMessenger
 		{
 			WindowState = WindowState.Minimized;
 		}
-
-		//private void WindowStartUpClosingAnimation((double, double, int) width, (double, double, int) height, (double, double, int) opacity, EventHandler? afterCompletion = null)
-		//{
-		//	DoubleAnimation widthAnimation = new DoubleAnimation
-		//	{
-		//		From = width.Item1,
-		//		To = width.Item2,
-		//		Duration = TimeSpan.FromMilliseconds(width.Item3),
-		//		EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
-		//	};
-
-		//	DoubleAnimation heightAnimation = new DoubleAnimation
-		//	{
-		//		From = height.Item1,
-		//		To = height.Item2,
-		//		Duration = TimeSpan.FromMilliseconds(height.Item3),
-		//		BeginTime = TimeSpan.FromMilliseconds(width.Item3),
-		//		EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
-		//	};
-
-		//	DoubleAnimation opacityAnimation = new DoubleAnimation
-		//	{
-		//		From = opacity.Item1,
-		//		To = opacity.Item2,
-		//		Duration = TimeSpan.FromMilliseconds(opacity.Item3),
-		//		EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
-		//	};
-
-		//	if (afterCompletion is not null)
-		//	{
-		//		opacityAnimation.Completed += afterCompletion;
-		//	}
-
-		//	Storyboard storyboard = new Storyboard();
-
-		//	storyboard.Children.Add(widthAnimation);
-		//	storyboard.Children.Add(heightAnimation);
-		//	storyboard.Children.Add(opacityAnimation);
-
-		//	Storyboard.SetTarget(widthAnimation, this);
-		//	Storyboard.SetTargetProperty(widthAnimation, new PropertyPath(WidthProperty));
-
-		//	Storyboard.SetTarget(heightAnimation, this);
-		//	Storyboard.SetTargetProperty(heightAnimation, new PropertyPath(HeightProperty));
-
-		//	Storyboard.SetTarget(opacityAnimation, this);
-		//	Storyboard.SetTargetProperty(opacityAnimation, new PropertyPath(OpacityProperty));
-
-		//	storyboard.Begin();
-		//}
 	}
 }

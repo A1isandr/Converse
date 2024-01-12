@@ -30,13 +30,6 @@ namespace YetAnotherMessenger.MVVM.Views
 			InitializeComponent();
 
 			ViewModel = ChatViewModel.Instance;
-
-			this.WhenActivated(disposable =>
-			{
-				this.WhenAnyValue(x => x.ViewModel!.IsMenuButtonVisible)
-					.BindTo(this, x => x.MenuButton.Visibility)
-					.DisposeWith(disposable);
-			});
 		}
 	}
 }

@@ -2,61 +2,40 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using ReactiveUI.Fody.Helpers;
 
 namespace YetAnotherMessenger.MVVM.ViewModels
 {
 	public class ChatPreviewViewModel : ReactiveObject
 	{
-		private int _chatId;
-		/// <summary>
-		/// 
-		/// </summary>
-		public int ChatId
-		{
-			get => _chatId;
-			set => this.RaiseAndSetIfChanged(ref _chatId, value);
-		}
+		[Reactive]
+		public int ChatId { get; init; }
 
-		private string? _name;
-		/// <summary>
-		/// 
-		/// </summary>
-		public string? Name
-		{
-			get => _name;
-			set => this.RaiseAndSetIfChanged(ref _name, value);
-		}
+		[Reactive]
+		public string? Name { get; init; }
 
-		private string? _lastMessage;
-		/// <summary>
-		/// 
-		/// </summary>
-		public string? LastMessage
-		{
-			get => _lastMessage;
-			set => this.RaiseAndSetIfChanged(ref _lastMessage, value);
-		}
+		[Reactive]
+		public string? LastMessage { get; init; }
 
-		private string? _lastMessageTime;
-		/// <summary>
-		/// 
-		/// </summary>
-		public string? LastMessageTime
-		{
-			get => _lastMessageTime; 
-			set => this.RaiseAndSetIfChanged(ref _lastMessageTime, value);
-		}
+		[Reactive]
+		public string? LastMessageTime { get; init; }
 
-		private Uri? _avatarUri;
-		/// <summary>
-		/// 
-		/// </summary>
-		public Uri? AvatarUri
+		[Reactive]
+		public Uri? AvatarUri { get; init; }
+
+		public ReactiveCommand<Unit, Unit> OpenChatCommand { get; init; }
+
+		public ChatPreviewViewModel()
 		{
-			get => _avatarUri;
-			set => this.RaiseAndSetIfChanged(ref _avatarUri, value);
+			OpenChatCommand = ReactiveCommand.Create<Unit, Unit>(_ =>
+			{
+				ChatViewModel.Instance.CurrentChatId = ChatId;
+				return Unit.Default;
+			});
 		}
 	}
 }

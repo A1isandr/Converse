@@ -30,7 +30,7 @@ namespace YetAnotherMessenger.MVVM.Views
 		{
 			InitializeComponent();
 
-			this.WhenActivated(disposable =>
+			this.WhenActivated(disposables =>
 			{
 				// Our 4th parameter we convert from Url into a BitmapImage. 
 				// This is an easy way of doing value conversion using ReactiveUI binding.
@@ -38,22 +38,28 @@ namespace YetAnotherMessenger.MVVM.Views
 						viewModel => viewModel.AvatarUri,
 						view => view.Avatar.Source,
 						url => new BitmapImage(url))
-					.DisposeWith(disposable);
+					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
 						viewModel => viewModel.Name,
 						view => view.UserName.Text)
-					.DisposeWith(disposable);
+					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
 						viewModel => viewModel.LastMessageTime,
 						view => view.LastMessageTime.Text)
-					.DisposeWith(disposable);
+					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
 						viewModel => viewModel.LastMessage,
 						view => view.LastMessage.Text)
-					.DisposeWith(disposable);
+					.DisposeWith(disposables);
+
+				this.BindCommand(ViewModel,
+						viewModel => viewModel.OpenChatCommand,
+						view => view.RadioButton,
+						nameof(RadioButton.Checked))
+					.DisposeWith(disposables);
 			});
 		}
 

@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive;
 using System.Text;
 using System.Threading.Tasks;
 using ReactiveUI.Fody.Helpers;
+using YetAnotherMessenger.Misc;
 
 namespace YetAnotherMessenger.MVVM.ViewModels
 {
@@ -23,6 +25,6 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 		}
 
 		[Reactive]
-		public bool IsMenuButtonVisible { get; set; }
+		public int CurrentChatId { get; set; }
 	}
 }

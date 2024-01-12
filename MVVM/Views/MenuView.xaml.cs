@@ -32,14 +32,12 @@ namespace YetAnotherMessenger.MVVM.Views
 
 			ViewModel = MenuViewModel.Instance;
 
-			this.WhenActivated(disposable =>
+			this.WhenActivated(disposables =>
 			{
-				this.WhenAnyValue(viewModel => viewModel.ViewModel!.IsPresent)
-					.BindTo(this, view => view.Visibility)
-					.DisposeWith(disposable);
-
-				this.OneWayBind(this.ViewModel, viewModel => viewModel.ChatPreviews, view => view.ChatPreviewsPresenter.ItemsSource)
-					.DisposeWith(disposable);
+				this.OneWayBind(this.ViewModel, 
+						viewModel => viewModel.ChatPreviews, 
+						view => view.ChatPreviewsPresenter.ItemsSource)
+					.DisposeWith(disposables);
 			});
         }
     }

@@ -27,16 +27,7 @@ namespace YetAnotherMessenger.MVVM.Views
         {
             InitializeComponent();
 
-            ViewModel = MainViewModel.Instance;
-            var disposables = new CompositeDisposable();
-
-			this.WhenAnyValue(x => x.ViewModel!.MenuColumnMinWidth)
-				.BindTo(this, x => x.MenuColumn.MinWidth)
-				.DisposeWith(disposables);
-
-			this.WhenAnyValue(x => x.ViewModel!.MenuColumnWidth)
-				.BindTo(this, x => x.MenuColumn.Width)
-				.DisposeWith(disposables);
-		}
+            ViewModel = new MainViewModel();
+        }
     }
 }

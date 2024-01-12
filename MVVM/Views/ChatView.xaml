@@ -43,7 +43,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button x:Name="MenuButton"
+                    <!--<Button x:Name="MenuButton"
                         Grid.Column="0"
                         Height="35"
                         Cursor="Hand"
@@ -55,7 +55,7 @@
                                 Width="20"
                                 Source="pack://application:,,,/Resources/Images/arrow-back.svg"/>
                         </Button.Content>
-                    </Button>
+                    </Button>-->
 
                     <Grid
                         Grid.Column="1">
