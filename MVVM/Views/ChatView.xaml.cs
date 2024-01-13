@@ -30,6 +30,14 @@ namespace YetAnotherMessenger.MVVM.Views
 			InitializeComponent();
 
 			ViewModel = ChatViewModel.Instance;
+
+			this.WhenActivated(disposables =>
+			{
+				this.OneWayBind(ViewModel,
+						viewModel => viewModel.CurrentChatName,
+						view => view.ChatName.Text)
+					.DisposeWith(disposables);
+			});
 		}
 	}
 }

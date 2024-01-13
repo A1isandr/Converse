@@ -46,7 +46,8 @@
                 FontWeight="Medium"
                 Foreground="{StaticResource ChatPreviewForegroundBrush}"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Center"/>
+                VerticalAlignment="Center"
+                TextTrimming="CharacterEllipsis"/>
 
             <TextBlock x:Name="LastMessageTime"
                 Grid.Row="0"
@@ -66,7 +67,8 @@
                 Foreground="{StaticResource ChatPreviewSecondaryForegroundBrush}"
                 Grid.Column="1"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Center"/>
+                VerticalAlignment="Center"
+                TextTrimming="CharacterEllipsis"/>
         </Grid>
     </RadioButton>
 </rxui:ReactiveUserControl>

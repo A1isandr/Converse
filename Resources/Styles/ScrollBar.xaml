@@ -128,12 +128,45 @@
                 <ControlTemplate 
                     TargetType="{x:Type Thumb}">
 
-                    <Border CornerRadius="4"
+                    <Border x:Name="ThumbBorder"
+                            CornerRadius="4"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="0"
-                            Width="8"
-                            Margin="8,0,-2,0" />
+                            Width="3"
+                            Opacity="0.5"/>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard TargetName="ThumbBorder">
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                        To="1"
+                                        Duration="0:0:0.2"/>
+
+                                    <DoubleAnimation Storyboard.TargetProperty="Width"
+                                        To="5"
+                                        Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard TargetName="ThumbBorder">
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                        To="0.5"
+                                        Duration="0:0:0.2"
+                                        BeginTime="0:0:1"/>
+
+                                    <DoubleAnimation Storyboard.TargetProperty="Width"
+                                         To="3"
+                                         Duration="0:0:0.2"
+                                         BeginTime="0:0:1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -180,9 +213,10 @@
                 <RowDefinition MaxHeight="0" />
             </Grid.RowDefinitions>
 
-            <Border Grid.RowSpan="3"
-                CornerRadius="2"
-                Background="Transparent" />
+            <Border x:Name="ScrollBorder" 
+                    Grid.ColumnSpan="3"
+                    CornerRadius="3"
+                    Background="Transparent" />
 
             <RepeatButton Grid.Row="0"
                   Style="{StaticResource ScrollBarLineButton}"
@@ -201,9 +235,9 @@
 
                 <Track.Thumb>
                     <Thumb Style="{StaticResource ScrollBarThumb}"
-                           Margin="1,0,1,0"
                            Background="{StaticResource HorizontalNormalBrush}"
-                           BorderBrush="{StaticResource HorizontalNormalBorderBrush}" />
+                           BorderBrush="{StaticResource HorizontalNormalBorderBrush}"
+                           HorizontalAlignment="Right"/>
                 </Track.Thumb>
 
                 <Track.IncreaseRepeatButton>
@@ -372,12 +406,14 @@
                         </Grid.RowDefinitions>
 
                         <ScrollContentPresenter 
-                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Grid.RowSpan="2"
                             VerticalAlignment="Stretch"/>
 
                         <ScrollBar x:Name="PART_VerticalScrollBar"
                                    Grid.Row="0"
                                    Grid.Column="1"
+                                   Opacity="0"
                                    Value="{TemplateBinding VerticalOffset}"
                                    Maximum="{TemplateBinding ScrollableHeight}"
                                    ViewportSize="{TemplateBinding ViewportHeight}"
@@ -392,6 +428,32 @@
                                    ViewportSize="{TemplateBinding ViewportWidth}"
                                    Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" />
                     </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard TargetName="PART_VerticalScrollBar" 
+                                            TargetProperty="Opacity">
+
+                                    <DoubleAnimation
+                                        To="1"
+                                        Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard TargetName="PART_VerticalScrollBar" 
+                                            TargetProperty="Opacity">
+
+                                    <DoubleAnimation
+                                        To="0"
+                                        Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

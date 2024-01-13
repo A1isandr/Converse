@@ -34,6 +34,7 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 			OpenChatCommand = ReactiveCommand.Create<Unit, Unit>(_ =>
 			{
 				ChatViewModel.Instance.CurrentChatId = ChatId;
+				ChatViewModel.Instance.CurrentChatName = Name ?? string.Empty;
 				return Unit.Default;
 			});
 		}

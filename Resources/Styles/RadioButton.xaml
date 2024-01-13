@@ -24,14 +24,15 @@
                     </Border>
 
                     <ControlTemplate.Triggers>
-                        <EventTrigger RoutedEvent="MouseEnter">
+                        <!--<EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard>
                                     <ColorAnimation
                                         Storyboard.TargetName="RadioButtonBorder"
                                         Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                         To="{StaticResource ChatPreviewMouseOverBackgroundColor}"
-                                        Duration="0:0:0.0"/>
+                                        Duration="0:0:0.0"
+                                        FillBehavior="Stop"/>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -42,13 +43,14 @@
                                     <ColorAnimation
                                         Storyboard.TargetName="RadioButtonBorder"
                                         Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                        To="{StaticResource ChatPreviewBackgroundColor}"
-                                        Duration="0:0:0.0"/>
+                                        To="{StaticResource ChatPreviewIsCheckedBackgroundColor}"
+                                        Duration="0:0:0.0"
+                                        FillBehavior="Stop"/>
                                 </Storyboard>
                             </BeginStoryboard>
-                        </EventTrigger>
+                        </EventTrigger>-->
 
-                        <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
+                        <!--<EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
                             <BeginStoryboard>
                                 <Storyboard>
                                     <ColorAnimation
@@ -70,12 +72,25 @@
                                         Duration="0:0:0.0"/>
                                 </Storyboard>
                             </BeginStoryboard>
-                        </EventTrigger>
+                        </EventTrigger>-->
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter
+                                TargetName="RadioButtonBorder"
+                                Property="Background"
+                                Value="{StaticResource ChatPreviewMouseOverBackgroundBrush}"/>
+                        </Trigger>
 
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="RadioButtonBorder" 
-                                    Property="BorderBrush" 
-                                    Value="{StaticResource ChatPreviewIsCheckedBorderBrush}"></Setter>
+                            <Setter 
+                                TargetName="RadioButtonBorder" 
+                                Property="BorderBrush" 
+                                Value="{StaticResource ChatPreviewIsCheckedBorderBrush}"/>
+
+                            <Setter 
+                                TargetName="RadioButtonBorder"
+                                Property="Background"
+                                Value="{StaticResource ChatPreviewIsCheckedBackgroundBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

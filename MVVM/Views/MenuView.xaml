@@ -46,7 +46,7 @@
                         Height="35"
                         Cursor="Hand"
                         VerticalAlignment="Center"
-                        Padding="7"
+                        Padding="5"
                         Margin="0, 0, 10, 0"
                         Style="{StaticResource CommonButton}">
 
@@ -64,7 +64,6 @@
 
             <Border x:Name="ChatPreviewBorder"
                 Grid.Row="1"
-                Padding="0, 20, 0, 0"
                 Margin="5"
                 Background="{StaticResource MenuBackgroundBrush}"
                 CornerRadius="20">
@@ -82,20 +81,23 @@
                         </RectangleGeometry.Rect>
                     </RectangleGeometry>
                 </Border.Clip>
+                
+                <ScrollViewer
+                    HorizontalScrollBarVisibility="Disabled"
+                    VerticalScrollBarVisibility="Auto"
+                    Style="{StaticResource SimpleScrollBar}">
 
-                <ItemsControl x:Name="ChatPreviewsPresenter"
-                         HorizontalContentAlignment="Stretch"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                         Background="Transparent"
-                         BorderThickness="0">
+                    <ItemsControl x:Name="ChatPreviewsPresenter"
+                                  HorizontalContentAlignment="Stretch">
 
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel
-                                Orientation="Vertical"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel
+                                    Orientation="Vertical"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
             </Border>
         </Grid>
     </Border>

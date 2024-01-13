@@ -44,7 +44,115 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
 					LastMessage = "Bye!",
 					LastMessageTime = "22:30"
-				}
+				},
+
+				new()
+				{
+					ChatId = 2,
+					Name = "Test2",
+					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
+					LastMessage = "Bye!",
+					LastMessageTime = "22:30"
+				},
+
+				new()
+				{
+					ChatId = 2,
+					Name = "Test2",
+					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
+					LastMessage = "Bye!",
+					LastMessageTime = "22:30"
+				},
+
+				new()
+				{
+					ChatId = 2,
+					Name = "Test2",
+					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
+					LastMessage = "Bye!",
+					LastMessageTime = "22:30"
+				},
+
+				new()
+				{
+					ChatId = 2,
+					Name = "Test2",
+					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
+					LastMessage = "Bye!",
+					LastMessageTime = "22:30"
+				},
+
+				new()
+				{
+					ChatId = 2,
+					Name = "Test2",
+					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
+					LastMessage = "Bye!",
+					LastMessageTime = "22:30"
+				},
+
+				new()
+				{
+					ChatId = 2,
+					Name = "Test2",
+					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
+					LastMessage = "Bye!",
+					LastMessageTime = "22:30"
+				},
+
+				new()
+				{
+					ChatId = 2,
+					Name = "Test2",
+					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
+					LastMessage = "Bye!",
+					LastMessageTime = "22:30"
+				},
+
+				new()
+				{
+					ChatId = 2,
+					Name = "Test2",
+					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
+					LastMessage = "Bye!",
+					LastMessageTime = "22:30"
+				},
+
+				new()
+				{
+					ChatId = 2,
+					Name = "Test2",
+					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
+					LastMessage = "Bye!",
+					LastMessageTime = "22:30"
+				},
+
+				new()
+				{
+					ChatId = 2,
+					Name = "Test2",
+					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
+					LastMessage = "Bye!",
+					LastMessageTime = "22:30"
+				},
+
+				new()
+				{
+					ChatId = 2,
+					Name = "Test2",
+					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
+					LastMessage = "Bye!",
+					LastMessageTime = "22:30"
+				},
+
+				new()
+				{
+					ChatId = 2,
+					Name = "Test2",
+					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
+					LastMessage = "Bye!",
+					LastMessageTime = "22:30"
+				},
 			};
 		}
 	}

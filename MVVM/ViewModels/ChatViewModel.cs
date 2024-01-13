@@ -26,5 +26,8 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 
 		[Reactive]
 		public int CurrentChatId { get; set; }
+
+		[Reactive]
+		public string? CurrentChatName { get; set; }
 	}
 }

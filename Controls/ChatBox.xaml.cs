@@ -28,15 +28,14 @@ namespace YetAnotherMessenger.Controls
 
 		private void ChatBox_PreviewKeyDown(object sender, KeyEventArgs e)
 		{
-			TextBox textBox = (TextBox)sender;
+			var textBox = (TextBox)sender;
 
 			if (e.Key == Key.Enter && Keyboard.IsKeyDown(Key.LeftShift))
 			{
 				textBox.Text += "\r\n";
 				textBox.CaretIndex = textBox.Text.Length;
-
 				e.Handled = true;
 			}
 		}
-    }
+	}
 }

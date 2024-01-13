@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:YetAnotherMessenger.Controls"
              xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+             xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="45" d:DesignWidth="600">
 
@@ -43,15 +44,16 @@
                                         </Grid.ColumnDefinitions>
 
                                         <TextBox x:Name="ChatTextBox"
+                                                 Grid.Column="0"
                                                  Text="{TemplateBinding Text}"
                                                  Foreground="{StaticResource ChatBoxForegroundBrush}"
                                                  FontFamily="Resources/Fonts/#NotoSans"
                                                  FontSize="14"
                                                  FontWeight="Medium"
-                                                 TextWrapping="Wrap"
                                                  VerticalContentAlignment="Center"
                                                  TextOptions.TextRenderingMode="ClearType"
                                                  TextOptions.TextFormattingMode="Display"
+                                                 TextWrapping="Wrap"
                                                  Cursor="IBeam"
                                                  CaretBrush="{StaticResource ChatBoxCaretBrush}"
                                                  BorderThickness="0"

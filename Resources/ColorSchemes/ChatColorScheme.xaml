@@ -10,6 +10,13 @@
     <SolidColorBrush x:Key="TopBarWrapperBackgroundBrush"
                      Color="#1f1f1f"/>
 
+    <SolidColorBrush x:Key="TopBarBackgroundBrush"
+                     Color="#1f1f1f"/>
+    <SolidColorBrush x:Key="TopBarForegroundBrush"
+                     Color="White"/>
+    <SolidColorBrush x:Key="TopBarSecondaryForegroundBrush"
+                     Color="#808080"/>
+
     <SolidColorBrush x:Key="ChatBackgroundBrush"
                      Color="#1f1f1f"/>
     

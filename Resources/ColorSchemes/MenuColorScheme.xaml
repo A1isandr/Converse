@@ -12,8 +12,9 @@
     <Color x:Key="SearchBoxButtonMouseLeftButtonDownBackgroundColor">#70cadb</Color>
 
     <Color x:Key="ChatPreviewBackgroundColor">Transparent</Color>
-    <Color x:Key="ChatPreviewMouseOverBackgroundColor">#4d4d4d</Color>
+    <Color x:Key="ChatPreviewMouseOverBackgroundColor">#404040</Color>
     <Color x:Key="ChatPreviewMouseLeftButtonDownBackgroundColor">#404040</Color>
+    <Color x:Key="ChatPreviewIsCheckedBackgroundColor">#404040</Color>
     <Color x:Key="ChatPreviewIsCheckedBorderColor">#46c3db</Color>
 
     <SolidColorBrush x:Key="MenuBackgroundBrush"
@@ -37,8 +38,12 @@
 
     <SolidColorBrush x:Key="ChatPreviewBackgroundBrush"
                      Color="{StaticResource ChatPreviewBackgroundColor}"/>
+    <SolidColorBrush x:Key="ChatPreviewMouseOverBackgroundBrush"
+                     Color="{StaticResource ChatPreviewMouseOverBackgroundColor}"/>
     <SolidColorBrush x:Key="ChatPreviewIsPressedBackgroundBrush"
                      Color="#404040"/>
+    <SolidColorBrush x:Key="ChatPreviewIsCheckedBackgroundBrush"
+                     Color="{StaticResource ChatPreviewIsCheckedBackgroundColor}"/>
     <SolidColorBrush x:Key="ChatPreviewForegroundBrush"
                      Color="White"/>
     <SolidColorBrush x:Key="ChatPreviewSecondaryForegroundBrush"
