@@ -10,48 +10,43 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ABI.Windows.UI.Core.AnimationMetrics;
 using ReactiveUI;
-using SharpVectors.Dom;
 using YetAnotherMessenger.MVVM.ViewModels;
 
 namespace YetAnotherMessenger.MVVM.Views
 {
 	/// <summary>
-	/// Логика взаимодействия для ChatPreview.xaml
+	/// Логика взаимодействия для ChatPreviewView.xaml
 	/// </summary>
-	public partial class ChatPreview : ReactiveUserControl<ChatPreviewViewModel>
+	public partial class ChatPreviewView : ReactiveUserControl<ChatPreviewViewModel>
 	{
-		public ChatPreview()
+		public ChatPreviewView()
 		{
 			InitializeComponent();
 
 			this.WhenActivated(disposables =>
 			{
-				// Our 4th parameter we convert from Url into a BitmapImage. 
-				// This is an easy way of doing value conversion using ReactiveUI binding.
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.AvatarUri,
+						viewModel => viewModel.Chat.Avatar,
 						view => view.Avatar.Source,
 						url => new BitmapImage(url))
 					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.Name,
+						viewModel => viewModel.Chat.Name,
 						view => view.UserName.Text)
 					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.LastMessageTime,
+						viewModel => viewModel.Chat.LastMessage!.HourMinute,
 						view => view.LastMessageTime.Text)
 					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.LastMessage,
+						viewModel => viewModel.Chat.LastMessage!.Content,
 						view => view.LastMessage.Text)
 					.DisposeWith(disposables);
 

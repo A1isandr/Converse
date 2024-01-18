@@ -192,12 +192,45 @@
                 <ControlTemplate 
                     TargetType="{x:Type Thumb}">
 
-                    <Border CornerRadius="4"
+                    <Border x:Name="ThumbBorder"
+                            CornerRadius="4"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="0"
-                            Height="8"
-                            Margin="0,0,-2,0" />
+                            Height="3"
+                            Opacity="0.5"/>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard TargetName="ThumbBorder">
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                     To="1"
+                                                     Duration="0:0:0.2"/>
+
+                                    <DoubleAnimation Storyboard.TargetProperty="Height"
+                                                     To="5"
+                                                     Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard TargetName="ThumbBorder">
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                     To="0.5"
+                                                     Duration="0:0:0.2"
+                                                     BeginTime="0:0:1"/>
+
+                                    <DoubleAnimation Storyboard.TargetProperty="Height"
+                                                     To="3"
+                                                     Duration="0:0:0.2"
+                                                     BeginTime="0:0:1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -285,9 +318,9 @@
 
                 <Track.Thumb>
                     <Thumb Style="{StaticResource ScrollBarThumbHor}"
-                           Margin="0,1,0,1"
                            Background="{StaticResource HorizontalNormalBrush}"
-                           BorderBrush="{StaticResource HorizontalNormalBorderBrush}" />
+                           BorderBrush="{StaticResource HorizontalNormalBorderBrush}" 
+                           VerticalAlignment="Bottom"/>
                 </Track.Thumb>
 
                 <Track.IncreaseRepeatButton>
@@ -423,6 +456,7 @@
                                    Orientation="Horizontal"
                                    Grid.Row="1"
                                    Grid.Column="0"
+                                   Opacity="0"
                                    Value="{TemplateBinding HorizontalOffset}"
                                    Maximum="{TemplateBinding ScrollableWidth}"
                                    ViewportSize="{TemplateBinding ViewportWidth}"
@@ -432,10 +466,16 @@
                     <ControlTemplate.Triggers>
                         <EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
-                                <Storyboard TargetName="PART_VerticalScrollBar" 
-                                            TargetProperty="Opacity">
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="PART_VerticalScrollBar"
+                                        Storyboard.TargetProperty="Opacity"
+                                        To="1"
+                                        Duration="0:0:0.2"/>
 
                                     <DoubleAnimation
+                                        Storyboard.TargetName="PART_HorizontalScrollBar"
+                                        Storyboard.TargetProperty="Opacity"
                                         To="1"
                                         Duration="0:0:0.2"/>
                                 </Storyboard>
@@ -444,10 +484,16 @@
 
                         <EventTrigger RoutedEvent="MouseLeave">
                             <BeginStoryboard>
-                                <Storyboard TargetName="PART_VerticalScrollBar" 
-                                            TargetProperty="Opacity">
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="PART_VerticalScrollBar"
+                                        Storyboard.TargetProperty="Opacity"
+                                        To="0"
+                                        Duration="0:0:0.2"/>
 
                                     <DoubleAnimation
+                                        Storyboard.TargetName="PART_HorizontalScrollBar"
+                                        Storyboard.TargetProperty="Opacity"
                                         To="0"
                                         Duration="0:0:0.2"/>
                                 </Storyboard>
@@ -458,62 +504,4 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <!--<Style x:Key="ScrollBarThumbStyle" TargetType="Thumb">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Thumb">
-                    <Rectangle Fill="Gray" />
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="ScrollBar">
-        <Setter Property="Visibility" Value="Hidden"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Stylus.IsFlicksEnabled" Value="false"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        <Setter Property="OverridesDefaultStyle" Value="true"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="ScrollBar">
-                    <Grid>
-                        <Rectangle x:Name="Track" RadiusX="5" RadiusY="5" />
-                        <RepeatButton x:Name="PageUp" Content="&#xE011;" />
-                        <Thumb x:Name="Thumb" Style="{StaticResource ScrollBarThumbStyle}" />
-                        <RepeatButton x:Name="PageDown" Content="&#xE01A;" />
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="ScrollViewer">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="ScrollViewer">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        --><!-- Вертикальный ползунок --><!--
-                        <ScrollBar Grid.Row="1" Grid.Column="1" Orientation="Vertical" />
-
-                        --><!-- Горизонтальный ползунок --><!--
-                        <ScrollBar Grid.Row="1" Grid.Column="1" Orientation="Horizontal" />
-
-                        --><!-- Область прокрутки --><!--
-                        <ScrollContentPresenter Grid.Row="1" Grid.Column="1"/>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>-->
 </ResourceDictionary>

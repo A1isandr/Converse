@@ -7,25 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using ReactiveUI.Fody.Helpers;
+using YetAnotherMessenger.MVVM.Models;
 
 namespace YetAnotherMessenger.MVVM.ViewModels
 {
 	public class ChatPreviewViewModel : ReactiveObject
 	{
-		[Reactive]
-		public int ChatId { get; init; }
-
-		[Reactive]
-		public string? Name { get; init; }
-
-		[Reactive]
-		public string? LastMessage { get; init; }
-
-		[Reactive]
-		public string? LastMessageTime { get; init; }
-
-		[Reactive]
-		public Uri? AvatarUri { get; init; }
+		public Chat Chat { get; set; }
 
 		public ReactiveCommand<Unit, Unit> OpenChatCommand { get; init; }
 
@@ -33,8 +21,7 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 		{
 			OpenChatCommand = ReactiveCommand.Create<Unit, Unit>(_ =>
 			{
-				ChatViewModel.Instance.CurrentChatId = ChatId;
-				ChatViewModel.Instance.CurrentChatName = Name ?? string.Empty;
+				ChatViewModel.Instance.Chat = Chat;
 				return Unit.Default;
 			});
 		}

@@ -1,9 +1,11 @@
 ﻿using System.Collections.ObjectModel;
+using System.Reactive.Linq;
 using System.Windows;
 using DynamicData.Tests;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using YetAnotherMessenger.Misc;
+using YetAnotherMessenger.MVVM.Models;
 
 namespace YetAnotherMessenger.MVVM.ViewModels
 {
@@ -22,138 +24,54 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 			}
 		}
 
-		public ObservableCollection<ChatPreviewViewModel> ChatPreviews { get; set; }
+		public ObservableCollection<Chat> Chats { get; set; }
+
+		public List<ChatPreviewViewModel> ChatPreviews { get; set; }
 
 		public MenuViewModel()
 		{
-			ChatPreviews = new ObservableCollection<ChatPreviewViewModel>
-			{
-				new()
+			Chats =
+			[
+				new Chat
 				{
-					ChatId = 1,
-					Name = "Test",
-					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
-					LastMessage = "Hello",
-					LastMessageTime = "10:00"
+					Id = 1,
+					Name = "Friend",
+					Avatar = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
+					Messages =
+					[
+						new TextMessage
+						(
+							content: "Hello!"
+						),
+
+						new TextMessage
+						(
+							content: "Hi!"
+						)
+					],
 				},
 
-				new()
+				new Chat
 				{
-					ChatId = 2,
-					Name = "Test2",
-					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
-					LastMessage = "Bye!",
-					LastMessageTime = "22:30"
-				},
+					Id = 2,
+					Name = "Friend",
+					Avatar = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
+					Messages =
+					[
+						new TextMessage
+						(
+							content: "When are you going to be at home?"
+						),
 
-				new()
-				{
-					ChatId = 2,
-					Name = "Test2",
-					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
-					LastMessage = "Bye!",
-					LastMessageTime = "22:30"
-				},
+						new TextMessage
+						(
+							content: "Not later than at 7"
+						)
+					],
+				}
+			];
 
-				new()
-				{
-					ChatId = 2,
-					Name = "Test2",
-					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
-					LastMessage = "Bye!",
-					LastMessageTime = "22:30"
-				},
-
-				new()
-				{
-					ChatId = 2,
-					Name = "Test2",
-					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
-					LastMessage = "Bye!",
-					LastMessageTime = "22:30"
-				},
-
-				new()
-				{
-					ChatId = 2,
-					Name = "Test2",
-					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
-					LastMessage = "Bye!",
-					LastMessageTime = "22:30"
-				},
-
-				new()
-				{
-					ChatId = 2,
-					Name = "Test2",
-					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
-					LastMessage = "Bye!",
-					LastMessageTime = "22:30"
-				},
-
-				new()
-				{
-					ChatId = 2,
-					Name = "Test2",
-					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
-					LastMessage = "Bye!",
-					LastMessageTime = "22:30"
-				},
-
-				new()
-				{
-					ChatId = 2,
-					Name = "Test2",
-					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
-					LastMessage = "Bye!",
-					LastMessageTime = "22:30"
-				},
-
-				new()
-				{
-					ChatId = 2,
-					Name = "Test2",
-					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
-					LastMessage = "Bye!",
-					LastMessageTime = "22:30"
-				},
-
-				new()
-				{
-					ChatId = 2,
-					Name = "Test2",
-					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
-					LastMessage = "Bye!",
-					LastMessageTime = "22:30"
-				},
-
-				new()
-				{
-					ChatId = 2,
-					Name = "Test2",
-					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
-					LastMessage = "Bye!",
-					LastMessageTime = "22:30"
-				},
-
-				new()
-				{
-					ChatId = 2,
-					Name = "Test2",
-					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
-					LastMessage = "Bye!",
-					LastMessageTime = "22:30"
-				},
-
-				new()
-				{
-					ChatId = 2,
-					Name = "Test2",
-					AvatarUri = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
-					LastMessage = "Bye!",
-					LastMessageTime = "22:30"
-				},
-			};
+			ChatPreviews = Chats.Select(chat => new ChatPreviewViewModel { Chat = chat }).ToList();
 		}
 	}
 }

@@ -14,7 +14,7 @@
                         Background="{StaticResource ChatPreviewBackgroundBrush}"
                         BorderThickness="2"
                         BorderBrush="Transparent"
-                        CornerRadius="10">
+                        CornerRadius="20">
 
                         <ContentPresenter
                             VerticalAlignment="Stretch"

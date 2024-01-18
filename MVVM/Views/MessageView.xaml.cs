@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Linq;
 using System.Reactive.Disposables;
-using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,24 +18,27 @@ using YetAnotherMessenger.MVVM.ViewModels;
 
 namespace YetAnotherMessenger.MVVM.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для MenuView.xaml
-    /// </summary>
-    public partial class MenuView :  ReactiveUserControl<MenuViewModel>
-    {
-		public MenuView()
-        {
-            InitializeComponent();
-
-			ViewModel = MenuViewModel.Instance;
+	/// <summary>
+	/// Логика взаимодействия для MessageView.xaml
+	/// </summary>
+	public partial class MessageView : ReactiveUserControl<MessageViewModel>
+	{
+		public MessageView()
+		{
+			InitializeComponent();
 
 			this.WhenActivated(disposables =>
 			{
-				this.OneWayBind(this.ViewModel, 
-						viewModel => viewModel.ChatPreviews,
-						view => view.ChatPreviewsPresenter.ItemsSource)
+				this.OneWayBind(ViewModel,
+						viewModel => viewModel.Message.Content,
+						view => view.MessageContent.Text)
+					.DisposeWith(disposables);
+
+				this.OneWayBind(ViewModel,
+						viewModel => viewModel.Message.HourMinute,
+						view => view.MessageDateTime.Content)
 					.DisposeWith(disposables);
 			});
-        }
-    }
+		}
+	}
 }
