@@ -12,10 +12,10 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 {
 	public class MainViewModel : ReactiveObject
 	{
-		[Reactive] 
-		public MenuViewModel MenuViewModel { get; set; } = MenuViewModel.Instance;
+		[Reactive]
+		public MenuViewModel MenuVM { get; set; } = MenuViewModel.Instance;
 
-		[Reactive] 
+		[Reactive]
 		public ChatViewModel ChatViewModel { get; set; } = ChatViewModel.Instance;
 	}
 }

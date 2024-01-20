@@ -4,7 +4,6 @@
                                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                                 xmlns:local="clr-namespace:YetAnotherMessenger.MVVM.Views"
-                                xmlns:views="clr-namespace:YetAnotherMessenger.MVVM.Views"
                                 xmlns:vm="clr-namespace:YetAnotherMessenger.MVVM.ViewModels"
                                 x:TypeArguments="vm:MainViewModel"
                                 xmlns:yam="clr-namespace:YetAnotherMessenger"
@@ -15,15 +14,15 @@
 
     <Grid x:Name="MainGrid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" MinWidth="250" x:Name="MenuColumn"/>
+            <ColumnDefinition Width="*" MinWidth="250"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <views:MenuView x:Name="MenuView"
+        <local:MenuView x:Name="MenuView"
                         Grid.Column="0"
                         Margin="0, 0, 10, 0"/>
 
-        <views:ChatView x:Name="ChatView"
+        <local:ChatView x:Name="ChatView"
                         Grid.Column="1"/>
     </Grid>
 </reactiveui:ReactiveUserControl>

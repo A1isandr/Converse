@@ -16,8 +16,8 @@
                         Background="{StaticResource CommonButtonBackgroundBrush}">
 
                         <ContentPresenter
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"/>
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"/>
                     </Border>
 
                     <ControlTemplate.Triggers>

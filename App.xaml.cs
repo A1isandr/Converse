@@ -37,7 +37,7 @@ namespace YetAnotherMessenger
 					Source = value.Name switch
 					{
 						"ru-RU" => new Uri($"Resources/lang.{value.Name}.xaml", UriKind.Relative),
-						_ => new Uri("Resources/lang.xaml", UriKind.Relative)
+						_ => new Uri("Resources/lang.en-EN.xaml", UriKind.Relative)
 					}
 				};
 

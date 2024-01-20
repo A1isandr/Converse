@@ -8,6 +8,7 @@ using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using ABI.Windows.AI.MachineLearning;
 using ReactiveUI.Fody.Helpers;
 using YetAnotherMessenger.Misc;
 using YetAnotherMessenger.MVVM.Models;
@@ -31,12 +32,11 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 		private MessageBoxViewModel MessageBoxVM { get; set; } = MessageBoxViewModel.Instance;
 
 		[Reactive] 
-		public Chat? Chat { get; set; } = MenuViewModel.Instance.Chats.First();
+		public Chat? Chat { get; set; } = ChatListMenuViewModel.Instance.Chats.First();
 
-		[Reactive]
-		public List<MessageViewModel> Messages { get; set; }
+		[Reactive] public List<MessageViewModel>? Messages { get; set; }
 
-		public ChatViewModel()
+		private ChatViewModel()
 		{
 			this.WhenAnyValue(x => x.Chat)
 				.Subscribe(chat => Messages = chat!.Messages.Select(message => new MessageViewModel {Message = message}).ToList());

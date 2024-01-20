@@ -1,20 +1,18 @@
-﻿using System.Collections.ObjectModel;
-using System.Reactive.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
-using DynamicData.Tests;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
-using YetAnotherMessenger.Misc;
-using YetAnotherMessenger.MVVM.Models;
 
 namespace YetAnotherMessenger.MVVM.ViewModels
 {
 	public class MenuViewModel : ReactiveObject
 	{
 		private static MenuViewModel? _instance;
-		/// <summary>
-		/// Returns the singleton instance.
-		/// </summary>
+
 		public static MenuViewModel Instance
 		{
 			get
@@ -24,54 +22,34 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 			}
 		}
 
-		public ObservableCollection<Chat> Chats { get; set; }
+		private ChatListMenuViewModel ChatListMenuVM { get; set; } = ChatListMenuViewModel.Instance;
 
-		public List<ChatPreviewViewModel> ChatPreviews { get; set; }
+		private MainMenuViewModel MainMenuVM { get; set; } = MainMenuViewModel.Instance;
+
+		[Reactive] 
+		public bool IsMainMenuOpen { get; private set; }
+
+		[Reactive] 
+		public bool IsChatListOpen { get; private set; } = true;
 
 		public MenuViewModel()
 		{
-			Chats =
-			[
-				new Chat
-				{
-					Id = 1,
-					Name = "Friend",
-					Avatar = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
-					Messages =
-					[
-						new TextMessage
-						(
-							content: "Hello!"
-						),
+			ChatListMenuVM.OpenMainMenuCommand.IsExecuting.Subscribe(isExecuting =>
+			{
+				if (!isExecuting) return;
 
-						new TextMessage
-						(
-							content: "Hi!"
-						)
-					],
-				},
+				IsChatListOpen = IsMainMenuOpen;
+				IsMainMenuOpen = !IsMainMenuOpen;
+				
+			});
 
-				new Chat
-				{
-					Id = 2,
-					Name = "Friend",
-					Avatar = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
-					Messages =
-					[
-						new TextMessage
-						(
-							content: "When are you going to be at home?"
-						),
+			MainMenuVM.CloseMainMenuCommand.IsExecuting.Subscribe(isExecuting =>
+			{
+				if (!isExecuting) return;
 
-						new TextMessage
-						(
-							content: "Not later than at 7"
-						)
-					],
-				}
-			];
-
-			ChatPreviews = Chats.Select(chat => new ChatPreviewViewModel { Chat = chat }).ToList();
+				IsMainMenuOpen = IsChatListOpen;
+				IsChatListOpen = !IsChatListOpen;
+			});
 		}
 	}
 }

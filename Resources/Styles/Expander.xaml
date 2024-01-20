@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Style x:Key="CommonExpander"
+           TargetType="Expander">
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="Expander">
+
+                    <ContentPresenter x:Name="ContentPresenter"/>
+
+                    <!--<ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Collapsed">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                        Storyboard.TargetName="ContentPresenter"
+                                        Storyboard.TargetProperty="Margin"
+                                        To="250, 0, -250, 0"
+                                        Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="Expanded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                        Storyboard.TargetName="ContentPresenter"
+                                        Storyboard.TargetProperty="Margin"
+                                        To="0, 0, 0, 0"
+                                        Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>-->
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
