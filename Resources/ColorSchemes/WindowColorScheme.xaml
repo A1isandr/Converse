@@ -6,7 +6,11 @@
     <Color x:Key="MinMaxWindowButtonsMouseOverBackgroundColor">#4d4d4d</Color>
 
     <Color x:Key="CommonButtonBackgroundColor">Transparent</Color>
-    <Color x:Key="CommonButtonMouseOverBackgroundColor">#404040</Color>
+    <Color x:Key="CommonButtonMouseOverBackgroundColor"
+           R="64"
+           G="64"
+           B="64"
+           A="150"/>
     <Color x:Key="CommonButtonMouseLeftButtonDownBackgroundColor">#404040</Color>
 
     <SolidColorBrush x:Key="WrapperBackgroundBrush"

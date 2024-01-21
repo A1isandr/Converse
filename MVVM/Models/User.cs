@@ -10,10 +10,18 @@ namespace YetAnotherMessenger.MVVM.Models
 {
 	public class User : ReactiveObject
 	{
-		public int Id { get; set; }
+		public string FullName => $"{FirstName} {LastName}";
+
+		public int Id { get; init; }
 
 		[Reactive]
-		public string Name { get; set; }
+		public string FirstName { get; set; }
+
+		[Reactive]
+		public string? LastName { get; set; }
+
+		[Reactive]
+		public string UserName { get; set; }
 
 		[Reactive]
 		public Uri Avatar { get; set; }

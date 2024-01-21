@@ -6,6 +6,11 @@
            G="255"
            B="255"
            A="128"/>
+    <Color x:Key="MessageMouseOverBackgroundColor"
+           R="64"
+           G="64"
+           B="64"
+           A="150"/>
 
     <Color x:Key="ChatBoxBackgroundColor">#4d4d4d</Color>
     <Color x:Key="ChatBoxGotFocusBackgroundColor">#d9d9d9</Color>
@@ -32,6 +37,8 @@
                      Color="White"/>
     <SolidColorBrush x:Key="MessageForegroundSecondaryBrush"
                      Color="{StaticResource MessageForegroundSecondaryColor}"/>
+    <SolidColorBrush x:Key="MessageMouseOverBackgroundBrush"
+                     Color="{StaticResource MessageMouseOverBackgroundColor}"/>
     
     <SolidColorBrush x:Key="ChatBoxWrapperBackgroundBrush"
                                                                   Color="#1f1f1f"/>

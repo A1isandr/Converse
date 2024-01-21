@@ -10,38 +10,70 @@
                           xmlns:vm="clr-namespace:YetAnotherMessenger.MVVM.ViewModels"
                           mc:Ignorable="d" 
                           d:DesignHeight="100" d:DesignWidth="600">
+    
+    <Border>
+        <Border.Style>
+            <Style
+                TargetType="Border">
+                
+                <Setter Property="CornerRadius" Value="10"/>
 
-    <Border
-        Background="{StaticResource MessageBackgroundBrush}"
-        CornerRadius="10, 5, 5, 10"
-        Margin="10"
-        MaxWidth="500"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Bottom">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource MessageMouseOverBackgroundBrush}"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
 
-        <Grid>
+        <Grid
+            Margin="10">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <emoji:RichTextBox x:Name="MessageContent"
-                               Grid.Column="0"
-                               Foreground="{StaticResource MessageForegroundBrush}"
-                               FontFamily="Resources/Fonts/#NotoSans"
-                               FontSize="14"
-                               HorizontalAlignment="Stretch"
-                               Background="Transparent"
-                               BorderThickness="0"
-                               IsReadOnly="True"
-                               Padding="10"/>
+            <Border
+                Grid.RowSpan="2"
+                Padding="0, 5, 0, 0"
+                Margin="0, 0, 20, 0">
+
+                <Image x:Name="Avatar"
+                       VerticalAlignment="Top"
+                       Style="{StaticResource AvatarMini}"/>
+            </Border>
 
             <Label x:Name="MessageDateTime"
-                   Grid.Column="1"
-                   Foreground="{StaticResource MessageForegroundSecondaryBrush}"
-                   FontFamily="Resources/Fonts/#NotoSans"
-                   FontSize="12"
-                   VerticalAlignment="Bottom"/>
+                Grid.Row="0"
+                Grid.Column="1"
+                Foreground="{StaticResource MessageForegroundSecondaryBrush}"
+                FontFamily="Resources/Fonts/#NotoSans"
+                FontSize="12"
+                VerticalAlignment="Top"/>
+
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="1"
+                VerticalAlignment="Top">
+
+                <emoji:RichTextBox x:Name="MessageContent"
+                    Foreground="{StaticResource MessageForegroundBrush}"
+                    FontFamily="Resources/Fonts/#NotoSans"
+                    FontSize="14"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    IsReadOnly="True"/>
+
+                <ItemsControl x:Name="Attachments">
+
+                </ItemsControl>
+            </StackPanel>
         </Grid>
     </Border>
 </rxui:ReactiveUserControl>

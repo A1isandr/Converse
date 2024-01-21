@@ -12,7 +12,11 @@
     <Color x:Key="SearchBoxButtonMouseLeftButtonDownBackgroundColor">#70cadb</Color>
 
     <Color x:Key="ChatPreviewBackgroundColor">Transparent</Color>
-    <Color x:Key="ChatPreviewMouseOverBackgroundColor">#404040</Color>
+    <Color x:Key="ChatPreviewMouseOverBackgroundColor"
+           R="64"
+           G="64"
+           B="64"
+           A="150"/>
     <Color x:Key="ChatPreviewMouseLeftButtonDownBackgroundColor">#404040</Color>
     <Color x:Key="ChatPreviewIsCheckedBackgroundColor">#404040</Color>
     <Color x:Key="ChatPreviewIsCheckedBorderColor">#46c3db</Color>

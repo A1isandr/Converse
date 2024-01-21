@@ -10,32 +10,6 @@
                     TargetType="Expander">
 
                     <ContentPresenter x:Name="ContentPresenter"/>
-
-                    <!--<ControlTemplate.Triggers>
-                        <EventTrigger RoutedEvent="Collapsed">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ThicknessAnimation
-                                        Storyboard.TargetName="ContentPresenter"
-                                        Storyboard.TargetProperty="Margin"
-                                        To="250, 0, -250, 0"
-                                        Duration="0:0:0.3"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-
-                        <EventTrigger RoutedEvent="Expanded">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ThicknessAnimation
-                                        Storyboard.TargetName="ContentPresenter"
-                                        Storyboard.TargetProperty="Margin"
-                                        To="0, 0, 0, 0"
-                                        Duration="0:0:0.3"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </ControlTemplate.Triggers>-->
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

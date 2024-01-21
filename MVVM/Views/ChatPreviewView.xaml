@@ -16,8 +16,8 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -28,14 +28,9 @@
             <Image x:Name="Avatar"
                    Grid.RowSpan="2"
                    Grid.Column="0"
-                   Width="45"
                    VerticalAlignment="Center"
-                   Margin="0, 0, 10, 0">
-
-                <Image.Clip>
-                    <EllipseGeometry Center="22.5, 22.5" RadiusX="22.5" RadiusY="22.5"/>
-                </Image.Clip>
-            </Image>
+                   Margin="0, 0, 10, 0"
+                   Style="{StaticResource AvatarLarge}"/>
 
             <TextBlock x:Name="UserName"
                        Grid.Row="0"

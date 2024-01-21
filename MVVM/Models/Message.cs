@@ -22,11 +22,11 @@ namespace YetAnotherMessenger.MVVM.Models
 
 		public string HourMinute => DateTime.ToString("HH:mm");
 
-		public bool IsMine => Sender == "Me";
+		public bool IsMine => Sender == AppConfig.CurrentUser;
 
 		public string Content { get; set; }
 
-		public string Sender { get; init; }
+		public User Sender { get; init; }
 
 		public DateTime DateTime { get; set; }
 
@@ -35,7 +35,7 @@ namespace YetAnotherMessenger.MVVM.Models
 		protected Message(string content)
 		{
 			Content = content;
-			Sender = "Me";
+			Sender = AppConfig.CurrentUser;
 			DateTime = DateTime.Now;
 			Status = MessageStatus.Created;
 		}

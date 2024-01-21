@@ -9,12 +9,13 @@
                                 x:TypeArguments="vm:MainMenuViewModel"
                                 xmlns:yam="clr-namespace:YetAnotherMessenger"
                                 xmlns:vm="clr-namespace:YetAnotherMessenger.MVVM.ViewModels"
+                                xmlns:misc="clr-namespace:YetAnotherMessenger.Misc"
                                 mc:Ignorable="d" 
                                 d:DesignHeight="600" d:DesignWidth="300">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="100"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         
@@ -40,9 +41,13 @@
                             Source="pack://application:,,,/Resources/Images/close.svg"/>
                     </Button.Content>
                 </Button>
+                
+                <Border
+                    Panel.ZIndex="0"
+                    Margin="10">
 
-                <local:AccountInfoView
-                    Panel.ZIndex="0"/>
+                    <local:AccountPreviewView/>
+                </Border>
             </Grid>
         </Border>
 
