@@ -36,13 +36,18 @@ namespace YetAnotherMessenger.MVVM.Views
 					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.Message.Content,
-						view => view.MessageContent.Text)
+						viewModel => viewModel.MessageDateTimeLocal,
+						view => view.DateTime.Content)
 					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.Message.DateTime,
-						view => view.MessageDateTime.Content)
+						viewModel => viewModel.Message.Sender.FullName,
+						view => view.SenderName.Content)
+					.DisposeWith(disposables);
+
+				this.OneWayBind(ViewModel,
+						viewModel => viewModel.Message.Content,
+						view => view.Content.Text)
 					.DisposeWith(disposables);
 			});
 		}

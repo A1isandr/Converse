@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 	public class MessageViewModel : ReactiveObject
 	{
 		[Reactive] 
-		public Message Message { get; set; }
+		public Message Message { get; init; }
+
+		public string MessageDateTimeLocal => Message.DateTimeUtc.ToString("g", CultureInfo.CurrentCulture);
 	}
 }

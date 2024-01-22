@@ -14,8 +14,48 @@
     <Border
         Grid.Column="0"
         CornerRadius="10"
-        BorderBrush="{StaticResource ChatBoxBorderBrush}"
-        Background="{StaticResource ChatBoxBackgroundBrush}">
+        BorderBrush="{StaticResource MessageBoxBorderBrush}"
+        Background="{StaticResource MessageBoxBackgroundBrush}">
+
+        <Border.Style>
+            <Style
+                TargetType="Border">
+
+                <Style.Triggers>
+                    <EventTrigger RoutedEvent="GotFocus">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ThicknessAnimation
+                                    Storyboard.TargetProperty="BorderThickness"
+                                    To="2"
+                                    Duration="0:0:0.3">
+
+                                    <ThicknessAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </ThicknessAnimation.EasingFunction>
+                                </ThicknessAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="LostFocus">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ThicknessAnimation
+                                    Storyboard.TargetProperty="BorderThickness"
+                                    To="0"
+                                    Duration="0:0:0.3">
+
+                                    <ThicknessAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </ThicknessAnimation.EasingFunction>
+                                </ThicknessAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -31,7 +71,7 @@
 
                 <TextBox x:Name="MessageBox"
                     Grid.Column="0"
-                    Foreground="{StaticResource ChatBoxForegroundBrush}"
+                    Foreground="{StaticResource MessageBoxForegroundBrush}"
                     FontFamily="Resources/Fonts/#NotoSans"
                     FontSize="14"
                     VerticalContentAlignment="Center"
@@ -39,17 +79,18 @@
                     TextOptions.TextFormattingMode="Display"
                     TextWrapping="Wrap"
                     Cursor="IBeam"
-                    CaretBrush="{StaticResource ChatBoxCaretBrush}"
+                    CaretBrush="{StaticResource MessageBoxCaretBrush}"
                     BorderThickness="0"
                     Padding="10, 0, 0, 0"
                     Background="Transparent"
-                    PreviewKeyDown="MessageBox_PreviewKeyDown"/>
+                    PreviewKeyDown="MessageBox_PreviewKeyDown"
+                    TextChanged="MessageBox_OnTextChanged"/>
             </ScrollViewer>
 
             <Label
                 Grid.Column="0"
                 Content="Type something..."
-                Foreground="{StaticResource ChatBoxLabelForegroundBrush}"
+                Foreground="{StaticResource MessageBoxLabelForegroundBrush}"
                 FontFamily="Resources/Fonts/#NotoSans"
                 FontSize="14"
                 FontWeight="Medium"
@@ -58,7 +99,7 @@
                 VerticalAlignment="Center"
                 IsHitTestVisible="False"
                 Panel.ZIndex="1"
-                Padding="10, 0, 0, 0">
+                Padding="15, 0, 0, 0">
 
                 <Label.Style>
                     <Style TargetType="Label">
@@ -80,34 +121,27 @@
                 Margin="5, 0, 0, 0">
 
                 <Button
-                    Height="35"
-                    Padding="5"
+                    Content="{Binding Geometry, Source={StaticResource EmojiIcon}}"
                     Cursor="Hand"
-                    Style="{StaticResource CommonButton}"
-                    Margin="0, 0, 10, 0">
-
-                    <Button.Content>
-                        <svgc:SvgViewbox
-                            Width="20"
-                            Source="pack://application:,,,/Resources/Images/emoji.svg">
-                        </svgc:SvgViewbox>
-                    </Button.Content>
-                </Button>
+                    Padding="5, 0, 5, 0"
+                    Margin="0, 0, 10, 0"
+                    Style="{StaticResource CommonSvgResponsiveButton}"/>
 
                 <Button x:Name="SendMessageButton"
-                        Height="40"
                         Cursor="Hand"
-                        Padding="5"
                         Style="{StaticResource CommonButton}">
 
                     <Button.Content>
-                        <svgc:SvgViewbox
-                            Width="25"
-                            Source="pack://application:,,,/Resources/Images/send.svg"/>
+                        <Path
+                            Width="35"
+                            Height="35"
+                            VerticalAlignment="Center"
+                            Data="{Binding Geometry, Source={StaticResource SendIcon}}"
+                            Fill="{StaticResource MessageBoxSendButtonActiveFillBrush}"
+                            Style="{StaticResource SvgIcon}"/>
                     </Button.Content>
                 </Button>
             </StackPanel>
-            
         </Grid>
     </Border>
 </rxui:ReactiveUserControl>

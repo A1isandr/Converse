@@ -41,7 +41,7 @@ namespace YetAnotherMessenger.MVVM.Views
 					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.Chat.LastMessage!.HourMinute,
+						viewModel => viewModel.LastMessagePrescription,
 						view => view.LastMessageTime.Text)
 					.DisposeWith(disposables);
 

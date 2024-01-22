@@ -17,9 +17,18 @@
            G="64"
            B="64"
            A="150"/>
-    <Color x:Key="ChatPreviewMouseLeftButtonDownBackgroundColor">#404040</Color>
+    <Color x:Key="ChatPreviewMouseLeftButtonDownBackgroundColor"
+           R="64"
+           G="64"
+           B="64"
+           A="200"/>
     <Color x:Key="ChatPreviewIsCheckedBackgroundColor">#404040</Color>
     <Color x:Key="ChatPreviewIsCheckedBorderColor">#46c3db</Color>
+    <Color x:Key="ChatPreviewForegroundSecondaryColor"
+           R="255"
+           G="255"
+           B="255"
+           A="90"/>
 
     <SolidColorBrush x:Key="MenuBackgroundBrush"
                      Color="#1f1f1f"/>
@@ -50,8 +59,8 @@
                      Color="{StaticResource ChatPreviewIsCheckedBackgroundColor}"/>
     <SolidColorBrush x:Key="ChatPreviewForegroundBrush"
                      Color="White"/>
-    <SolidColorBrush x:Key="ChatPreviewSecondaryForegroundBrush"
-                     Color="#808080"/>
+    <SolidColorBrush x:Key="ChatPreviewForegroundSecondaryBrush"
+                     Color="{StaticResource ChatPreviewForegroundSecondaryColor}"/>
     <SolidColorBrush x:Key="ChatPreviewIsCheckedBorderBrush"
                      Color="{StaticResource ChatPreviewIsCheckedBorderColor}"/>
 </ResourceDictionary>

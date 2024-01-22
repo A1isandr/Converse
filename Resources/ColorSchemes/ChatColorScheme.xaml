@@ -5,6 +5,11 @@
            R="255"
            G="255"
            B="255"
+           A="225"/>
+    <Color x:Key="MessageForegroundThirdColor"
+           R="255"
+           G="255"
+           B="255"
            A="128"/>
     <Color x:Key="MessageMouseOverBackgroundColor"
            R="64"
@@ -12,11 +17,28 @@
            B="64"
            A="150"/>
 
-    <Color x:Key="ChatBoxBackgroundColor">#4d4d4d</Color>
-    <Color x:Key="ChatBoxGotFocusBackgroundColor">#d9d9d9</Color>
-    
-    <Color x:Key="ChatBoxForegroundColor">White</Color>
-    <Color x:Key="ChatBoxGotFocusForegroundColor">Black</Color>
+    <Color x:Key="MessageBoxLabelForegroundColor"
+           R="153"
+           G="153"
+           B="153"
+           A="150"/>
+
+    <Color x:Key="MessageBoxBackgroundColor">#4d4d4d</Color>
+    <Color x:Key="MessageBoxGotFocusBackgroundColor">#d9d9d9</Color>
+
+    <Color x:Key="MessageBoxForegroundColor"
+           R="255"
+           G="255"
+           B="255"
+           A="225"/>
+
+    <Color x:Key="MessageBoxSendButtonDisabledFillColor"
+           R="255"
+           G="255"
+           B="255"
+           A="200"/>
+
+    <Color x:Key="MessageBoxGotFocusForegroundColor">Black</Color>
 
     <SolidColorBrush x:Key="TopBarWrapperBackgroundBrush"
                      Color="#1f1f1f"/>
@@ -37,19 +59,25 @@
                      Color="White"/>
     <SolidColorBrush x:Key="MessageForegroundSecondaryBrush"
                      Color="{StaticResource MessageForegroundSecondaryColor}"/>
+    <SolidColorBrush x:Key="MessageForegroundThirdBrush"
+                     Color="{StaticResource MessageForegroundThirdColor}"/>
     <SolidColorBrush x:Key="MessageMouseOverBackgroundBrush"
                      Color="{StaticResource MessageMouseOverBackgroundColor}"/>
     
-    <SolidColorBrush x:Key="ChatBoxWrapperBackgroundBrush"
-                                                                  Color="#1f1f1f"/>
-    <SolidColorBrush x:Key="ChatBoxBackgroundBrush"
-                     Color="{StaticResource ChatBoxBackgroundColor}"/>
-    <SolidColorBrush x:Key="ChatBoxForegroundBrush"
-                     Color="{StaticResource ChatBoxForegroundColor}"/>
-    <SolidColorBrush x:Key="ChatBoxLabelForegroundBrush"
-                     Color="#808080"/>
-    <SolidColorBrush x:Key="ChatBoxBorderBrush"
+    <SolidColorBrush x:Key="MessageBoxWrapperBackgroundBrush"
+                     Color="#1f1f1f"/>
+    <SolidColorBrush x:Key="MessageBoxBackgroundBrush"
+                     Color="{StaticResource MessageBoxBackgroundColor}"/>
+    <SolidColorBrush x:Key="MessageBoxForegroundBrush"
+                     Color="{StaticResource MessageBoxForegroundColor}"/>
+    <SolidColorBrush x:Key="MessageBoxLabelForegroundBrush"
+                     Color="{StaticResource MessageBoxLabelForegroundColor}"/>
+    <SolidColorBrush x:Key="MessageBoxBorderBrush"
                      Color="#46c3db"/>
-    <SolidColorBrush x:Key="ChatBoxCaretBrush"
+    <SolidColorBrush x:Key="MessageBoxCaretBrush"
                      Color="#70cadb"/>
+    <SolidColorBrush x:Key="MessageBoxSendButtonDisabledFillBrush"
+                     Color="{StaticResource MessageBoxSendButtonDisabledFillColor}"/>
+    <SolidColorBrush x:Key="MessageBoxSendButtonActiveFillBrush"
+                     Color="#46c3db"/>
 </ResourceDictionary>

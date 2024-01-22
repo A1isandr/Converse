@@ -41,19 +41,12 @@
 
                 <Button x:Name="MainMenuButton"
                     Grid.Column="0"
-                    Height="35"
+                    Content="{Binding Geometry, Source={StaticResource MenuIcon}}"
                     Cursor="Hand"
                     VerticalAlignment="Center"
-                    Padding="5"
+                    Padding="2, 0, 2, 0"
                     Margin="0, 0, 10, 0"
-                    Style="{StaticResource CommonButton}">
-
-                    <Button.Content>
-                        <svgc:SvgViewbox
-                            Width="20"
-                            Source="pack://application:,,,/Resources/Images/menu.svg"/>
-                    </Button.Content>
-                </Button>
+                    Style="{StaticResource CommonSvgResponsiveButton}"/>
 
                 <controls:SearchBox
                     Grid.Column="1"/>

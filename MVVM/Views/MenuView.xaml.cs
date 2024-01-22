@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ReactiveUI;
+using YetAnotherMessenger.Misc;
 using YetAnotherMessenger.MVVM.ViewModels;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -63,7 +64,7 @@ namespace YetAnotherMessenger.MVVM.Views
 					break;
 			}
 
-			MenuSlideAnimation
+			Animator.SlideAnimation
 			(
 				target: menu,
 				targetOffsetLeft: targetOffsetLeft,
@@ -71,7 +72,7 @@ namespace YetAnotherMessenger.MVVM.Views
 				beginTime: TimeSpan.FromMilliseconds(0),
 				duration: TimeSpan.FromMilliseconds(300),
 				fillBehavior: FillBehavior.Stop,
-				easingMode: EasingMode.EaseIn,
+				easingFunction: new QuadraticEase{EasingMode = EasingMode.EaseIn},
 				onComplete: (_, _) => { menu.Visibility = Visibility.Hidden; }
 			);
 		}
@@ -80,7 +81,7 @@ namespace YetAnotherMessenger.MVVM.Views
 		{
 			var menu = (Expander)sender;
 
-			MenuSlideAnimation
+			Animator.SlideAnimation
 			(
 				target: menu,
 				targetOffsetLeft: 0,
@@ -88,7 +89,7 @@ namespace YetAnotherMessenger.MVVM.Views
 				beginTime: TimeSpan.FromMilliseconds(150),
 				duration: TimeSpan.FromMilliseconds(300),
 				fillBehavior: FillBehavior.HoldEnd,
-				easingMode: EasingMode.EaseOut,
+				easingFunction: new QuadraticEase { EasingMode = EasingMode.EaseOut },
 				onStart: () =>
 				{
 					switch (menu.ExpandDirection)
@@ -104,46 +105,6 @@ namespace YetAnotherMessenger.MVVM.Views
 					menu.Visibility = Visibility.Visible;
 				}
 			);
-		}
-
-		private void MenuSlideAnimation(
-			DependencyObject target, 
-			double targetOffsetLeft,
-			double targetOffsetRight,
-			TimeSpan beginTime,
-			TimeSpan duration,
-			FillBehavior fillBehavior,
-			EasingMode easingMode,
-			Action? onStart = null,
-			EventHandler? onComplete = null)
-		{
-			var slideAnimation = new ThicknessAnimation
-			{
-				To = new Thickness(targetOffsetLeft, 0, targetOffsetRight, 0),
-				BeginTime = beginTime,
-				Duration = duration,
-				FillBehavior = fillBehavior,
-				EasingFunction = new QuadraticEase()
-				{
-					EasingMode = easingMode
-				}
-			};
-
-			var storyboard = new Storyboard();
-
-			storyboard.Children.Add(slideAnimation);
-
-			Storyboard.SetTarget(slideAnimation, target);
-			Storyboard.SetTargetProperty(slideAnimation, new PropertyPath(MarginProperty));
-
-			if (onComplete is not null)
-			{
-				storyboard.Completed += onComplete;
-			}
-			
-			onStart?.Invoke();
-
-			storyboard.Begin();
 		}
 	}
 }

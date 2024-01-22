@@ -6,4 +6,7 @@
 
     <SolidColorBrush x:Key="MainMenuButtonForegroundBrush"
                      Color="White"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="MainMenuButtonSvgFillBrush"
+                     Color="#46c3db"/>
 </ResourceDictionary>

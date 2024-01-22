@@ -28,19 +28,13 @@
 
             <Grid>
                 <Button x:Name="CloseMainMenuButton"
+                    Content="{Binding Geometry, Source={StaticResource CloseIcon}}"
+                    Cursor="Hand"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Right"
-                    Cursor="Hand"
-                    Padding="7"
+                    Padding="2, 0, 2, 0"
                     Panel.ZIndex="1"
-                    Style="{StaticResource CommonButton}">
-                    
-                    <Button.Content>
-                        <svgc:SvgViewbox
-                            Width="15"
-                            Source="pack://application:,,,/Resources/Images/close.svg"/>
-                    </Button.Content>
-                </Button>
+                    Style="{StaticResource CommonSvgResponsiveButton}"/>
                 
                 <Border
                     Panel.ZIndex="0"
@@ -71,9 +65,10 @@
                             Orientation="Horizontal"
                             HorizontalAlignment="Left">
 
-                            <svgc:SvgViewbox
-                                Width="25"
-                                Source="pack://application:,,,/Resources/Images/group-add.svg"
+                            <Path
+                                Data="{Binding Geometry, Source={StaticResource GroupAddIcon}}"
+                                Fill="{StaticResource MainMenuButtonSvgFillBrush}"
+                                VerticalAlignment="Center"
                                 Margin="0, 0, 20, 0"/>
 
                             <TextBlock
@@ -98,9 +93,10 @@
                             Orientation="Horizontal"
                             HorizontalAlignment="Left">
 
-                            <svgc:SvgViewbox
-                                Width="25"
-                                Source="pack://application:,,,/Resources/Images/settings.svg"
+                            <Path
+                                Data="{Binding Geometry, Source={StaticResource SettingsIcon}}"
+                                Fill="{StaticResource MainMenuButtonSvgFillBrush}"
+                                VerticalAlignment="Center"
                                 Margin="0, 0, 20, 0"/>
 
                             <TextBlock
@@ -125,9 +121,10 @@
                             Orientation="Horizontal"
                             HorizontalAlignment="Left">
 
-                            <svgc:SvgViewbox
-                                Width="25"
-                                Source="pack://application:,,,/Resources/Images/dark-mode.svg"
+                            <Path
+                                Data="{Binding Geometry, Source={StaticResource DarkModeIcon}}"
+                                Fill="{StaticResource MainMenuButtonSvgFillBrush}"
+                                VerticalAlignment="Center"
                                 Margin="0, 0, 20, 0"/>
 
                             <TextBlock

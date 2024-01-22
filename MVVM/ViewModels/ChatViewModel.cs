@@ -47,8 +47,10 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 				{
 					Chat?.Messages.Add(new TextMessage
 					(
-						content: MessageBoxVM.LastMessage!
+						content: MessageBoxVM.MessageDraft!
 					));
+
+					MessageBoxVM.MessageDraft = string.Empty;
 				}
 			});
 		}

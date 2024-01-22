@@ -103,32 +103,18 @@
 
                     <Button
                         Grid.Column="2"
-                        Height="35"
+                        Content="{Binding Geometry, Source={StaticResource SearchIcon}}"
                         Cursor="Hand"
-                        Padding="5"
-                        Style="{StaticResource CommonButton}"
-                        Margin="0, 0, 5, 0">
-
-                        <Button.Content>
-                            <svgc:SvgViewbox
-                                Width="20"
-                                Source="pack://application:,,,/Resources/Images/search.svg"/>
-                        </Button.Content>
-                    </Button>
+                        Padding="2, 0, 2, 0"
+                        Style="{StaticResource CommonSvgResponsiveButton}"
+                        Margin="0, 0, 5, 0"/>
 
                     <Button
                         Grid.Column="3"
-                        Height="35"
+                        Content="{Binding Geometry, Source={StaticResource MoreIcon}}"
                         Cursor="Hand"
-                        Padding="5"
-                        Style="{StaticResource CommonButton}">
-
-                        <Button.Content>
-                            <svgc:SvgViewbox
-                                Width="20"
-                                Source="pack://application:,,,/Resources/Images/more.svg"/>
-                        </Button.Content>
-                    </Button>
+                        Padding="2, 0, 2, 0"
+                        Style="{StaticResource CommonSvgResponsiveButton}"/>
                 </Grid>
             </Border>
 
@@ -174,7 +160,7 @@
                 CornerRadius="20"
                 Padding="10, 5, 10, 5"
                 Margin="5"
-                Background="{StaticResource ChatBoxWrapperBackgroundBrush}">
+                Background="{StaticResource MessageBoxWrapperBackgroundBrush}">
 
                 <Grid
                     MaxHeight="150">

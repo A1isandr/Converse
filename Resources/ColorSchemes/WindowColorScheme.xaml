@@ -13,6 +13,17 @@
            A="150"/>
     <Color x:Key="CommonButtonMouseLeftButtonDownBackgroundColor">#404040</Color>
 
+    <Color x:Key="CommonSvgResponsiveButtonFillColor"
+           R="255"
+           G="255"
+           B="255"
+           A="200"/>
+    <Color x:Key="CommonSvgResponsiveButtonMouseOverFillColor"
+           R="70"
+           G="195"
+           B="219"
+           A="255"/>
+
     <SolidColorBrush x:Key="WrapperBackgroundBrush"
                      Color="#121212"/>
     <SolidColorBrush x:Key="WrapperBorderBrush"
@@ -35,4 +46,7 @@
 
     <SolidColorBrush x:Key="CommonButtonBackgroundBrush"
                      Color="{StaticResource CommonButtonBackgroundColor}"/>
+
+    <SolidColorBrush x:Key="CommonSvgResponsiveButtonFillBrush"
+                     Color="{StaticResource CommonSvgResponsiveButtonFillColor}"/>
 </ResourceDictionary>

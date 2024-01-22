@@ -80,4 +80,85 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="CommonSvgResponsiveButton"
+       TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                TargetType="Button">
+
+                    <Border x:Name="ButtonBorder"
+                        Padding="{TemplateBinding Padding}"
+                        CornerRadius="10"
+                        BorderThickness="2"
+                        BorderBrush="Transparent"
+                        Background="{StaticResource CommonButtonBackgroundBrush}">
+
+                        <Path x:Name="SvgIcon"
+                            Fill="{StaticResource CommonSvgResponsiveButtonFillBrush}"
+                            Data="{TemplateBinding Content}"
+                            Style="{StaticResource SvgIcon}"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="ButtonBorder"
+                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                        To="{StaticResource CommonButtonMouseLeftButtonDownBackgroundColor}"
+                                        Duration="0:0:0"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="PreviewMouseLeftButtonUp">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="ButtonBorder"
+                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                        To="{StaticResource CommonButtonBackgroundColor}"
+                                        Duration="0:0:0"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="SvgIcon"
+                                        Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
+                                        To="{StaticResource CommonSvgResponsiveButtonMouseOverFillColor}"
+                                        Duration="0:0:0.0"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="SvgIcon"
+                                        Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
+                                        To="{StaticResource CommonSvgResponsiveButtonFillColor}"
+                                        Duration="0:0:0.0"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter 
+                                TargetName="ButtonBorder" 
+                                Property="BorderBrush" 
+                                Value="{StaticResource ChatPreviewIsCheckedBorderBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

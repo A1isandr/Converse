@@ -6,6 +6,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Images/SvgImages.xaml"/>
+
                 <ResourceDictionary Source="/Resources/ColorSchemes\WindowColorScheme.xaml"/>
                 <ResourceDictionary Source="/Resources/ColorSchemes\MainViewColorScheme.xaml"/>
                 <ResourceDictionary Source="/Resources/ColorSchemes\ChatListMenuColorScheme.xaml"/>

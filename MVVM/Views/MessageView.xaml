@@ -9,7 +9,7 @@
                           xmlns:rxui="http://reactiveui.net"
                           xmlns:vm="clr-namespace:YetAnotherMessenger.MVVM.ViewModels"
                           mc:Ignorable="d" 
-                          d:DesignHeight="100" d:DesignWidth="600">
+                          d:DesignHeight="50" d:DesignWidth="600">
     
     <Border>
         <Border.Style>
@@ -17,6 +17,8 @@
                 TargetType="Border">
                 
                 <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="BorderThickness" Value="0, 10, 0, 0"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
 
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
@@ -27,7 +29,7 @@
         </Border.Style>
 
         <Grid
-            Margin="10">
+            Margin="5">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -49,26 +51,39 @@
                        Style="{StaticResource AvatarMini}"/>
             </Border>
 
-            <Label x:Name="MessageDateTime"
+            <StackPanel
                 Grid.Row="0"
                 Grid.Column="1"
-                Foreground="{StaticResource MessageForegroundSecondaryBrush}"
-                FontFamily="Resources/Fonts/#NotoSans"
-                FontSize="12"
-                VerticalAlignment="Top"/>
+                Orientation="Horizontal"
+                VerticalAlignment="Top">
+
+                <Label x:Name="SenderName"
+                    Foreground="{StaticResource MessageForegroundBrush}"
+                    FontFamily="Resources/Fonts/#NotoSans"
+                    FontSize="14"
+                    FontWeight="Medium"/>
+
+                <Label x:Name="DateTime"
+                    Foreground="{StaticResource MessageForegroundThirdBrush}"
+                    FontFamily="Resources/Fonts/#NotoSans"
+                    FontSize="11"
+                    VerticalAlignment="Center"/>
+            </StackPanel>
 
             <StackPanel
                 Grid.Row="1"
                 Grid.Column="1"
+                Orientation="Vertical"
                 VerticalAlignment="Top">
 
-                <emoji:RichTextBox x:Name="MessageContent"
-                    Foreground="{StaticResource MessageForegroundBrush}"
+                <emoji:RichTextBox x:Name="Content"
+                    Foreground="{StaticResource MessageForegroundSecondaryBrush}"
                     FontFamily="Resources/Fonts/#NotoSans"
                     FontSize="14"
                     Background="Transparent"
                     BorderThickness="0"
-                    IsReadOnly="True"/>
+                    IsReadOnly="True"
+                    VerticalAlignment="Top"/>
 
                 <ItemsControl x:Name="Attachments">
 

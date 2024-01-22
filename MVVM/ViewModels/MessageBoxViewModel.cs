@@ -24,26 +24,15 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 
 		public ReactiveCommand<Unit, Unit> SendMessageCommand { get; }
 
-		[Reactive] 
-		public string? MessageDraft { get; set; } = null;
-
 		[Reactive]
-		public string? LastMessage { get; set; }
+		public string? MessageDraft { get; set; } = null;
 
 		public MessageBoxViewModel()
 		{
-			SendMessageCommand = ReactiveCommand.Create<Unit, Unit>(_ =>
-			{
-				if (string.IsNullOrEmpty(MessageDraft))
-				{
-					return Unit.Default;
-				}
+			var canExecute = this.WhenAnyValue(x => x.MessageDraft,
+				messageDraft => !string.IsNullOrEmpty(messageDraft));
 
-				LastMessage = MessageDraft;
-				MessageDraft = null;
-
-				return Unit.Default;
-			});
+			SendMessageCommand = ReactiveCommand.Create<Unit, Unit>(_ => Unit.Default, canExecute);
 		}
 	}
 }

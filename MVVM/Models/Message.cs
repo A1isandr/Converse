@@ -1,6 +1,7 @@
 ﻿using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,15 +21,13 @@ namespace YetAnotherMessenger.MVVM.Models
 			DeletedByRecipient
 		}
 
-		public string HourMinute => DateTime.ToString("HH:mm");
-
 		public bool IsMine => Sender == AppConfig.CurrentUser;
 
 		public string Content { get; set; }
 
 		public User Sender { get; init; }
 
-		public DateTime DateTime { get; set; }
+		public DateTime DateTimeUtc { get; set; }
 
 		public MessageStatus Status { get; set; }
 
@@ -36,7 +35,7 @@ namespace YetAnotherMessenger.MVVM.Models
 		{
 			Content = content;
 			Sender = AppConfig.CurrentUser;
-			DateTime = DateTime.Now;
+			DateTimeUtc = DateTime.UtcNow;
 			Status = MessageStatus.Created;
 		}
 	}

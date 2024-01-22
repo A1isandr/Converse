@@ -48,7 +48,7 @@
                        Grid.Column="1"
                        FontFamily="Resources/Fonts/#NotoSans"
                        FontSize="12"
-                       Foreground="{StaticResource ChatPreviewSecondaryForegroundBrush}"
+                       Foreground="{StaticResource ChatPreviewForegroundSecondaryBrush}"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"/>
 
@@ -56,7 +56,7 @@
                        Grid.Row="1"
                        FontFamily="Resources/Fonts/#NotoSans"
                        FontSize="14"
-                       Foreground="{StaticResource ChatPreviewSecondaryForegroundBrush}"
+                       Foreground="{StaticResource ChatPreviewForegroundSecondaryBrush}"
                        Grid.Column="1"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
