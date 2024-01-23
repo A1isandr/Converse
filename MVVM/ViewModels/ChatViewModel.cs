@@ -15,7 +15,6 @@ using YetAnotherMessenger.MVVM.Models;
 
 namespace YetAnotherMessenger.MVVM.ViewModels
 {
-
 	public class ChatViewModel : ReactiveObject
 	{
 		private static ChatViewModel? _instance;
@@ -32,26 +31,27 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 		private MessageBoxViewModel MessageBoxVM { get; set; } = MessageBoxViewModel.Instance;
 
 		[Reactive] 
-		public Chat? Chat { get; set; } = ChatListMenuViewModel.Instance.Chats.First();
+		public Chat? Chat { get; set; }
 
-		[Reactive] public List<MessageViewModel>? Messages { get; set; }
+		[Reactive]
+		public List<MessageViewModel>? Messages { get; private set; }
 
 		private ChatViewModel()
 		{
 			this.WhenAnyValue(x => x.Chat)
+				.Where(chat => chat != null)
 				.Subscribe(chat => Messages = chat!.Messages.Select(message => new MessageViewModel {Message = message}).ToList());
 
 			MessageBoxVM.SendMessageCommand.IsExecuting.Subscribe(isExecuting =>
 			{
-				if (isExecuting)
-				{
-					Chat?.Messages.Add(new TextMessage
-					(
-						content: MessageBoxVM.MessageDraft!
-					));
+				if (!isExecuting) return;
 
-					MessageBoxVM.MessageDraft = string.Empty;
-				}
+				Chat?.Messages.Add(new TextMessage
+				(
+					content: MessageBoxVM.MessageDraft!
+				));
+
+				MessageBoxVM.MessageDraft = string.Empty;
 			});
 		}
 	}

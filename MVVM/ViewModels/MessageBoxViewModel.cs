@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Windows.Devices.Sms;
+using ReactiveMarbles.ObservableEvents;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using System.Diagnostics;
 
 namespace YetAnotherMessenger.MVVM.ViewModels
 {
@@ -22,17 +28,19 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 			}
 		}
 
-		public ReactiveCommand<Unit, Unit> SendMessageCommand { get; }
+		public ReactiveCommand<Key, Unit> CRLFCommand { get; }
 
-		[Reactive]
-		public string? MessageDraft { get; set; } = null;
+		public ReactiveCommand<Key, Unit> SendMessageCommand { get; }
+
+		[Reactive] 
+		public string? MessageDraft { get; set; }
 
 		public MessageBoxViewModel()
 		{
 			var canExecute = this.WhenAnyValue(x => x.MessageDraft,
 				messageDraft => !string.IsNullOrEmpty(messageDraft));
 
-			SendMessageCommand = ReactiveCommand.Create<Unit, Unit>(_ => Unit.Default, canExecute);
+			SendMessageCommand = ReactiveCommand.CreateFromObservable<Key, Unit>((_) => Observable.Return(Unit.Default), canExecute);
 		}
 	}
 }

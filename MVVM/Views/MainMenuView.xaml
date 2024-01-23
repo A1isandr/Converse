@@ -74,7 +74,6 @@
                             <TextBlock
                                 Text="New Group"
                                 Foreground="{StaticResource MainMenuButtonForegroundBrush}"
-                                FontFamily="Resources/Fonts/#NotoSans"
                                 FontSize="14"
                                 FontWeight="Medium"
                                 VerticalAlignment="Center"/>
@@ -102,7 +101,6 @@
                             <TextBlock
                                 Text="Settings"
                                 Foreground="{StaticResource MainMenuButtonForegroundBrush}"
-                                FontFamily="Resources/Fonts/#NotoSans"
                                 FontSize="14"
                                 FontWeight="Medium"
                                 VerticalAlignment="Center"/>
@@ -130,7 +128,6 @@
                             <TextBlock
                                 Text="Dark Mode"
                                 Foreground="{StaticResource MainMenuButtonForegroundBrush}"
-                                FontFamily="Resources/Fonts/#NotoSans"
                                 FontSize="14"
                                 FontWeight="Medium"
                                 VerticalAlignment="Center"/>

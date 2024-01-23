@@ -14,24 +14,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Images\arrow-back.png" />
     <None Remove="Resources\Images\arrow-back.svg" />
     <None Remove="Resources\Images\attach-file.svg" />
     <None Remove="Resources\Images\chat-add.svg" />
-    <None Remove="Resources\Images\chevron-left.png" />
     <None Remove="Resources\Images\close.svg" />
     <None Remove="Resources\Images\dark-mode.svg" />
-    <None Remove="Resources\Images\emoji.png" />
     <None Remove="Resources\Images\emoji.svg" />
     <None Remove="Resources\Images\group-add.svg" />
     <None Remove="Resources\Images\icon.png" />
-    <None Remove="Resources\Images\menu.png" />
     <None Remove="Resources\Images\menu.svg" />
     <None Remove="Resources\Images\more.svg" />
     <None Remove="Resources\Images\search-alt.svg" />
-    <None Remove="Resources\Images\search.png" />
     <None Remove="Resources\Images\search.svg" />
-    <None Remove="Resources\Images\send.png" />
     <None Remove="Resources\Images\send.svg" />
     <None Remove="Resources\Images\settings.svg" />
   </ItemGroup>
@@ -53,25 +47,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\arrow-back.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\Images\arrow-back.svg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\chat-add.svg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Images\chevron-left.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\Images\close.svg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\dark-mode.svg">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Images\emoji.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\emoji.svg">
@@ -83,9 +68,6 @@
     <Resource Include="Resources\Images\icon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Images\menu.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\Images\menu.svg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -95,13 +77,7 @@
     <Resource Include="Resources\Images\search-alt.svg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Images\search.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\Images\search.svg">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Images\send.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\send.svg">

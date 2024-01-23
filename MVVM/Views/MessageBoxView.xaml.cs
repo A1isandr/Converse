@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reactive.Disposables;
 using System.Text;
@@ -23,6 +24,8 @@ using SharpVectors.Renderers.Wpf;
 using System.Reflection.Metadata;
 using System.Windows.Media.Animation;
 using YetAnotherMessenger.Misc;
+using System.Reactive.Linq;
+using ReactiveMarbles.ObservableEvents;
 
 namespace YetAnotherMessenger.MVVM.Views
 {
@@ -50,18 +53,21 @@ namespace YetAnotherMessenger.MVVM.Views
 						viewModel => viewModel.SendMessageCommand,
 						view => view.SendMessageButton)
 					.DisposeWith(disposables);
+
+				this.Events().KeyUp
+					.Select(x => x.Key)
+					.Where(key => key == Key.Enter && (Keyboard.Modifiers & ModifierKeys.Shift) != ModifierKeys.Shift)
+					.InvokeCommand(ViewModel.SendMessageCommand);
+
+				this.Events().KeyDown
+					.Select(x => x.Key)
+					.Where(key => key == Key.Enter && (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
+					.Subscribe(_ =>
+					{
+						MessageBox.Text += "\r\n";
+						MessageBox.CaretIndex = MessageBox.Text.Length;
+					});
 			});
-		}
-
-		private void MessageBox_PreviewKeyDown(object sender, KeyEventArgs e)
-		{
-			var textBox = (TextBox)sender;
-
-			if (e.Key != Key.Enter || !Keyboard.IsKeyDown(Key.LeftShift)) return;
-
-			textBox.Text += "\r\n";
-			textBox.CaretIndex = textBox.Text.Length;
-			e.Handled = true;
 		}
 
 		private void MessageBox_OnTextChanged(object sender, TextChangedEventArgs e)
@@ -78,8 +84,7 @@ namespace YetAnotherMessenger.MVVM.Views
 					beginTime: TimeSpan.FromMilliseconds(0),
 					duration: TimeSpan.FromMilliseconds(300),
 					fillBehavior: FillBehavior.HoldEnd,
-					easingFunction: new QuadraticEase{ EasingMode = EasingMode.EaseIn},
-					onComplete: (_, _) => { SendMessageButton.Visibility = Visibility.Hidden; }
+					easingFunction: new QuadraticEase{ EasingMode = EasingMode.EaseInOut }
 				);
 			}
 			else if (textBox.Text.Length == e.Changes.First().AddedLength)
@@ -91,8 +96,7 @@ namespace YetAnotherMessenger.MVVM.Views
 					targetWidth: _sendButtonWidth,
 					beginTime: TimeSpan.FromMilliseconds(0),
 					duration: TimeSpan.FromMilliseconds(300),
-					easingFunction: new QuadraticEase { EasingMode = EasingMode.EaseOut },
-					onStart: () => { SendMessageButton.Visibility = Visibility.Visible; }
+					easingFunction: new QuadraticEase { EasingMode = EasingMode.EaseInOut }
 				);
 			}
 		}

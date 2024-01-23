@@ -15,30 +15,26 @@
            R="64"
            G="64"
            B="64"
-           A="150"/>
+           A="50"/>
 
     <Color x:Key="MessageBoxLabelForegroundColor"
            R="153"
            G="153"
            B="153"
            A="150"/>
-
     <Color x:Key="MessageBoxBackgroundColor">#4d4d4d</Color>
     <Color x:Key="MessageBoxGotFocusBackgroundColor">#d9d9d9</Color>
-
     <Color x:Key="MessageBoxForegroundColor"
            R="255"
            G="255"
            B="255"
            A="225"/>
-
+    <Color x:Key="MessageBoxGotFocusForegroundColor">Black</Color>
     <Color x:Key="MessageBoxSendButtonDisabledFillColor"
            R="255"
            G="255"
            B="255"
            A="200"/>
-
-    <Color x:Key="MessageBoxGotFocusForegroundColor">Black</Color>
 
     <SolidColorBrush x:Key="TopBarWrapperBackgroundBrush"
                      Color="#1f1f1f"/>

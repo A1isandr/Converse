@@ -32,7 +32,6 @@
             Grid.Row="0"
             Grid.Column="1"
             Foreground="{StaticResource MessageForegroundBrush}"
-            FontFamily="Resources/Fonts/#NotoSans"
             FontSize="14"
             FontWeight="Medium"
             VerticalAlignment="Center"/>
@@ -41,7 +40,6 @@
             Grid.Row="1"
             Grid.Column="1"
             Foreground="{StaticResource MessageForegroundBrush}"
-            FontFamily="Resources/Fonts/#NotoSans"
             FontSize="14"
             VerticalAlignment="Center"/>
     </Grid>

@@ -35,7 +35,6 @@
             <TextBlock x:Name="UserName"
                        Grid.Row="0"
                        Grid.Column="1"
-                       FontFamily="Resources/Fonts/#NotoSans"
                        FontSize="14"
                        FontWeight="Medium"
                        Foreground="{StaticResource ChatPreviewForegroundBrush}"
@@ -46,7 +45,6 @@
             <TextBlock x:Name="LastMessageTime"
                        Grid.Row="0"
                        Grid.Column="1"
-                       FontFamily="Resources/Fonts/#NotoSans"
                        FontSize="12"
                        Foreground="{StaticResource ChatPreviewForegroundSecondaryBrush}"
                        HorizontalAlignment="Right"
@@ -54,7 +52,6 @@
 
             <TextBlock x:Name="LastMessage"
                        Grid.Row="1"
-                       FontFamily="Resources/Fonts/#NotoSans"
                        FontSize="14"
                        Foreground="{StaticResource ChatPreviewForegroundSecondaryBrush}"
                        Grid.Column="1"

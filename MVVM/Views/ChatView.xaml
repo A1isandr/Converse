@@ -69,12 +69,9 @@
                         <TextBlock x:Name="ChatName"
                             Grid.Row="0"
                             Foreground="{StaticResource TopBarForegroundBrush}"
-                            FontFamily="Resources/Fonts/#NotoSans"
                             FontSize="14"
                             FontWeight="Medium"
-                            VerticalAlignment="Center"
-                            TextOptions.TextRenderingMode="ClearType"
-                            TextOptions.TextFormattingMode="Display"/>
+                            VerticalAlignment="Center"/>
 
                         <StackPanel
                             Grid.Row="1"
@@ -84,7 +81,6 @@
                             <Label
                                 Content="Last seen"
                                 Foreground="{StaticResource TopBarSecondaryForegroundBrush}"
-                                FontFamily="Resources/Fonts/#NotoSans"
                                 FontSize="14"
                                 HorizontalAlignment="Left"
                                 Padding="0"
@@ -93,11 +89,8 @@
                             <TextBlock x:Name="LastSeen"
                                 Text="2 hours ago"
                                 Foreground="{StaticResource TopBarSecondaryForegroundBrush}"
-                                FontFamily="Resources/Fonts/#NotoSans"
                                 FontSize="14"
-                                VerticalAlignment="Center"
-                                TextOptions.TextRenderingMode="ClearType"
-                                TextOptions.TextFormattingMode="Display"/>
+                                VerticalAlignment="Center"/>
                         </StackPanel>
                     </Grid>
 

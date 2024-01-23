@@ -83,7 +83,6 @@
                     BorderThickness="0"
                     Padding="10, 0, 0, 0"
                     Background="Transparent"
-                    PreviewKeyDown="MessageBox_PreviewKeyDown"
                     TextChanged="MessageBox_OnTextChanged"/>
             </ScrollViewer>
 
@@ -91,11 +90,8 @@
                 Grid.Column="0"
                 Content="Type something..."
                 Foreground="{StaticResource MessageBoxLabelForegroundBrush}"
-                FontFamily="Resources/Fonts/#NotoSans"
                 FontSize="14"
                 FontWeight="Medium"
-                TextOptions.TextRenderingMode="ClearType"
-                TextOptions.TextFormattingMode="Display"
                 VerticalAlignment="Center"
                 IsHitTestVisible="False"
                 Panel.ZIndex="1"
@@ -128,6 +124,7 @@
                     Style="{StaticResource CommonSvgResponsiveButton}"/>
 
                 <Button x:Name="SendMessageButton"
+                        Width="0"
                         Cursor="Hand"
                         Style="{StaticResource CommonButton}">
 
