@@ -99,7 +99,7 @@
                         <Path x:Name="SvgIcon"
                             Fill="{StaticResource CommonSvgResponsiveButtonFillBrush}"
                             Data="{TemplateBinding Content}"
-                            Style="{StaticResource SvgIcon}"/>
+                            Stretch="Uniform"/>
                     </Border>
 
                     <ControlTemplate.Triggers>

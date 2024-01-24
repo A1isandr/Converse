@@ -4,7 +4,6 @@
                                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                                 xmlns:local="clr-namespace:YetAnotherMessenger.MVVM.Views"
-                                xmlns:controls="clr-namespace:YetAnotherMessenger.Controls"
                                 xmlns:vm="clr-namespace:YetAnotherMessenger.MVVM.ViewModels"
                                 xmlns:misc="clr-namespace:YetAnotherMessenger.Misc"
                                 xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
@@ -23,151 +22,183 @@
             Style="{StaticResource MainViewWrapper}">
 
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
 
             <Border
-                Grid.Row="0"
-                CornerRadius="20"
-                Padding="20, 5, 10, 5"
-                Margin="5"
-                Background="{StaticResource TopBarWrapperBackgroundBrush}">
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                CornerRadius="10"
+                Padding="10, 0, 10, 0"
+                Background="{StaticResource NoChatSelectedLabelBackgroundBrush}">
 
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+                
+                <StackPanel
+                    Orientation="Horizontal">
+                    
+                    <Label
+                        Content="Select a chat to start"
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Foreground="White"/>
 
-                    <!--<Button x:Name="MenuButton"
-                        Grid.Column="0"
-                        Height="35"
-                        Cursor="Hand"
-                        Padding="7"
-                        Style="{StaticResource CommonButton}">
+                    <Label
+                        Content="Converse"
+                        FontSize="14"
+                        FontWeight="ExtraBold"
+                        Foreground="White"
+                        Padding="0, 5, 5, 5"/>
+                </StackPanel>
+                    
+            </Border>
 
-                        <Button.Content>
-                            <svgc:SvgViewbox
-                                Width="20"
-                                Source="pack://application:,,,/Resources/Images/arrow-back.svg"/>
-                        </Button.Content>
-                    </Button>-->
+            <Grid x:Name="ChatWindow">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Border
+                    Grid.Row="0"
+                    CornerRadius="20"
+                    Padding="20, 5, 10, 5"
+                    Margin="5"
+                    Background="{StaticResource TopBarWrapperBackgroundBrush}">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--<Button x:Name="MenuButton"
+                                Grid.Column="0"
+                                Height="35"
+                                Cursor="Hand"
+                                Padding="7"
+                                Style="{StaticResource CommonButton}">
+
+                                <Button.Content>
+                                    <svgc:SvgViewbox
+                                        Width="20"
+                                        Source="pack://application:,,,/Resources/Images/arrow-back.svg"/>
+                                </Button.Content>
+                            </Button>-->
+
+                        <Grid
+                            Grid.Column="1">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="ChatName"
+                                Grid.Row="0"
+                                Foreground="{StaticResource TopBarForegroundBrush}"
+                                FontSize="14"
+                                FontWeight="Medium"
+                                VerticalAlignment="Center"/>
+
+                            <StackPanel
+                                Grid.Row="1"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Bottom">
+
+                                <Label
+                                    Content="Last seen"
+                                    Foreground="{StaticResource TopBarSecondaryForegroundBrush}"
+                                    FontSize="14"
+                                    HorizontalAlignment="Left"
+                                    Padding="0"
+                                    Margin="0, 0, 5, 0"/>
+
+                                <TextBlock x:Name="LastSeen"
+                                    Text="2 hours ago"
+                                    Foreground="{StaticResource TopBarSecondaryForegroundBrush}"
+                                    FontSize="14"
+                                    VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <Button
+                            Grid.Column="2"
+                            Content="{Binding Geometry, Source={StaticResource SearchIcon}}"
+                            Width="35"
+                            Cursor="Hand"
+                            Padding="2, 0, 2, 0"
+                            Style="{StaticResource CommonSvgResponsiveButton}"
+                            Margin="0, 0, 5, 0"/>
+
+                        <Button
+                            Grid.Column="3"
+                            Content="{Binding Geometry, Source={StaticResource MoreIcon}}"
+                            Width="35"
+                            Cursor="Hand"
+                            Padding="2, 0, 2, 0"
+                            Style="{StaticResource CommonSvgResponsiveButton}"/>
+                    </Grid>
+                </Border>
+
+                <Border x:Name="DialogWindow"
+                    Grid.Row="1"
+                    CornerRadius="20"
+                    Margin="5"
+                    Background="{StaticResource ChatBackgroundBrush}">
+
+                    <Border.Clip>
+                        <RectangleGeometry 
+                            RadiusX="20"
+                            RadiusY="20">
+
+                            <RectangleGeometry.Rect>
+                                <MultiBinding Converter="{StaticResource RectConverter}">
+                                    <Binding ElementName="DialogWindow" Path="ActualWidth"/>
+                                    <Binding ElementName="DialogWindow" Path="ActualHeight"/>
+                                </MultiBinding>
+                            </RectangleGeometry.Rect>
+                        </RectangleGeometry>
+                    </Border.Clip>
+
+                    <ScrollViewer
+                        HorizontalScrollBarVisibility="Disabled"
+                        VerticalScrollBarVisibility="Auto"
+                        Style="{StaticResource SimpleScrollBar}">
+
+                        <ItemsControl x:Name="MessagesPresenter">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel
+                                        Orientation="Vertical"
+                                        VerticalAlignment="Bottom"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Border>
+
+                <Border
+                    Grid.Row="2"
+                    CornerRadius="20"
+                    Padding="10, 5, 10, 5"
+                    Margin="5"
+                    Background="{StaticResource MessageBoxWrapperBackgroundBrush}">
 
                     <Grid
-                        Grid.Column="1">
-                        
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                        MaxHeight="150">
 
-                        <TextBlock x:Name="ChatName"
-                            Grid.Row="0"
-                            Foreground="{StaticResource TopBarForegroundBrush}"
-                            FontSize="14"
-                            FontWeight="Medium"
-                            VerticalAlignment="Center"/>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
 
-                        <StackPanel
-                            Grid.Row="1"
-                            Orientation="Horizontal"
-                            VerticalAlignment="Bottom">
-
-                            <Label
-                                Content="Last seen"
-                                Foreground="{StaticResource TopBarSecondaryForegroundBrush}"
-                                FontSize="14"
-                                HorizontalAlignment="Left"
-                                Padding="0"
-                                Margin="0, 0, 5, 0"/>
-
-                            <TextBlock x:Name="LastSeen"
-                                Text="2 hours ago"
-                                Foreground="{StaticResource TopBarSecondaryForegroundBrush}"
-                                FontSize="14"
-                                VerticalAlignment="Center"/>
-                        </StackPanel>
+                        <local:MessageBoxView x:Name="MessageBox"
+                            Grid.Column="1"/>
                     </Grid>
-
-                    <Button
-                        Grid.Column="2"
-                        Content="{Binding Geometry, Source={StaticResource SearchIcon}}"
-                        Cursor="Hand"
-                        Padding="2, 0, 2, 0"
-                        Style="{StaticResource CommonSvgResponsiveButton}"
-                        Margin="0, 0, 5, 0"/>
-
-                    <Button
-                        Grid.Column="3"
-                        Content="{Binding Geometry, Source={StaticResource MoreIcon}}"
-                        Cursor="Hand"
-                        Padding="2, 0, 2, 0"
-                        Style="{StaticResource CommonSvgResponsiveButton}"/>
-                </Grid>
-            </Border>
-
-            <Border x:Name="DialogWindow"
-                Grid.Row="1"
-                CornerRadius="20"
-                Margin="5"
-                Background="{StaticResource ChatBackgroundBrush}">
-
-                <Border.Clip>
-                    <RectangleGeometry 
-                        RadiusX="20"
-                        RadiusY="20">
-
-                        <RectangleGeometry.Rect>
-                            <MultiBinding Converter="{StaticResource RectConverter}">
-                                <Binding ElementName="DialogWindow" Path="ActualWidth"/>
-                                <Binding ElementName="DialogWindow" Path="ActualHeight"/>
-                            </MultiBinding>
-                        </RectangleGeometry.Rect>
-                    </RectangleGeometry>
-                </Border.Clip>
-
-                <ScrollViewer
-                    HorizontalScrollBarVisibility="Disabled"
-                    VerticalScrollBarVisibility="Auto"
-                    Style="{StaticResource SimpleScrollBar}">
-
-                    <ItemsControl x:Name="MessagesPresenter">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel
-                                    Orientation="Vertical"
-                                    VerticalAlignment="Bottom"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
-                </ScrollViewer>
-            </Border>
-
-            <Border
-                Grid.Row="2"
-                CornerRadius="20"
-                Padding="10, 5, 10, 5"
-                Margin="5"
-                Background="{StaticResource MessageBoxWrapperBackgroundBrush}">
-
-                <Grid
-                    MaxHeight="150">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <local:MessageBoxView x:Name="MessageBox"
-                        Grid.Column="1"/>
-                </Grid>
-            </Border>
+                </Border>
+            </Grid>
         </Grid>
     </Border>
 </reactiveui:ReactiveUserControl>

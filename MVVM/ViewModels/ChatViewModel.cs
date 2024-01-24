@@ -12,6 +12,8 @@ using ABI.Windows.AI.MachineLearning;
 using ReactiveUI.Fody.Helpers;
 using YetAnotherMessenger.Misc;
 using YetAnotherMessenger.MVVM.Models;
+using DynamicData;
+using DynamicData.Binding;
 
 namespace YetAnotherMessenger.MVVM.ViewModels
 {
@@ -36,11 +38,23 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 		[Reactive]
 		public List<MessageViewModel>? Messages { get; private set; }
 
+		[Reactive] 
+		public bool IsChatWindowVisible { get; private set; }
+
 		private ChatViewModel()
 		{
 			this.WhenAnyValue(x => x.Chat)
 				.Where(chat => chat != null)
-				.Subscribe(chat => Messages = chat!.Messages.Select(message => new MessageViewModel {Message = message}).ToList());
+				.Subscribe(chat =>
+				{
+					Messages = chat!.Messages.Select(message => new MessageViewModel { Message = message })
+						.ToList();
+
+					if (!IsChatWindowVisible)
+					{
+						IsChatWindowVisible = !IsChatWindowVisible; 
+					}
+				});
 
 			MessageBoxVM.SendMessageCommand.IsExecuting.Subscribe(isExecuting =>
 			{

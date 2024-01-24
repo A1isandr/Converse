@@ -35,6 +35,9 @@
            G="255"
            B="255"
            A="200"/>
+    
+    <SolidColorBrush x:Key="NoChatSelectedLabelBackgroundBrush"
+                     Color="#1f1f1f"/>
 
     <SolidColorBrush x:Key="TopBarWrapperBackgroundBrush"
                      Color="#1f1f1f"/>

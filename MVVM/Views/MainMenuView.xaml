@@ -29,6 +29,8 @@
             <Grid>
                 <Button x:Name="CloseMainMenuButton"
                     Content="{Binding Geometry, Source={StaticResource CloseIcon}}"
+                    Width="35"
+                    Height="35"
                     Cursor="Hand"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Right"

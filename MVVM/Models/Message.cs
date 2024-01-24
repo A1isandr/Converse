@@ -9,7 +9,7 @@ using ReactiveUI;
 
 namespace YetAnotherMessenger.MVVM.Models
 {
-	public class Message : ReactiveObject
+	public abstract class Message(string content)
 	{
 		public enum MessageStatus
 		{
@@ -21,22 +21,12 @@ namespace YetAnotherMessenger.MVVM.Models
 			DeletedByRecipient
 		}
 
-		public bool IsMine => Sender == AppConfig.CurrentUser;
+		public string Content { get; set; } = content;
 
-		public string Content { get; set; }
+		public User Sender { get; init; } = AppConfig.CurrentUser;
 
-		public User Sender { get; init; }
+		public DateTime DateTimeUtc { get; set; } = DateTime.UtcNow;
 
-		public DateTime DateTimeUtc { get; set; }
-
-		public MessageStatus Status { get; set; }
-
-		protected Message(string content)
-		{
-			Content = content;
-			Sender = AppConfig.CurrentUser;
-			DateTimeUtc = DateTime.UtcNow;
-			Status = MessageStatus.Created;
-		}
+		public MessageStatus Status { get; set; } = MessageStatus.Created;
 	}
 }

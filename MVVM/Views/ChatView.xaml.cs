@@ -34,10 +34,14 @@ namespace YetAnotherMessenger.MVVM.Views
 			this.WhenActivated(disposables =>
 			{
 				this.OneWayBind(ViewModel,
+						viewModel => viewModel.IsChatWindowVisible,
+						view => view.ChatWindow.Visibility)
+					.DisposeWith(disposables);
+
+				this.OneWayBind(ViewModel,
 						viewModel => viewModel.Chat!.Name,
 						view => view.ChatName.Text)
 					.DisposeWith(disposables);
-
 
 				this.OneWayBind(ViewModel,
 						viewModel => viewModel.Messages,

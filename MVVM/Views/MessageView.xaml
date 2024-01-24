@@ -72,7 +72,8 @@
                 Grid.Row="1"
                 Grid.Column="1"
                 Orientation="Vertical"
-                VerticalAlignment="Top">
+                VerticalAlignment="Top"
+                Margin="0, 0, 50, 0">
 
                 <emoji:RichTextBox x:Name="Content"
                     Foreground="{StaticResource MessageForegroundSecondaryBrush}"
@@ -83,7 +84,8 @@
                     Background="Transparent"
                     BorderThickness="0"
                     IsReadOnly="True"
-                    VerticalAlignment="Top"/>
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"/>
 
                 <ItemsControl x:Name="Attachments">
 

@@ -7,7 +7,7 @@ using ReactiveUI.Fody.Helpers;
 
 namespace YetAnotherMessenger.MVVM.ViewModels
 {
-	public class SearchViewModel
+	public class SearchBoxViewModel
 	{
 		[Reactive]
 		public string SearchText { get; set; }

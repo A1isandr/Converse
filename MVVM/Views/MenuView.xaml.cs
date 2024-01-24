@@ -46,8 +46,6 @@ namespace YetAnotherMessenger.MVVM.Views
 						view => view.ChatListMenuExpander.IsExpanded)
 					.DisposeWith(disposables);
 			});
-
-			MainMenuExpander.Margin = new Thickness(250, 0, -250, 0);
 		}
 
 		private void MainMenuExpander_OnCollapsed(object sender, RoutedEventArgs e)

@@ -59,7 +59,7 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 				new Chat
 				{
 					Id = 2,
-					Name = "Friend",
+					Name = "Mom",
 					Avatar = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
 					Messages =
 					[

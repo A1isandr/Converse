@@ -4,6 +4,11 @@
     <Color x:Key="SearchBoxBackgroundColor">#4d4d4d</Color>
     <Color x:Key="SearchBoxGotFocusBackgroundColor">#e6e6e6</Color>
 
+    <Color x:Key="SearchBoxLabelForegroundColor"
+           R="153"
+           G="153"
+           B="153"
+           A="150"/>
     <Color x:Key="SearchBoxForegroundColor">White</Color>
     <Color x:Key="SearchBoxGotFocusForegroundColor">Black</Color>
 
@@ -42,9 +47,7 @@
     <SolidColorBrush x:Key="SearchBoxCaretBrush"
                      Color="#70cadb"/>
     <SolidColorBrush x:Key="SearchBoxLabelForegroundBrush"
-                     Color="#808080"/>
-    <SolidColorBrush x:Key="SearchBoxButtonBackgroundBrush"
-                     Color="{StaticResource SearchBoxButtonBackgroundColor}"/>
+                     Color="{StaticResource SearchBoxLabelForegroundColor}"/>
 
     <SolidColorBrush x:Key="MenuButtonBackgroundBrush"
                      Color="#4d4d4d"/>
