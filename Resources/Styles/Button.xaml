@@ -73,7 +73,7 @@
                             <Setter 
                                 TargetName="ButtonBorder" 
                                 Property="BorderBrush" 
-                                Value="{StaticResource ChatPreviewIsCheckedBorderBrush}"/>
+                                Value="{StaticResource AccentGradientBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -127,7 +127,7 @@
                             </BeginStoryboard>
                         </EventTrigger>
 
-                        <EventTrigger RoutedEvent="MouseEnter">
+                        <!--<EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard>
                                     <ColorAnimation
@@ -149,13 +149,20 @@
                                         Duration="0:0:0.0"/>
                                 </Storyboard>
                             </BeginStoryboard>
-                        </EventTrigger>
+                        </EventTrigger>-->
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter
+                                TargetName="SvgIcon"
+                                Property="Fill"
+                                Value="{StaticResource AccentGradientBrush}"/>
+                        </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">
                             <Setter 
                                 TargetName="ButtonBorder" 
                                 Property="BorderBrush" 
-                                Value="{StaticResource ChatPreviewIsCheckedBorderBrush}"/>
+                                Value="{StaticResource AccentGradientBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

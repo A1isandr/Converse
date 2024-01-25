@@ -21,7 +21,7 @@ namespace YetAnotherMessenger.MVVM.Models
 		public string? LastName { get; set; }
 
 		[Reactive]
-		public string UserName { get; set; }
+		public string Username { get; set; }
 
 		[Reactive]
 		public Uri Avatar { get; set; }

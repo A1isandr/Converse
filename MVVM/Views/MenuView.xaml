@@ -38,20 +38,20 @@
                 <Expander x:Name="MainMenuExpander"
                           ExpandDirection="Left"
                           Style="{StaticResource CommonExpander}"
-                          Collapsed="MainMenuExpander_OnCollapsed"
-                          Expanded="MainMenuExpander_OnExpanded"
+                          Collapsed="MenuExpander_OnCollapsed"
+                          Expanded="MenuExpander_OnExpanded"
                           Visibility="Hidden">
 
-                    <local:MainMenuView/>
+                    <local:MainMenuView x:Name="MainMenuView"/>
                 </Expander>
 
                 <Expander x:Name="ChatListMenuExpander"
                           ExpandDirection="Right"
                           Style="{StaticResource CommonExpander}"
-                          Collapsed="MainMenuExpander_OnCollapsed"
-                          Expanded="MainMenuExpander_OnExpanded">
+                          Collapsed="MenuExpander_OnCollapsed"
+                          Expanded="MenuExpander_OnExpanded">
 
-                    <local:ChatListMenuView/>
+                    <local:ChatListMenuView x:Name="ChatListMenuView"/>
                 </Expander>
             </Grid>
         </Border>

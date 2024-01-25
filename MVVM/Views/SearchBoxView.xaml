@@ -14,7 +14,7 @@
         Grid.Column="0"
         Height="35"
         CornerRadius="10"
-        BorderBrush="{StaticResource SearchBoxBorderBrush}"
+        BorderBrush="{StaticResource AccentGradientBrush}"
         Background="{StaticResource SearchBoxBackgroundBrush}">
 
         <Border.Style>
@@ -75,7 +75,7 @@
                     FontSize="14"
                     VerticalContentAlignment="Center"
                     Cursor="IBeam"
-                    CaretBrush="{StaticResource SearchBoxCaretBrush}"
+                    CaretBrush="{StaticResource AccentBrush}"
                     BorderThickness="0"
                     Padding="10, 0, 5, 0"
                     Background="Transparent"

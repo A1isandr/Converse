@@ -14,8 +14,8 @@ namespace YetAnotherMessenger.MVVM.Models
 			Id = 1,
 			FirstName = "Alex",
 			LastName = "Pi",
-			UserName = "@Alpi",
-			Avatar = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg")
+			Username = "Alpi",
+			Avatar = new Uri("https://i.pravatar.cc/299")
 	    };
     }
 }

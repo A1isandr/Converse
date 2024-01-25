@@ -17,28 +17,28 @@
   <Class Name="YetAnotherMessenger.MVVM.Models.User">
     <Position X="11.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAQAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAEAAAAAAAIAAAAQAAAAAAAAAAAAAAQAAAAAAAAg=</HashCode>
       <FileName>MVVM\Models\User.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="YetAnotherMessenger.MVVM.ViewModels.ChatPreviewViewModel">
-    <Position X="8.75" Y="13.5" Width="1.5" />
+    <Position X="8.75" Y="16.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAABgAAAAAA=</HashCode>
       <FileName>MVVM\ViewModels\ChatPreviewViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="YetAnotherMessenger.MVVM.ViewModels.ChatViewModel">
     <Position X="3.75" Y="10.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAAAAAAAAAAAACAAAAAAAAAAgAQAAAAQAAAAA=</HashCode>
+      <HashCode>AAAEAAAAAAAAAAAAAAACAAAAAgAAAAgAQAAAAQAAAAA=</HashCode>
       <FileName>MVVM\ViewModels\ChatViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="YetAnotherMessenger.MVVM.ViewModels.MainViewModel">
     <Position X="6.25" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MVVM\ViewModels\MainViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -50,31 +50,31 @@
     </TypeIdentifier>
   </Class>
   <Class Name="YetAnotherMessenger.MVVM.ViewModels.MenuViewModel">
-    <Position X="8.75" Y="10.25" Width="1.5" />
+    <Position X="10.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAAAAAAAABAAAAAAAAAAAAAAAAQAAAAAQAAAA=</HashCode>
+      <HashCode>AAAEAAEAAAAAAAAAAAAAAAAAgAAAAAIAQBAAAAAAAAA=</HashCode>
       <FileName>MVVM\ViewModels\MenuViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="YetAnotherMessenger.MVVM.ViewModels.MessageBoxViewModel">
     <Position X="1.75" Y="13.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAEEAAAAAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAAAAA=</HashCode>
+      <HashCode>AQAEAAAAAAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAQAAA=</HashCode>
       <FileName>MVVM\ViewModels\MessageBoxViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="YetAnotherMessenger.MVVM.ViewModels.MessageViewModel">
     <Position X="5.75" Y="13.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAIAAAAAA=</HashCode>
       <FileName>MVVM\ViewModels\MessageViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="YetAnotherMessenger.MVVM.ViewModels.SearchViewModel">
+  <Class Name="YetAnotherMessenger.MVVM.ViewModels.SearchBoxViewModel">
     <Position X="3.75" Y="13.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>MVVM\ViewModels\SearchViewModel.cs</FileName>
+      <FileName>MVVM\ViewModels\SearchBoxViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="YetAnotherMessenger.MVVM.Models.Message">
@@ -87,7 +87,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAgEAgAAAAAAAAAAAAAAAAAAAAQAAAAAAAAIBAA=</HashCode>
+      <HashCode>AAAAAAAEAgAAAAAAAAAAAAAAIAAAAAAAAAAAAAAIAAA=</HashCode>
       <FileName>MVVM\Models\Message.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -101,8 +101,22 @@
   <Class Name="YetAnotherMessenger.MVVM.Models.VoiceMessage">
     <Position X="4.5" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MVVM\Models\VoiceMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="YetAnotherMessenger.MVVM.ViewModels.MainMenuViewModel">
+    <Position X="12.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAACAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\ViewModels\MainMenuViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="YetAnotherMessenger.MVVM.ViewModels.ChatListMenuViewModel">
+    <Position X="8.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAABAAAAAAAAAAAAAAAAQAABAAQAAAA=</HashCode>
+      <FileName>MVVM\ViewModels\ChatListMenuViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

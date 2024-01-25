@@ -24,56 +24,6 @@
                     </Border>
 
                     <ControlTemplate.Triggers>
-                        <!--<EventTrigger RoutedEvent="MouseEnter">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation
-                                        Storyboard.TargetName="RadioButtonBorder"
-                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                        To="{StaticResource ChatPreviewMouseOverBackgroundColor}"
-                                        Duration="0:0:0.0"
-                                        FillBehavior="Stop"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-
-                        <EventTrigger RoutedEvent="MouseLeave">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation
-                                        Storyboard.TargetName="RadioButtonBorder"
-                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                        To="{StaticResource ChatPreviewIsCheckedBackgroundColor}"
-                                        Duration="0:0:0.0"
-                                        FillBehavior="Stop"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>-->
-
-                        <!--<EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation
-                                        Storyboard.TargetName="RadioButtonBorder"
-                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                        To="{StaticResource ChatPreviewMouseLeftButtonDownBackgroundColor}"
-                                        Duration="0:0:0.0"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-
-                        <EventTrigger RoutedEvent="PreviewMouseLeftButtonUp">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation
-                                        Storyboard.TargetName="RadioButtonBorder"
-                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                        To="{StaticResource ChatPreviewMouseOverBackgroundColor}"
-                                        Duration="0:0:0.0"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>-->
-
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter
                                 TargetName="RadioButtonBorder"
@@ -85,7 +35,7 @@
                             <Setter 
                                 TargetName="RadioButtonBorder" 
                                 Property="BorderBrush" 
-                                Value="{StaticResource ChatPreviewIsCheckedBorderBrush}"/>
+                                Value="{StaticResource AccentGradientBrush}"/>
 
                             <Setter 
                                 TargetName="RadioButtonBorder"

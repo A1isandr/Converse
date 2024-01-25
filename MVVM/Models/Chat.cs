@@ -18,8 +18,6 @@ namespace YetAnotherMessenger.MVVM.Models
 
 		public string? Name { get; set; }
 
-		public Uri Avatar { get; set; }
-
 		public ObservableCollection<Message> Messages { get; set; }
 
 		public ObservableCollection<User> Users { get; set; }

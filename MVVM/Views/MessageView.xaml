@@ -15,14 +15,14 @@
         <Border.Style>
             <Style
                 TargetType="Border">
-                
+
                 <Setter Property="CornerRadius" Value="10"/>
                 <Setter Property="BorderThickness" Value="0, 10, 0, 0"/>
                 <Setter Property="BorderBrush" Value="Transparent"/>
 
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="{StaticResource MessageMouseOverBackgroundBrush}"></Setter>
+                        <Setter Property="Background" Value="{StaticResource MessageMouseOverBackgroundBrush}"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>
@@ -91,6 +91,18 @@
 
                 </ItemsControl>
             </StackPanel>
+
+            <Button x:Name="MoreButton"
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Cursor="Hand"
+                Width="35"
+                Height="35"
+                HorizontalAlignment="Right"
+                Content="{Binding Geometry, Source={StaticResource MoreIcon}}"
+                Style="{StaticResource CommonSvgResponsiveButton}"
+                Visibility="Collapsed"/>
         </Grid>
     </Border>
 </rxui:ReactiveUserControl>

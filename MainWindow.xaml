@@ -88,7 +88,7 @@
                     
                     <TextBlock 
                         Text="{Binding ElementName=Window, Path=Title}"
-                        Foreground="{StaticResource WindowTitleForegroundBrush}"
+                        Foreground="{StaticResource AccentGradientBrush}"
                         FontSize="14"
                         FontWeight="ExtraBold"
                         TextAlignment="Left"

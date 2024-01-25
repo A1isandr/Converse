@@ -40,8 +40,19 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 				new Chat
 				{
 					Id = 1,
-					Name = "Friend",
-					Avatar = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
+					Name = "Test",
+					Users =
+					[
+						AppConfig.CurrentUser,
+						new User
+						{
+							Id = 2,
+							Avatar = new Uri("https://i.pravatar.cc/300"),
+							FirstName = "Mr.",
+							LastName = "Who",
+							Username = "MrWho",
+						}
+					],
 					Messages =
 					[
 						new TextMessage
@@ -53,14 +64,25 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 						(
 							content: "Hi!"
 						)
-					],
+					]
 				},
 
 				new Chat
 				{
 					Id = 2,
-					Name = "Mom",
-					Avatar = new Uri(@"D:\Projects\C#\YetAnotherMessenger\Resources\Images\clueless.jpg"),
+					Name = "Test 2",
+					Users =
+					[
+						AppConfig.CurrentUser,
+						new User
+						{
+							Id = 3,
+							Avatar = new Uri("https://i.pravatar.cc/200"),
+							FirstName = "Some",
+							LastName = "One",
+							Username = "Someone",
+						}
+					],
 					Messages =
 					[
 						new TextMessage

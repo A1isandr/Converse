@@ -44,8 +44,9 @@
                         Content="Converse"
                         FontSize="14"
                         FontWeight="ExtraBold"
-                        Foreground="White"
-                        Padding="0, 5, 5, 5"/>
+                        Foreground="{StaticResource AccentGradientBrush}"
+                        Padding="0, 5, 5, 5">
+                    </Label>
                 </StackPanel>
                     
             </Border>

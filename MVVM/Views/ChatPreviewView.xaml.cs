@@ -30,7 +30,7 @@ namespace YetAnotherMessenger.MVVM.Views
 			this.WhenActivated(disposables =>
 			{
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.Chat.Avatar,
+						viewModel => viewModel.Avatar,
 						view => view.Avatar.Source,
 						url => new BitmapImage(url))
 					.DisposeWith(disposables);

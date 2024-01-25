@@ -33,6 +33,16 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 			}
 		}
 
+		public Uri Avatar
+		{
+			get
+			{
+				return Chat.Users.Count == 2 ?
+					Chat.Users.First(x => x != AppConfig.CurrentUser).Avatar : 
+					new Uri("pack://application:,,,/Resources/Images/Many.png");
+			}
+		}
+
 		public ChatPreviewViewModel()
 		{
 			OpenChatCommand = ReactiveCommand.Create<Unit, Unit>(_ =>

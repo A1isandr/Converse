@@ -44,7 +44,7 @@ namespace YetAnotherMessenger.MVVM.Views
 					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.User.UserName,
+						viewModel => viewModel.User.Username,
 						view => view.UserName.Text)
 					.DisposeWith(disposables);
 			});

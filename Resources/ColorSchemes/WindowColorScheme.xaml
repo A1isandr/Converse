@@ -58,4 +58,15 @@
 
     <SolidColorBrush x:Key="CommonSvgResponsiveButtonFillBrush"
                      Color="{StaticResource CommonSvgResponsiveButtonFillColor}"/>
+
+    <SolidColorBrush x:Key="AccentBrush"
+                     Color="DeepSkyBlue"/>
+
+    <LinearGradientBrush x:Key="AccentGradientBrush"
+        StartPoint="0,0" 
+        EndPoint="1,0">
+
+        <GradientStop Color="DodgerBlue" Offset="0.0"/>
+        <GradientStop Color="DeepSkyBlue" Offset="0.5"/>
+    </LinearGradientBrush>
 </ResourceDictionary>

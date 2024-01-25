@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ReactiveMarbles.ObservableEvents;
 using ReactiveUI;
 using YetAnotherMessenger.MVVM.ViewModels;
 
@@ -49,6 +51,12 @@ namespace YetAnotherMessenger.MVVM.Views
 						viewModel => viewModel.Message.Content,
 						view => view.Content.Text)
 					.DisposeWith(disposables);
+
+				this.Events().MouseEnter
+					.Subscribe(_ => MoreButton.Visibility = Visibility.Visible);
+
+				this.Events().MouseLeave
+					.Subscribe(_ => MoreButton.Visibility = Visibility.Collapsed);
 			});
 		}
 	}

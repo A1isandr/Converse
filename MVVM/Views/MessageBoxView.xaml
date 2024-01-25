@@ -14,7 +14,7 @@
     <Border
         Grid.Column="0"
         CornerRadius="10"
-        BorderBrush="{StaticResource MessageBoxBorderBrush}"
+        BorderBrush="{StaticResource AccentGradientBrush}"
         Background="{StaticResource MessageBoxBackgroundBrush}">
 
         <Border.Style>
@@ -76,7 +76,7 @@
                     VerticalContentAlignment="Center"
                     TextWrapping="Wrap"
                     Cursor="IBeam"
-                    CaretBrush="{StaticResource MessageBoxCaretBrush}"
+                    CaretBrush="{StaticResource AccentBrush}"
                     BorderThickness="0"
                     Padding="10, 0, 0, 0"
                     Background="Transparent"
@@ -133,7 +133,7 @@
                             Height="35"
                             VerticalAlignment="Center"
                             Data="{Binding Geometry, Source={StaticResource SendIcon}}"
-                            Fill="{StaticResource MessageBoxSendButtonActiveFillBrush}"
+                            Fill="{StaticResource AccentGradientBrush}"
                             Style="{StaticResource SvgIcon}"/>
                     </Button.Content>
                 </Button>

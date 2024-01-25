@@ -69,7 +69,7 @@
 
                             <Path
                                 Data="{Binding Geometry, Source={StaticResource GroupAddIcon}}"
-                                Fill="{StaticResource MainMenuButtonSvgFillBrush}"
+                                Fill="{StaticResource AccentGradientBrush}"
                                 VerticalAlignment="Center"
                                 Margin="0, 0, 20, 0"/>
 
@@ -96,7 +96,7 @@
 
                             <Path
                                 Data="{Binding Geometry, Source={StaticResource SettingsIcon}}"
-                                Fill="{StaticResource MainMenuButtonSvgFillBrush}"
+                                Fill="{StaticResource AccentGradientBrush}"
                                 VerticalAlignment="Center"
                                 Margin="0, 0, 20, 0"/>
 
@@ -123,7 +123,7 @@
 
                             <Path
                                 Data="{Binding Geometry, Source={StaticResource DarkModeIcon}}"
-                                Fill="{StaticResource MainMenuButtonSvgFillBrush}"
+                                Fill="{StaticResource AccentGradientBrush}"
                                 VerticalAlignment="Center"
                                 Margin="0, 0, 20, 0"/>
 

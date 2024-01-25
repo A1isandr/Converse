@@ -37,18 +37,30 @@ namespace YetAnotherMessenger.MVVM.Views
 			this.WhenActivated(disposables =>
 			{
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.IsMainMenuOpen,
-						view => view.MainMenuExpander.IsExpanded)
-					.DisposeWith(disposables);
-
-				this.OneWayBind(ViewModel,
 						viewModel => viewModel.IsChatListOpen,
 						view => view.ChatListMenuExpander.IsExpanded)
 					.DisposeWith(disposables);
+
+				this.OneWayBind(ViewModel,
+						viewModel => viewModel.IsMainMenuOpen,
+						view => view.MainMenuExpander.IsExpanded)
+					.DisposeWith(disposables);
 			});
+
+			MainMenuView.CloseMainMenuButton.Click += (_, _) =>
+			{
+				ViewModel.IsMainMenuOpen = !ViewModel.IsMainMenuOpen;
+				ViewModel.IsChatListOpen = !ViewModel.IsChatListOpen;
+			};
+
+			ChatListMenuView.MainMenuButton.Click += (_, _) =>
+			{
+				ViewModel.IsChatListOpen = !ViewModel.IsChatListOpen;
+				ViewModel.IsMainMenuOpen = !ViewModel.IsMainMenuOpen;
+			};
 		}
 
-		private void MainMenuExpander_OnCollapsed(object sender, RoutedEventArgs e)
+		private void MenuExpander_OnCollapsed(object sender, RoutedEventArgs e)
 		{
 			var menu = (Expander)sender;
 			var targetOffsetLeft = menu.ActualWidth;
@@ -77,7 +89,7 @@ namespace YetAnotherMessenger.MVVM.Views
 			);
 		}
 
-		private void MainMenuExpander_OnExpanded(object sender, RoutedEventArgs e)
+		private void MenuExpander_OnExpanded(object sender, RoutedEventArgs e)
 		{
 			var menu = (Expander)sender;
 

@@ -26,30 +26,10 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 
 		private MainMenuViewModel MainMenuVM { get; set; } = MainMenuViewModel.Instance;
 
-		[Reactive] 
-		public bool IsMainMenuOpen { get; private set; }
+		[Reactive]
+		public bool IsMainMenuOpen { get; set; }
 
-		[Reactive] 
-		public bool IsChatListOpen { get; private set; } = true;
-
-		public MenuViewModel()
-		{
-			ChatListMenuVM.OpenMainMenuCommand.IsExecuting.Subscribe(isExecuting =>
-			{
-				if (!isExecuting) return;
-
-				IsChatListOpen = IsMainMenuOpen;
-				IsMainMenuOpen = !IsMainMenuOpen;
-				
-			});
-
-			MainMenuVM.CloseMainMenuCommand.IsExecuting.Subscribe(isExecuting =>
-			{
-				if (!isExecuting) return;
-
-				IsMainMenuOpen = IsChatListOpen;
-				IsChatListOpen = !IsChatListOpen;
-			});
-		}
+		[Reactive]
+		public bool IsChatListOpen { get; set; } = true;
 	}
 }
