@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,22 +9,18 @@ using ReactiveUI.Fody.Helpers;
 
 namespace YetAnotherMessenger.MVVM.Models
 {
-	public class User : ReactiveObject
+	public class User
 	{
-		public string FullName => $"{FirstName} {LastName}";
-
 		public int Id { get; init; }
 
-		[Reactive]
-		public string FirstName { get; set; }
+		[MaxLength(50)]
+		public required string Username { get; set; }
 
-		[Reactive]
-		public string? LastName { get; set; }
+		[MaxLength(25)]
+		public required string Password { get; set; }
 
-		[Reactive]
-		public string Username { get; set; }
+		public UserProfile Profile { get; set; }
 
-		[Reactive]
-		public Uri Avatar { get; set; }
+		public List<Conversation>? Conversations { get; set; }
 	}
 }

@@ -22,7 +22,7 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 			}
 		}
 
-		private ChatListMenuViewModel ChatListMenuVM { get; set; } = ChatListMenuViewModel.Instance;
+		private ConversationListMenuViewModel ConversationListMenuVM { get; set; } = ConversationListMenuViewModel.Instance;
 
 		private MainMenuViewModel MainMenuVM { get; set; } = MainMenuViewModel.Instance;
 

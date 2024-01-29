@@ -20,26 +20,26 @@ using YetAnotherMessenger.MVVM.ViewModels;
 namespace YetAnotherMessenger.MVVM.Views
 {
 	/// <summary>
-	/// Логика взаимодействия для ChatListMenuView.xaml
+	/// Логика взаимодействия для ConversationListMenuView.xaml
 	/// </summary>
-	public partial class ChatListMenuView : ReactiveUserControl<ChatListMenuViewModel>
+	public partial class ConversationListMenuView : ReactiveUserControl<ConversationListMenuViewModel>
 	{
-		public ChatListMenuView()
+		public ConversationListMenuView()
 		{
 			InitializeComponent();
 
-			ViewModel = ChatListMenuViewModel.Instance;
+			ViewModel = ConversationListMenuViewModel.Instance;
 
 			this.WhenActivated(disposables =>
 			{
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.ChatPreviews,
-						view => view.ChatPreviewsPresenter.ItemsSource)
+						viewModel => viewModel.ConversationPreviews,
+						view => view.ConversationPreviewsPresenter.ItemsSource)
 					.DisposeWith(disposables);
 
-				this.BindCommand(ViewModel,
-						viewModel => viewModel.OpenMainMenuCommand,
-						view => view.MainMenuButton)
+				this.OneWayBind(ViewModel,
+						viewModel => viewModel.GlobalSearchPreviews,
+						view => view.GlobalSearchPreviewsPresenter.ItemsSource)
 					.DisposeWith(disposables);
 			});
 		}

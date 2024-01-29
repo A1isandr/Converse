@@ -32,24 +32,24 @@ namespace YetAnotherMessenger.MVVM.Views
 			this.WhenActivated(disposables =>
 			{
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.Message.Sender.Avatar,
+						viewModel => viewModel.Message.User.Profile.Avatar,
 						view => view.Avatar.Source,
 						url => new BitmapImage(url))
 					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.MessageDateTimeLocal,
+						viewModel => viewModel.MessageDateTimeLocalCreated,
 						view => view.DateTime.Content)
 					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.Message.Sender.FullName,
+						viewModel => viewModel.Message.User.Profile.FullName,
 						view => view.SenderName.Content)
 					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
 						viewModel => viewModel.Message.Content,
-						view => view.Content.Text)
+						view => view.MessageContent.Text)
 					.DisposeWith(disposables);
 
 				this.Events().MouseEnter

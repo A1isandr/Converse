@@ -1,15 +1,17 @@
 ﻿using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ReactiveUI;
+using YetAnotherMessenger.MVVM.ViewModels;
 
 namespace YetAnotherMessenger.MVVM.Models
 {
-	public abstract class Message(string content)
+	public class Message
 	{
 		public enum MessageStatus
 		{
@@ -21,12 +23,25 @@ namespace YetAnotherMessenger.MVVM.Models
 			DeletedByRecipient
 		}
 
-		public string Content { get; set; } = content;
+		public int Id { get; init; }
 
-		public User Sender { get; init; } = AppConfig.CurrentUser;
+		[MaxLength(25)]
+		public string? Discriminator { get; init; }
 
-		public DateTime DateTimeUtc { get; set; } = DateTime.UtcNow;
+		public required MessageContent Content { get; init; }
 
-		public MessageStatus Status { get; set; } = MessageStatus.Created;
+		public required DateTime DateTimeCreated { get; set; }
+
+		public DateTime? DateTimeEdited { get; set; }
+
+		public required MessageStatus Status { get; set; }
+
+		public Conversation Conversation { get; init; }
+
+		public int ConversationId { get; init; }
+
+		public User User { get; init; }
+
+		public int UserId { get; init; }
 	}
 }

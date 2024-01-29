@@ -10,8 +10,8 @@
 
                 <ResourceDictionary Source="/Resources/ColorSchemes\WindowColorScheme.xaml"/>
                 <ResourceDictionary Source="/Resources/ColorSchemes\MainViewColorScheme.xaml"/>
-                <ResourceDictionary Source="/Resources/ColorSchemes\ChatListMenuColorScheme.xaml"/>
-                <ResourceDictionary Source="/Resources/ColorSchemes\ChatColorScheme.xaml"/>
+                <ResourceDictionary Source="/Resources/ColorSchemes\ConversationListMenuColorScheme.xaml"/>
+                <ResourceDictionary Source="/Resources/ColorSchemes\ConversationColorScheme.xaml"/>
                 <ResourceDictionary Source="/Resources/ColorSchemes\MainMenuColorScheme.xaml"/>
 
                 <ResourceDictionary Source="/Resources/Styles/Border.xaml"/>

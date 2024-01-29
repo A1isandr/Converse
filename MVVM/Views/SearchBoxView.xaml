@@ -69,7 +69,7 @@
                 VerticalScrollBarVisibility="Auto"
                 Style="{StaticResource SimpleScrollBar}">
 
-                <TextBox x:Name="MessageBox"
+                <TextBox x:Name="SearchBox"
                     Grid.Column="0"
                     Foreground="{StaticResource SearchBoxForegroundBrush}"
                     FontSize="14"
@@ -79,7 +79,7 @@
                     BorderThickness="0"
                     Padding="10, 0, 5, 0"
                     Background="Transparent"
-                    TextChanged="MessageBox_OnTextChanged"/>
+                    TextChanged="SearchBox_OnTextChanged"/>
             </ScrollViewer>
 
             <Label
@@ -96,7 +96,7 @@
                 <Label.Style>
                     <Style TargetType="Label">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=MessageBox, Path=Text}" Value="">
+                            <DataTrigger Binding="{Binding ElementName=SearchBox, Path=Text}" Value="">
                                 <Setter Property="Visibility" Value="Visible"/>
                             </DataTrigger>
                         </Style.Triggers>

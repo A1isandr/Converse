@@ -51,7 +51,7 @@
                           Collapsed="MenuExpander_OnCollapsed"
                           Expanded="MenuExpander_OnExpanded">
 
-                    <local:ChatListMenuView x:Name="ChatListMenuView"/>
+                    <local:ConversationListMenuView x:Name="ChatListMenuView"/>
                 </Expander>
             </Grid>
         </Border>

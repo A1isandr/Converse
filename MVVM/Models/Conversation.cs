@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,16 +11,17 @@ using YetAnotherMessenger.MVVM.ViewModels;
 
 namespace YetAnotherMessenger.MVVM.Models
 {
-    public class Chat
+    public class Conversation
     {
-	    public Message? LastMessage => Messages.LastOrDefault();
-
 		public int Id { get; init; }
 
-		public string? Name { get; set; }
+		[MaxLength(50)]
+		public required string ConversationName { get; set; }
 
-		public ObservableCollection<Message> Messages { get; set; }
+		public DateTime LastActivityTime { get; set; }
 
-		public ObservableCollection<User> Users { get; set; }
+		public List<User> Participants { get; set; } = [];
+
+		public List<Message>? Messages { get; set; } = [];
 	}
 }

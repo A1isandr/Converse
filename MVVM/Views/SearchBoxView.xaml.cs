@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Disposables;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,9 +30,24 @@ namespace YetAnotherMessenger.MVVM.Views
 		public SearchBoxView()
 		{
 			InitializeComponent();
+
+			ViewModel = SearchBoxViewModel.Instance;
+
+			this.WhenActivated(disposables =>
+			{
+				this.Bind(ViewModel,
+						viewModel => viewModel.SearchTerm,
+						view => view.SearchBox.Text)
+					.DisposeWith(disposables);
+
+				this.BindCommand(ViewModel,
+						viewModel => viewModel.ClearSearchTextCommand,
+						view => view.ClearSearchTermButton)
+					.DisposeWith(disposables);
+			});
 		}
 
-		private void MessageBox_OnTextChanged(object sender, TextChangedEventArgs e)
+		private void SearchBox_OnTextChanged(object sender, TextChangedEventArgs e)
 		{
 			var textBox = (TextBox)sender;
 

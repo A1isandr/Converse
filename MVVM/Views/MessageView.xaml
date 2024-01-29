@@ -75,7 +75,7 @@
                 VerticalAlignment="Top"
                 Margin="0, 0, 50, 0">
 
-                <emoji:RichTextBox x:Name="Content"
+                <emoji:RichTextBox x:Name="MessageContent"
                     Foreground="{StaticResource MessageForegroundSecondaryBrush}"
                     FontFamily="Resources/Fonts/#NotoSans"
                     FontSize="14"

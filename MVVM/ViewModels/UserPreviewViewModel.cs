@@ -8,7 +8,7 @@ using YetAnotherMessenger.MVVM.Models;
 
 namespace YetAnotherMessenger.MVVM.ViewModels
 {
-	public class AccountPreviewViewModel : ReactiveObject
+	public class UserPreviewViewModel : ReactiveObject
 	{
 		public User User { get; set; } = AppConfig.CurrentUser;
 	}

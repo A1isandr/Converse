@@ -19,11 +19,11 @@ using YetAnotherMessenger.MVVM.ViewModels;
 namespace YetAnotherMessenger.MVVM.Views
 {
 	/// <summary>
-	/// Логика взаимодействия для ChatPreviewView.xaml
+	/// Логика взаимодействия для ConversationPreviewView.xaml
 	/// </summary>
-	public partial class ChatPreviewView : ReactiveUserControl<ChatPreviewViewModel>
+	public partial class ConversationPreviewView : ReactiveUserControl<ConversationPreviewViewModel>
 	{
-		public ChatPreviewView()
+		public ConversationPreviewView()
 		{
 			InitializeComponent();
 
@@ -36,7 +36,7 @@ namespace YetAnotherMessenger.MVVM.Views
 					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.Chat.Name,
+						viewModel => viewModel.Conversation.ConversationName,
 						view => view.UserName.Text)
 					.DisposeWith(disposables);
 
@@ -46,7 +46,7 @@ namespace YetAnotherMessenger.MVVM.Views
 					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.Chat.LastMessage!.Content,
+						viewModel => viewModel.LastMessage!.Content,
 						view => view.LastMessage.Text)
 					.DisposeWith(disposables);
 

@@ -1,10 +1,9 @@
 ﻿using ReactiveUI;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Reactive.Disposables;
-using System.Reactive.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,31 +20,32 @@ using YetAnotherMessenger.MVVM.ViewModels;
 namespace YetAnotherMessenger.MVVM.Views
 {
 	/// <summary>
-	/// Логика взаимодействия для ChatView.xaml
+	/// Логика взаимодействия для UserPreviewView.xaml
 	/// </summary>
-	public partial class ChatView : ReactiveUserControl<ChatViewModel>
+	public partial class UserPreviewView : ReactiveUserControl<UserPreviewViewModel>
 	{
-		public ChatView()
+		public UserPreviewView()
 		{
 			InitializeComponent();
 
-			ViewModel = ChatViewModel.Instance;
+			ViewModel = new UserPreviewViewModel();
 
 			this.WhenActivated(disposables =>
 			{
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.IsChatWindowVisible,
-						view => view.ChatWindow.Visibility)
+						viewModel => viewModel.User.Profile.Avatar,
+						view => view.Avatar.Source,
+						url => new BitmapImage(url))
 					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.Chat!.Name,
-						view => view.ChatName.Text)
+						viewModel => viewModel.User.Profile.FullName,
+						view => view.FullName.Text)
 					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.Messages,
-						view => view.MessagesPresenter.ItemsSource)
+						viewModel => viewModel.User.Username,
+						view => view.UserName.Text)
 					.DisposeWith(disposables);
 			});
 		}

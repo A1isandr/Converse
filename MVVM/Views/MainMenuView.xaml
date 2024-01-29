@@ -42,7 +42,7 @@
                     Panel.ZIndex="0"
                     Margin="10">
 
-                    <local:AccountPreviewView/>
+                    <local:UserPreviewView/>
                 </Border>
             </Grid>
         </Border>

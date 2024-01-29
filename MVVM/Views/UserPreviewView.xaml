@@ -1,11 +1,11 @@
-﻿<rxui:ReactiveUserControl x:Class="YetAnotherMessenger.MVVM.Views.AccountPreviewView"
+﻿<rxui:ReactiveUserControl x:Class="YetAnotherMessenger.MVVM.Views.UserPreviewView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:YetAnotherMessenger.MVVM.Views"
              xmlns:vm="clr-namespace:YetAnotherMessenger.MVVM.ViewModels"
-             x:TypeArguments="vm:AccountPreviewViewModel"
+             x:TypeArguments="vm:UserPreviewViewModel"
              xmlns:rxui="http://reactiveui.net"
              mc:Ignorable="d"
              d:DesignHeight="150" d:DesignWidth="300">

@@ -17,15 +17,15 @@ using DynamicData.Binding;
 
 namespace YetAnotherMessenger.MVVM.ViewModels
 {
-	public class ChatViewModel : ReactiveObject
+	public class ConversationViewModel : ReactiveObject
 	{
-		private static ChatViewModel? _instance;
+		private static ConversationViewModel? _instance;
 
-		public static ChatViewModel Instance
+		public static ConversationViewModel Instance
 		{
 			get
 			{
-				_instance ??= new ChatViewModel();
+				_instance ??= new ConversationViewModel();
 				return _instance;
 			}
 		}
@@ -33,7 +33,7 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 		private MessageBoxViewModel MessageBoxVM { get; set; } = MessageBoxViewModel.Instance;
 
 		[Reactive] 
-		public Chat? Chat { get; set; }
+		public Conversation? Conversation { get; set; }
 
 		[Reactive]
 		public List<MessageViewModel>? Messages { get; private set; }
@@ -41,18 +41,18 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 		[Reactive] 
 		public bool IsChatWindowVisible { get; private set; }
 
-		private ChatViewModel()
+		private ConversationViewModel()
 		{
-			this.WhenAnyValue(x => x.Chat)
-				.Where(chat => chat != null)
-				.Subscribe(chat =>
+			this.WhenAnyValue(x => x.Conversation)
+				.Where(conversation => conversation != null)
+				.Subscribe(conversation =>
 				{
-					Messages = chat!.Messages.Select(message => new MessageViewModel { Message = message })
+					Messages = conversation!.Messages.Select(message => new MessageViewModel { Message = message })
 						.ToList();
 
 					if (!IsChatWindowVisible)
 					{
-						IsChatWindowVisible = !IsChatWindowVisible; 
+						IsChatWindowVisible = !IsChatWindowVisible;
 					}
 				});
 
@@ -60,10 +60,10 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 			{
 				if (!isExecuting) return;
 
-				Chat?.Messages.Add(new TextMessage
-				(
-					content: MessageBoxVM.MessageDraft!
-				));
+				//Conversation?.Messages.Add(new TextMessage
+				//(
+				//	content: MessageBoxVM.MessageDraft!
+				//));
 
 				MessageBoxVM.MessageDraft = string.Empty;
 			});

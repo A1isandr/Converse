@@ -16,6 +16,6 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 		[Reactive] 
 		public Message Message { get; init; }
 
-		public string MessageDateTimeLocal => Message.DateTimeUtc.ToString("g", CultureInfo.CurrentCulture);
+		public string MessageDateTimeLocalCreated => Message.DateTimeCreated.ToString("g", CultureInfo.CurrentCulture);
 	}
 }
