@@ -27,7 +27,7 @@
 
             <Label
                 Grid.Row="0"
-                Content="Log In to You Account"
+                Content="Log In to Existing Account"
                 FontSize="30"
                 FontWeight="ExtraBold"
                 Foreground="{StaticResource AccentGradientBrush}"
