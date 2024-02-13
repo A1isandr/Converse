@@ -1,41 +1,26 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
+    <!--Colors-->
+    <Color x:Key="MessageForegroundPrimaryColor">White</Color>
     <Color x:Key="MessageForegroundSecondaryColor"
-           R="255"
-           G="255"
-           B="255"
-           A="225"/>
+           R="255" G="255" B="255" A="225"/>
     <Color x:Key="MessageForegroundThirdColor"
-           R="255"
-           G="255"
-           B="255"
-           A="128"/>
+           R="255" G="255" B="255" A="128"/>
     <Color x:Key="MessageMouseOverBackgroundColor"
-           R="64"
-           G="64"
-           B="64"
-           A="50"/>
+           R="64" G="64" B="64" A="50"/>
 
     <Color x:Key="MessageBoxLabelForegroundColor"
-           R="153"
-           G="153"
-           B="153"
-           A="150"/>
+           R="153" G="153" B="153" A="150"/>
     <Color x:Key="MessageBoxBackgroundColor">#4d4d4d</Color>
     <Color x:Key="MessageBoxGotFocusBackgroundColor">#d9d9d9</Color>
-    <Color x:Key="MessageBoxForegroundColor"
-           R="255"
-           G="255"
-           B="255"
-           A="225"/>
+    <Color x:Key="MessageBoxForegroundColor" 
+           R="255" G="255" B="255" A="225"/>
     <Color x:Key="MessageBoxGotFocusForegroundColor">Black</Color>
     <Color x:Key="MessageBoxSendButtonDisabledFillColor"
-           R="255"
-           G="255"
-           B="255"
-           A="200"/>
+           R="255" G="255" B="255" A="200"/>
     
+    <!--SolidColorBrush-->
     <SolidColorBrush x:Key="NoChatSelectedLabelBackgroundBrush"
                      Color="#1f1f1f"/>
 
@@ -52,10 +37,8 @@
     <SolidColorBrush x:Key="ChatBackgroundBrush"
                      Color="#1f1f1f"/>
 
-    <SolidColorBrush x:Key="MessageBackgroundBrush"
-                     Color="#1d8195"/>
-    <SolidColorBrush x:Key="MessageForegroundBrush"
-                     Color="White"/>
+    <SolidColorBrush x:Key="MessageForegroundPrimaryBrush"
+                     Color="{StaticResource MessageForegroundPrimaryColor}"/>
     <SolidColorBrush x:Key="MessageForegroundSecondaryBrush"
                      Color="{StaticResource MessageForegroundSecondaryColor}"/>
     <SolidColorBrush x:Key="MessageForegroundThirdBrush"

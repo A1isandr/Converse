@@ -9,7 +9,6 @@
                                 xmlns:yam="clr-namespace:YetAnotherMessenger"
                                 xmlns:reactiveui="http://reactiveui.net"
                                 mc:Ignorable="d"
-                                Background="{StaticResource MainViewBackground}"
                                 d:DesignHeight="600" d:DesignWidth="1000">
 
     <Grid x:Name="MainGrid">

@@ -12,7 +12,6 @@
                           d:DesignHeight="40" d:DesignWidth="600">
 
     <Border
-        Grid.Column="0"
         CornerRadius="10"
         BorderBrush="{StaticResource AccentGradientBrush}"
         Background="{StaticResource MessageBoxBackgroundBrush}">
@@ -76,7 +75,7 @@
                     VerticalContentAlignment="Center"
                     TextWrapping="Wrap"
                     Cursor="IBeam"
-                    CaretBrush="{StaticResource AccentBrush}"
+                    CaretBrush="{StaticResource AccentBrush2}"
                     BorderThickness="0"
                     Padding="10, 0, 0, 0"
                     Background="Transparent"
@@ -115,16 +114,15 @@
 
                 <Button
                     Content="{Binding Geometry, Source={StaticResource EmojiIcon}}"
-                    Cursor="Hand"
                     Height="35"
                     Width="35"
-                    Padding="2, 0, 2, 0"
-                    Margin="0, 0, 10, 0"
-                    Style="{StaticResource CommonSvgResponsiveButton}"/>
+                    Style="{StaticResource SvgResponsiveButton}"
+                    Margin="0, 0, 10, 0"/>
 
                 <Button x:Name="SendMessageButton"
                         Width="0"
                         Cursor="Hand"
+                        Background="Transparent"
                         Style="{StaticResource CommonButton}">
 
                     <Button.Content>

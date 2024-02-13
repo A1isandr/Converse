@@ -33,19 +33,24 @@ namespace YetAnotherMessenger.MVVM.Views
 			this.WhenActivated(disposables =>
 			{
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.User.Profile.Avatar,
+						viewModel => viewModel.User.Profile!.Avatar,
 						view => view.Avatar.Source,
 						url => new BitmapImage(url))
 					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.User.Profile.FullName,
+						viewModel => viewModel.User.Profile!.FullName,
 						view => view.FullName.Text)
 					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
 						viewModel => viewModel.User.Username,
 						view => view.UserName.Text)
+					.DisposeWith(disposables);
+
+				this.BindCommand(ViewModel,
+						viewModel => viewModel.StartNewConversation,
+						view => view.Button)
 					.DisposeWith(disposables);
 			});
 		}

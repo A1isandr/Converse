@@ -25,22 +25,22 @@ namespace YetAnotherMessenger.MVVM.Models
 
 		public int Id { get; init; }
 
-		[MaxLength(25)]
-		public string? Discriminator { get; init; }
+		//[MaxLength(25)]
+		//public string? Discriminator { get; init; }
 
-		public required MessageContent Content { get; init; }
+		public MessageContent? Content { get; set; }
 
-		public required DateTime DateTimeCreated { get; set; }
+		public DateTime DateTimeCreated { get; init; } = DateTime.UtcNow;
 
 		public DateTime? DateTimeEdited { get; set; }
 
-		public required MessageStatus Status { get; set; }
+		public MessageStatus Status { get; set; } = MessageStatus.Created;
 
-		public Conversation Conversation { get; init; }
+		public Conversation? Conversation { get; set; }
 
-		public int ConversationId { get; init; }
+		public int ConversationId { get; set; }
 
-		public User User { get; init; }
+		public User? User { get; init; }
 
 		public int UserId { get; init; }
 	}

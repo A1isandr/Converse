@@ -36,9 +36,24 @@ namespace YetAnotherMessenger.MVVM.Views
 	{
 		private readonly double _sendButtonWidth = 45;
 
+		private readonly Storyboard _sendMessageButtonSlideIn;
+
 		public MessageBoxView()
 		{
 			InitializeComponent();
+
+			_sendMessageButtonSlideIn = new StoryboardBuilder()
+				.AddDoubleAnimation
+				(
+					targetObject: SendMessageButton,
+					targetProperty: WidthProperty,
+					startingValue: SendMessageButton.ActualWidth,
+					targetValue: _sendButtonWidth,
+					beginTime: TimeSpan.Zero,
+					duration: TimeSpan.FromMilliseconds(300),
+					easingFunction: new QuadraticEase { EasingMode = EasingMode.EaseInOut }
+				)
+				.End();
 
 			ViewModel = MessageBoxViewModel.Instance;
 
@@ -76,28 +91,24 @@ namespace YetAnotherMessenger.MVVM.Views
 
 			if (textBox.Text == string.Empty)
 			{
-				Animator.WidthAnimation
-				(
-					target: SendMessageButton,
-					startingWidth: SendMessageButton.ActualWidth,
-					targetWidth: 0,
-					beginTime: TimeSpan.FromMilliseconds(0),
-					duration: TimeSpan.FromMilliseconds(300),
-					fillBehavior: FillBehavior.HoldEnd,
-					easingFunction: new QuadraticEase{ EasingMode = EasingMode.EaseInOut }
-				);
+				new StoryboardBuilder()
+					.AddDoubleAnimation
+					(
+						targetObject: SendMessageButton,
+						targetProperty: WidthProperty,
+						startingValue: SendMessageButton.ActualWidth,
+						targetValue: 0,
+						beginTime: TimeSpan.Zero,
+						duration: TimeSpan.FromMilliseconds(300),
+						fillBehavior: FillBehavior.HoldEnd,
+						easingFunction: new QuadraticEase { EasingMode = EasingMode.EaseInOut }
+					)
+					.End()
+					.Begin();
 			}
 			else if (textBox.Text.Length == e.Changes.First().AddedLength)
 			{
-				Animator.WidthAnimation
-				(
-					target: SendMessageButton,
-					startingWidth: SendMessageButton.ActualWidth,
-					targetWidth: _sendButtonWidth,
-					beginTime: TimeSpan.FromMilliseconds(0),
-					duration: TimeSpan.FromMilliseconds(300),
-					easingFunction: new QuadraticEase { EasingMode = EasingMode.EaseInOut }
-				);
+				_sendMessageButtonSlideIn.Begin();
 			}
 		}
 	}

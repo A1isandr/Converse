@@ -101,27 +101,30 @@
                     Orientation="Horizontal">
 
                     <Button Name="MinWindowButton"
-                        Padding="10, 0, 10, 0"
-                        Margin="5"
+                        Height="25"
+                        Width="35"
                         Panel.ZIndex="1"
                         Content="{Binding Geometry, Source={StaticResource WindowMinimizeIcon}}"
-                        Style="{StaticResource CommonWindowHeaderButton}"
+                        Style="{StaticResource WindowHeaderButton}"
+                        Margin="5"
                         Click="MinWindowButton_Click"/>
 
                     <Button Name="MaxWindowButton"
-                        Padding="10, 0, 10, 0"
-                        Margin="5"
+                        Height="25"
+                        Width="35"
                         Panel.ZIndex="1"
                         Content="{Binding Geometry, Source={StaticResource WindowMaximizeIcon}}"
-                        Style="{StaticResource CommonWindowHeaderButton}"
+                        Style="{StaticResource WindowHeaderButton}"
+                        Margin="5"
                         Click="MaxWindowButton_Click"/>
 
                     <Button Name="CloseWindowButton"
-                        Padding="10, 0, 10, 0"
-                        Margin="5"
+                        Height="25"
+                        Width="35"
                         Panel.ZIndex="0"
                         Content="{Binding Geometry, Source={StaticResource CloseIcon}}"
                         Style="{StaticResource CloseWindowHeaderButton}"
+                        Margin="5"
                         Click="CloseWindowButton_Click"/>
                 </StackPanel>
             </Grid>
@@ -129,8 +132,24 @@
             <Grid Name="Main"
                 Grid.Row="1"
                 Margin="10, 0, 10, 10">
+                
+                <ContentControl>
+                    <ContentControl.Effect>
+                        <BlurEffect x:Name="BackgroundBlurEffect"
+                            KernelType="Gaussian"
+                            Radius="0"/>
+                    </ContentControl.Effect>
 
-                <views:MainView/>
+                    <views:MainView/>
+                </ContentControl>
+
+                <Border x:Name="BackgroundBlackOutEffectBorder"
+                    Background="{StaticResource BackgroundBlackOutEffectBrush}"
+                    CornerRadius="20"/>
+
+                <views:AuthenticationWindowView x:Name="AuthenticationWindow"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
             </Grid>
         </Grid>
     </Border>

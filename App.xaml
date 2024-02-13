@@ -8,14 +8,16 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Images/SvgImages.xaml"/>
 
-                <ResourceDictionary Source="/Resources/ColorSchemes\WindowColorScheme.xaml"/>
-                <ResourceDictionary Source="/Resources/ColorSchemes\MainViewColorScheme.xaml"/>
-                <ResourceDictionary Source="/Resources/ColorSchemes\ConversationListMenuColorScheme.xaml"/>
-                <ResourceDictionary Source="/Resources/ColorSchemes\ConversationColorScheme.xaml"/>
-                <ResourceDictionary Source="/Resources/ColorSchemes\MainMenuColorScheme.xaml"/>
+                <ResourceDictionary Source="/Resources/ColorSchemes/MainColorScheme.xaml"/>
+                <ResourceDictionary Source="/Resources/ColorSchemes/WindowColorScheme.xaml"/>
+                <ResourceDictionary Source="/Resources/ColorSchemes/ListMenuColorScheme.xaml"/>
+                <ResourceDictionary Source="/Resources/ColorSchemes/ConversationColorScheme.xaml"/>
+                <ResourceDictionary Source="/Resources/ColorSchemes/MainMenuColorScheme.xaml"/>
+                <ResourceDictionary Source="/Resources/ColorSchemes/AuthenticationColorScheme.xaml"/>
 
                 <ResourceDictionary Source="/Resources/Styles/Border.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/Button.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/ToggleButton.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/RadioButton.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/ScrollBar.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/ContextMenu.xaml"/>
@@ -24,8 +26,10 @@
                 <ResourceDictionary Source="/Resources/Styles/TextBox.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/TextBlock.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/Label.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/PasswordBox.xaml"/>
 
-                <ResourceDictionary Source="/Resources\lang.en-EN.xaml"/>
+                <ResourceDictionary Source="/Resources/lang.en-EN.xaml"/>
+                <ResourceDictionary Source="/Resources/lang.ru-RU.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

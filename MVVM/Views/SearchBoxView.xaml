@@ -75,7 +75,7 @@
                     FontSize="14"
                     VerticalContentAlignment="Center"
                     Cursor="IBeam"
-                    CaretBrush="{StaticResource AccentBrush}"
+                    CaretBrush="{StaticResource AccentBrush2}"
                     BorderThickness="0"
                     Padding="10, 0, 5, 0"
                     Background="Transparent"
@@ -115,8 +115,7 @@
                         Content="{Binding Geometry, Source={StaticResource CloseIcon}}"
                         Width="0"
                         Height="25"
-                        Cursor="Hand"
-                        Style="{StaticResource CommonSvgResponsiveButton}">
+                        Style="{StaticResource SvgResponsiveButton}">
                 </Button>
             </StackPanel>
         </Grid>

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ReactiveMarbles.ObservableEvents;
 using ReactiveUI;
 using YetAnotherMessenger.MVVM.ViewModels;
 
@@ -31,9 +32,10 @@ namespace YetAnotherMessenger.MVVM.Views
 
 			this.WhenActivated(disposables =>
 			{
-				this.BindCommand(ViewModel,
-						viewModel => viewModel.CloseMainMenuCommand,
-						view => view.CloseMainMenuButton)
+				NewAccountButton
+					.Events()
+					.Click
+					.Subscribe(_ => AuthenticationWindowViewModel.Instance.OpenSelfCommand.Execute())
 					.DisposeWith(disposables);
 			});
 		}

@@ -16,6 +16,6 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 		public MenuViewModel MenuVM { get; set; } = MenuViewModel.Instance;
 
 		[Reactive]
-		public ConversationViewModel ConversationViewModel { get; set; } = ConversationViewModel.Instance;
+		public ConversationViewModel ConversationVM { get; set; } = ConversationViewModel.Instance;
 	}
 }

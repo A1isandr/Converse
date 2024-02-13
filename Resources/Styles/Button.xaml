@@ -3,76 +3,48 @@
 
     <Style x:Key="CommonButton"
            TargetType="Button">
+
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="Background" Value="{StaticResource CommonButtonBackgroundBrush}"/>
+        <Setter Property="Padding" Value="2, 0, 2, 0"/>
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate
                     TargetType="Button">
-
+                    
                     <Border x:Name="ButtonBorder"
-                        Padding="{TemplateBinding Padding}"
                         CornerRadius="10"
-                        BorderThickness="2"
-                        BorderBrush="Transparent"
-                        Background="{StaticResource CommonButtonBackgroundBrush}">
+                        Cursor="{TemplateBinding Cursor}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        Background="{TemplateBinding Background}">
 
-                        <ContentPresenter
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"/>
+                        <Border x:Name="ButtonOverlay"
+                            Padding="{TemplateBinding Padding}"
+                            CornerRadius="{Binding ElementName=ButtonBorder, Path=CornerRadius, FallbackValue=0}">
+
+                            <ContentPresenter x:Name="ContentPresenter"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
                     </Border>
 
                     <ControlTemplate.Triggers>
-                        <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation
-                                        Storyboard.TargetName="ButtonBorder"
-                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                        To="{StaticResource CommonButtonMouseLeftButtonDownBackgroundColor}"
-                                        Duration="0:0:0"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-
-                        <EventTrigger RoutedEvent="PreviewMouseLeftButtonUp">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation
-                                        Storyboard.TargetName="ButtonBorder"
-                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                        To="{StaticResource CommonButtonMouseOverBackgroundColor}"
-                                        Duration="0:0:0"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                        
-                        <EventTrigger RoutedEvent="MouseEnter">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation
-                                        Storyboard.TargetName="ButtonBorder"
-                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                        To="{StaticResource CommonButtonMouseOverBackgroundColor}"
-                                        Duration="0:0:0.0"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                        
-                        <EventTrigger RoutedEvent="MouseLeave">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation
-                                        Storyboard.TargetName="ButtonBorder"
-                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                        To="{StaticResource CommonButtonBackgroundColor}"
-                                        Duration="0:0:0.0"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter
+                                TargetName="ButtonOverlay"
+                                Property="Background"
+                                Value="{StaticResource CommonButtonMouseOverBackgroundBrush}"/>
+                        </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter 
-                                TargetName="ButtonBorder" 
-                                Property="BorderBrush" 
+                            <Setter
+                                TargetName="ButtonBorder"
+                                Property="BorderBrush"
                                 Value="{StaticResource AccentGradientBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -81,8 +53,12 @@
         </Setter>
     </Style>
 
-    <Style x:Key="CommonSvgResponsiveButton"
-           TargetType="Button">
+    <Style x:Key="SvgResponsiveButton"
+           TargetType="Button"
+           BasedOn="{StaticResource CommonButton}">
+        
+        <Setter Property="Foreground" Value="{StaticResource SvgResponsiveButtonFillBrush}"/>
+        <Setter Property="Padding" Value="3, 0, 3, 0"/>
 
         <Setter Property="Template">
             <Setter.Value>
@@ -90,78 +66,29 @@
                     TargetType="Button">
 
                     <Border x:Name="ButtonBorder"
-                        Padding="{TemplateBinding Padding}"
                         CornerRadius="10"
-                        BorderThickness="2"
-                        BorderBrush="Transparent"
-                        Background="{StaticResource CommonButtonBackgroundBrush}">
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Background="{TemplateBinding Background}"
+                        Padding="{TemplateBinding Padding}">
 
                         <Path x:Name="SvgIcon"
-                            Fill="{StaticResource CommonSvgResponsiveButtonFillBrush}"
+                            Fill="{TemplateBinding Foreground}"
                             Data="{TemplateBinding Content}"
                             Stretch="Uniform"/>
                     </Border>
 
                     <ControlTemplate.Triggers>
-                        <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation
-                                        Storyboard.TargetName="ButtonBorder"
-                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                        To="{StaticResource CommonButtonMouseLeftButtonDownBackgroundColor}"
-                                        Duration="0:0:0"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-
-                        <EventTrigger RoutedEvent="PreviewMouseLeftButtonUp">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation
-                                        Storyboard.TargetName="ButtonBorder"
-                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                        To="{StaticResource CommonButtonBackgroundColor}"
-                                        Duration="0:0:0"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-
-                        <!--<EventTrigger RoutedEvent="MouseEnter">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation
-                                        Storyboard.TargetName="SvgIcon"
-                                        Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
-                                        To="{StaticResource CommonSvgResponsiveButtonMouseOverFillColor}"
-                                        Duration="0:0:0.0"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-
-                        <EventTrigger RoutedEvent="MouseLeave">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation
-                                        Storyboard.TargetName="SvgIcon"
-                                        Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
-                                        To="{StaticResource CommonSvgResponsiveButtonFillColor}"
-                                        Duration="0:0:0.0"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>-->
-
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter
-                                TargetName="SvgIcon"
-                                Property="Fill"
+                                Property="Foreground"
                                 Value="{StaticResource AccentGradientBrush}"/>
                         </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">
                             <Setter 
-                                TargetName="ButtonBorder" 
-                                Property="BorderBrush" 
+                                TargetName="ButtonBorder"
+                                Property="BorderBrush"
                                 Value="{StaticResource AccentGradientBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -170,170 +97,105 @@
         </Setter>
     </Style>
 
-    <Style x:Key="CommonWindowHeaderButton"
-           TargetType="Button">
+    <Style x:Key="WindowHeaderButton"
+           TargetType="Button"
+           BasedOn="{StaticResource SvgResponsiveButton}">
+        
+        <Setter Property="Foreground" Value="{StaticResource HeaderButtonsForegroundFillBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="{StaticResource HeaderButtonsBackgroundBrush}"/>
+        <Setter Property="Cursor" Value="Arrow"/>
+        <Setter Property="Padding" Value="8, 0, 8, 0"/>
 
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate
-                    TargetType="Button">
-
-                    <Border
-                        CornerRadius="10"
-                        Padding="{TemplateBinding Padding}"
-                        Background="{StaticResource HeaderButtonsBackgroundBrush}">
-
-                        <Path x:Name="SvgIcon"
-                            Height="18"
-                            Width="18"
-                            Stretch="Uniform"
-                            Fill="{StaticResource HeaderButtonsForegroundFillBrush}"
-                            Data="{TemplateBinding Content}"/>
-                    </Border>
-                    
-                    <ControlTemplate.Triggers>
-                        <EventTrigger RoutedEvent="MouseEnter">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation
-                                        Storyboard.TargetName="SvgIcon"
-                                        Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
-                                        To="{StaticResource HeaderButtonsMouseOverForegroundFillColor}"
-                                        Duration="0:0:0.0"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-
-                        <EventTrigger RoutedEvent="MouseLeave">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation
-                                        Storyboard.TargetName="SvgIcon"
-                                        Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
-                                        To="{StaticResource HeaderButtonsForegroundFillColor}"
-                                        Duration="0:0:0.0"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter
+                    Property="Foreground"
+                    Value="{StaticResource HeaderButtonsMouseOverForegroundFillBrush}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="CloseWindowHeaderButton"
-       TargetType="Button">
-
-        <Setter Property="Template">
+       TargetType="Button"
+       BasedOn="{StaticResource WindowHeaderButton}">
+        
+        <Setter Property="Effect">
             <Setter.Value>
-                <ControlTemplate
-                    TargetType="Button">
-
-                    <Border x:Name="ButtonBorder"
-                        CornerRadius="10"
-                        Padding="{TemplateBinding Padding}"
-                        Background="{StaticResource HeaderButtonsBackgroundBrush}">
-                        
-                        <Border.Effect>
-                            <DropShadowEffect
-                                Color="Red"
-                                BlurRadius="0" 
-                                Opacity="0" 
-                                ShadowDepth="0"
-                                Direction="0"/>
-                        </Border.Effect>
-
-                        <Path x:Name="SvgIcon"
-                            Height="20"
-                            Width="20"
-                            Stretch="Uniform"
-                            Fill="{StaticResource HeaderButtonsForegroundFillBrush}"
-                            Data="{TemplateBinding Content}"/>
-                    </Border>
-
-                    <ControlTemplate.Triggers>
-                        <EventTrigger RoutedEvent="MouseEnter">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation
-                                        Storyboard.TargetName="SvgIcon"
-                                        Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
-                                        To="{StaticResource HeaderButtonsMouseOverForegroundFillColor}"
-                                        Duration="0:0:0.0"/>
-
-                                    <ColorAnimation
-                                        Storyboard.TargetName="ButtonBorder"
-                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                        To="{StaticResource CloseWindowButtonMouseOverBackgroundColor}"
-                                        Duration="0:0:0:0"/>
-
-                                    <DoubleAnimation
-                                        Storyboard.TargetName="ButtonBorder"
-                                        Storyboard.TargetProperty="Effect.Opacity"
-                                        To="1" 
-                                        Duration="0:0:0.3">
-
-                                        <DoubleAnimation.EasingFunction>
-                                            <CubicEase EasingMode="EaseOut"/>
-                                        </DoubleAnimation.EasingFunction>
-                                    </DoubleAnimation>
-
-                                    <DoubleAnimation
-                                        Storyboard.TargetName="ButtonBorder"
-                                        Storyboard.TargetProperty="Effect.BlurRadius"
-                                        To="50" 
-                                        Duration="0:0:0.3">
-
-                                        <DoubleAnimation.EasingFunction>
-                                            <CubicEase EasingMode="EaseOut"/>
-                                        </DoubleAnimation.EasingFunction>
-                                    </DoubleAnimation>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-
-                        <EventTrigger RoutedEvent="MouseLeave">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation
-                                        Storyboard.TargetName="SvgIcon"
-                                        Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
-                                        To="{StaticResource HeaderButtonsForegroundFillColor}"
-                                        Duration="0:0:0.0"/>
-
-                                    <ColorAnimation
-                                        Storyboard.TargetName="ButtonBorder"
-                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                        To="{StaticResource HeaderButtonsBackgroundColor}"
-                                        Duration="0:0:0:0"/>
-
-                                    <DoubleAnimation
-                                        Storyboard.TargetName="ButtonBorder"
-                                        Storyboard.TargetProperty="Effect.Opacity"
-                                        To="0" 
-                                        Duration="0:0:0.3">
-
-                                        <DoubleAnimation.EasingFunction>
-                                            <CubicEase EasingMode="EaseOut"/>
-                                        </DoubleAnimation.EasingFunction>
-                                    </DoubleAnimation>
-
-                                    <DoubleAnimation
-                                        Storyboard.TargetName="ButtonBorder"
-                                        Storyboard.TargetProperty="Effect.BlurRadius"
-                                        To="0" 
-                                        Duration="0:0:0.3">
-
-                                        <DoubleAnimation.EasingFunction>
-                                            <CubicEase EasingMode="EaseOut"/>
-                                        </DoubleAnimation.EasingFunction>
-                                    </DoubleAnimation>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
+                <DropShadowEffect
+                    Color="{StaticResource CloseWindowButtonDropShadowEffectColor}"
+                    BlurRadius="0"
+                    Opacity="0"
+                    ShadowDepth="0"
+                    Direction="0"/>
             </Setter.Value>
         </Setter>
+
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                            Storyboard.TargetProperty="Effect.Opacity"
+                            To="1" 
+                            Duration="0:0:0.3">
+
+                            <DoubleAnimation.EasingFunction>
+                                <CubicEase EasingMode="EaseOut"/>
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+
+                        <DoubleAnimation
+                            Storyboard.TargetProperty="Effect.BlurRadius"
+                            To="50" 
+                            Duration="0:0:0.3">
+
+                            <DoubleAnimation.EasingFunction>
+                                <CubicEase EasingMode="EaseOut"/>
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                            Storyboard.TargetProperty="Effect.Opacity"
+                            To="0" 
+                            Duration="0:0:0.3">
+
+                            <DoubleAnimation.EasingFunction>
+                                <CubicEase EasingMode="EaseOut"/>
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+
+                        <DoubleAnimation
+                            Storyboard.TargetProperty="Effect.BlurRadius"
+                            To="0" 
+                            Duration="0:0:0.3">
+
+                            <DoubleAnimation.EasingFunction>
+                                <CubicEase EasingMode="EaseOut"/>
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter
+                    Property="Background"
+                    Value="{StaticResource CloseWindowButtonMouseOverBackgroundBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="UserPreviewButton"
+           TargetType="Button"
+           BasedOn="{StaticResource CommonButton}">
+
+            
     </Style>
 </ResourceDictionary>

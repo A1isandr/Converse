@@ -15,14 +15,13 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         
         <Border
             Grid.Row="0"
             CornerRadius="20"
-            Padding="5"
             Margin="5"
             Background="{StaticResource MainMenuBackgroundBrush}">
 
@@ -31,18 +30,46 @@
                     Content="{Binding Geometry, Source={StaticResource CloseIcon}}"
                     Width="35"
                     Height="35"
-                    Cursor="Hand"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Right"
-                    Padding="2, 0, 2, 0"
                     Panel.ZIndex="1"
-                    Style="{StaticResource CommonSvgResponsiveButton}"/>
+                    Style="{StaticResource SvgResponsiveButton}"/>
                 
                 <Border
-                    Panel.ZIndex="0"
-                    Margin="10">
+                    Panel.ZIndex="0">
+                    
+                    <StackPanel
+                        Orientation="Vertical">
 
-                    <local:UserPreviewView/>
+                        <local:UserPreviewView
+                            IsEnabled="False"/>
+
+                        <Button x:Name="NewAccountButton"
+                            Height="50"
+                            Style="{StaticResource CommonButton}"
+                            Padding="10, 0, 0, 0">
+
+                            <Button.Content>
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Left">
+
+                                    <Path
+                                        Data="{Binding Geometry, Source={StaticResource AccountAddIcon}}"
+                                        Fill="{StaticResource AccentGradientBrush}"
+                                        VerticalAlignment="Center"
+                                        Margin="0, 0, 20, 0"/>
+
+                                    <TextBlock
+                                        Text="New Account"
+                                        Foreground="{StaticResource MainMenuButtonForegroundBrush}"
+                                        FontSize="14"
+                                        FontWeight="Medium"
+                                        VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
                 </Border>
             </Grid>
         </Border>
@@ -58,9 +85,8 @@
 
                 <Button
                     Height="50"
-                    Cursor="Hand"
-                    Padding="10, 0, 0, 0"
-                    Style="{StaticResource CommonButton}">
+                    Style="{StaticResource CommonButton}"
+                    Padding="10, 0, 0, 0">
 
                     <Button.Content>
                         <StackPanel
@@ -85,9 +111,8 @@
 
                 <Button
                     Height="50"
-                    Cursor="Hand"
-                    Padding="10, 0, 0, 0"
-                    Style="{StaticResource CommonButton}">
+                    Style="{StaticResource CommonButton}"
+                    Padding="10, 0, 0, 0">
 
                     <Button.Content>
                         <StackPanel
@@ -109,33 +134,50 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
+                
+                <Grid>
+                    <Button
+                        Height="50"
+                        Style="{StaticResource CommonButton}"
+                        Padding="10, 0, 10, 0">
 
-                <Button
-                    Height="50"
-                    Cursor="Hand"
-                    Padding="10, 0, 0, 0"
-                    Style="{StaticResource CommonButton}">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
 
-                    <Button.Content>
-                        <StackPanel
-                            Orientation="Horizontal"
-                            HorizontalAlignment="Left">
+                                <Path
+                                    Grid.Column="0"
+                                    Data="{Binding Geometry, Source={StaticResource DarkModeIcon}}"
+                                    Fill="{StaticResource AccentGradientBrush}"
+                                    VerticalAlignment="Center"
+                                    Margin="0, 0, 20, 0"/>
 
-                            <Path
-                                Data="{Binding Geometry, Source={StaticResource DarkModeIcon}}"
-                                Fill="{StaticResource AccentGradientBrush}"
-                                VerticalAlignment="Center"
-                                Margin="0, 0, 20, 0"/>
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Text="Dark Mode"
+                                    Foreground="{StaticResource MainMenuButtonForegroundBrush}"
+                                    FontSize="14"
+                                    FontWeight="Medium"
+                                    VerticalAlignment="Center"/>
 
-                            <TextBlock
-                                Text="Dark Mode"
-                                Foreground="{StaticResource MainMenuButtonForegroundBrush}"
-                                FontSize="14"
-                                FontWeight="Medium"
-                                VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </Button.Content>
-                </Button>
+                                <ToggleButton
+                                    Grid.Column="2"
+                                    Width="50"
+                                    Height="27"
+                                    HorizontalAlignment="Right"
+                                    Foreground="{StaticResource AccentGradientBrush}"
+                                    Background="{StaticResource AuthenticationToggleButtonBackgroundBrush}"
+                                    BorderBrush="{StaticResource MainMenuBackgroundBrush}"
+                                    Style="{StaticResource ToggleSwitch}"
+                                    Padding="3"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                </Grid>
             </StackPanel>
         </Border>
     </Grid>

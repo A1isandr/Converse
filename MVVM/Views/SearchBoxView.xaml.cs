@@ -27,9 +27,24 @@ namespace YetAnotherMessenger.MVVM.Views
 	{
 		private readonly double _clearSearchTermButtonWidth = 25.0;
 
+		private readonly Storyboard _clearSearchTermButtonSlideIn;
+
 		public SearchBoxView()
 		{
 			InitializeComponent();
+
+			_clearSearchTermButtonSlideIn = new StoryboardBuilder()
+				.AddDoubleAnimation
+				(
+					targetObject: ClearSearchTermButton,
+					targetProperty: WidthProperty,
+					startingValue: ClearSearchTermButton.ActualWidth,
+					targetValue: _clearSearchTermButtonWidth,
+					beginTime: TimeSpan.Zero,
+					duration: TimeSpan.FromMilliseconds(300),
+					easingFunction: new QuadraticEase { EasingMode = EasingMode.EaseInOut }
+				)
+				.End();
 
 			ViewModel = SearchBoxViewModel.Instance;
 
@@ -53,28 +68,23 @@ namespace YetAnotherMessenger.MVVM.Views
 
 			if (textBox.Text == string.Empty)
 			{
-				Animator.WidthAnimation
-				(
-					target: ClearSearchTermButton,
-					startingWidth: ClearSearchTermButton.ActualWidth,
-					targetWidth: 0,
-					beginTime: TimeSpan.FromMilliseconds(0),
-					duration: TimeSpan.FromMilliseconds(300),
-					fillBehavior: FillBehavior.HoldEnd,
-					easingFunction: new QuadraticEase { EasingMode = EasingMode.EaseInOut }
-				);
+				new StoryboardBuilder()
+					.AddDoubleAnimation
+					(
+						targetObject: ClearSearchTermButton,
+						targetProperty: WidthProperty,
+						startingValue: ClearSearchTermButton.ActualWidth,
+						targetValue: 0,
+						beginTime: TimeSpan.Zero,
+						duration: TimeSpan.FromMilliseconds(300),
+						easingFunction: new QuadraticEase { EasingMode = EasingMode.EaseInOut }
+					)
+					.End()
+					.Begin();
 			}
 			else if (textBox.Text.Length == e.Changes.First().AddedLength)
 			{
-				Animator.WidthAnimation
-				(
-					target: ClearSearchTermButton,
-					startingWidth: ClearSearchTermButton.ActualWidth,
-					targetWidth: _clearSearchTermButtonWidth,
-					beginTime: TimeSpan.FromMilliseconds(0),
-					duration: TimeSpan.FromMilliseconds(300),
-					easingFunction: new QuadraticEase { EasingMode = EasingMode.EaseInOut }
-				);
+				_clearSearchTermButtonSlideIn.Begin();
 			}
 		}
 	}

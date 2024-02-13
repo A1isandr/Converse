@@ -23,6 +23,8 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 
 		public Message LastMessage => Conversation.Messages.Last();
 
+		public Uri Avatar => Conversation.Participants.First(x => x != AppConfig.CurrentUser).Profile!.Avatar;
+
 		public string LastMessagePrescription
 		{
 			get
@@ -32,19 +34,9 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 					return LastMessage.DateTimeCreated.ToString("HH:mm", CultureInfo.CurrentCulture);
 				}
 
-				return LastMessage!.DateTimeCreated.ToString(LastMessage?.DateTimeCreated.Year == DateTime.UtcNow.Year ?
+				return LastMessage!.DateTimeCreated.ToString(LastMessage.DateTimeCreated.Year == DateTime.UtcNow.Year ?
 					"M" :
 					"yyyy MMMM dd", CultureInfo.CurrentCulture);
-			}
-		}
-
-		public Uri Avatar
-		{
-			get
-			{
-				return Conversation.Participants.Count == 2 ?
-					Conversation.Participants.First(x => x != AppConfig.CurrentUser).Profile.Avatar :
-					new Uri("pack://application:,,,/Resources/Images/Many.png");
 			}
 		}
 

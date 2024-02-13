@@ -5,7 +5,7 @@
                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                           xmlns:local="clr-namespace:YetAnotherMessenger.MVVM.Views"
                           xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
-                          xmlns:misc="clr-namespace:YetAnotherMessenger.Misc"
+                          xmlns:converters="clr-namespace:YetAnotherMessenger.Misc.Converters"
                           xmlns:vm="clr-namespace:YetAnotherMessenger.MVVM.ViewModels"
                           xmlns:rxui="http://reactiveui.net"
                           x:TypeArguments="vm:MenuViewModel"
@@ -13,11 +13,11 @@
                           d:DesignHeight="600" d:DesignWidth="300">
 
     <UserControl.Resources>
-        <misc:RectConverter x:Key="RectConverter"/>
+        <converters:RectConverter x:Key="RectConverter"/>
     </UserControl.Resources>
 
     <Border
-        Style="{StaticResource MainViewWrapper}">
+        Style="{StaticResource ViewWrapper}">
 
         <Border x:Name="MenuWrapper">
             <Border.Clip>
@@ -35,23 +35,18 @@
             </Border.Clip>
 
             <Grid>
-                <Expander x:Name="MainMenuExpander"
-                          ExpandDirection="Left"
-                          Style="{StaticResource CommonExpander}"
-                          Collapsed="MenuExpander_OnCollapsed"
-                          Expanded="MenuExpander_OnExpanded"
-                          Visibility="Hidden">
+                <Expander x:Name="ListMenuExpander"
+                          ExpandDirection="Right"
+                          Style="{StaticResource SlideExpander}">
 
-                    <local:MainMenuView x:Name="MainMenuView"/>
+                    <local:ListMenuView x:Name="ListMenuView"/>
                 </Expander>
 
-                <Expander x:Name="ChatListMenuExpander"
-                          ExpandDirection="Right"
-                          Style="{StaticResource CommonExpander}"
-                          Collapsed="MenuExpander_OnCollapsed"
-                          Expanded="MenuExpander_OnExpanded">
+                <Expander x:Name="MainMenuExpander"
+                          ExpandDirection="Left"
+                          Style="{StaticResource SlideExpander}">
 
-                    <local:ConversationListMenuView x:Name="ChatListMenuView"/>
+                    <local:MainMenuView x:Name="MainMenuView"/>
                 </Expander>
             </Grid>
         </Border>

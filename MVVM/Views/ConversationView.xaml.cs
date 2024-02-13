@@ -34,7 +34,7 @@ namespace YetAnotherMessenger.MVVM.Views
 			this.WhenActivated(disposables =>
 			{
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.IsChatWindowVisible,
+						viewModel => viewModel.IsConversationOpened,
 						view => view.ChatWindow.Visibility)
 					.DisposeWith(disposables);
 
@@ -46,6 +46,11 @@ namespace YetAnotherMessenger.MVVM.Views
 				this.OneWayBind(ViewModel,
 						viewModel => viewModel.Messages,
 						view => view.MessagesPresenter.ItemsSource)
+					.DisposeWith(disposables);
+
+				this.OneWayBind(ViewModel,
+						viewModel => viewModel.HasMessages,
+						view => view.NoMessagesLabel.Visibility)
 					.DisposeWith(disposables);
 			});
 		}

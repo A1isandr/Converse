@@ -1,0 +1,66 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--Colors-->
+    <Color x:Key="SearchBoxBackgroundColor">#4d4d4d</Color>
+    <Color x:Key="SearchBoxForegroundColor">White</Color>
+    <Color x:Key="SearchBoxLabelForegroundColor"
+           R="153" G="153" B="153" A="150"/>
+
+    <Color x:Key="ConversationPreviewBackgroundColor">Transparent</Color>
+    <Color x:Key="ConversationPreviewMouseOverBackgroundColor"
+           R="64" G="64" B="64" A="150"/>
+    <Color x:Key="ConversationPreviewMouseLeftButtonDownBackgroundColor"
+           R="64" G="64" B="64" A="200"/>
+    <Color x:Key="ConversationPreviewIsCheckedBackgroundColor"
+           R="64" G="64" B="64" A="200"/>
+    <Color x:Key="ConversationPreviewForegroundSecondaryColor"
+           R="255" G="255" B="255" A="90"/>
+
+    <Color x:Key="UserPreviewBackgroundColor">Transparent</Color>
+    <Color x:Key="UserPreviewMouseOverBackgroundColor"
+           R="64" G="64" B="64" A="150"/>
+    <Color x:Key="UserPreviewMouseLeftButtonDownBackgroundColor"
+           R="64" G="64" B="64" A="200"/>
+    <Color x:Key="UserPreviewIsPressedBackgroundColor"
+           R="64" G="64" B="64" A="200"/>
+    
+    <!--Brushes-->
+    <SolidColorBrush x:Key="MenuBackgroundBrush"
+                     Color="#1f1f1f"/>
+
+    <SolidColorBrush x:Key="SearchBoxBackgroundBrush"
+                     Color="{StaticResource SearchBoxBackgroundColor}"/>
+    <SolidColorBrush x:Key="SearchBoxForegroundBrush"
+                     Color="{StaticResource SearchBoxForegroundColor}"/>
+    <SolidColorBrush x:Key="SearchBoxLabelForegroundBrush"
+                     Color="{StaticResource SearchBoxLabelForegroundColor}"/>
+
+    <SolidColorBrush x:Key="MenuButtonBackgroundBrush"
+                     Color="#4d4d4d"/>
+
+    <SolidColorBrush x:Key="SearchResultHeaderBackgroundBrush"
+                     Color="#4d4d4d"/>
+
+    <SolidColorBrush x:Key="ConversationPreviewBackgroundBrush"
+                     Color="{StaticResource ConversationPreviewBackgroundColor}"/>
+    <SolidColorBrush x:Key="ConversationPreviewMouseOverBackgroundBrush"
+                     Color="{StaticResource ConversationPreviewMouseOverBackgroundColor}"/>
+    <SolidColorBrush x:Key="ConversationPreviewIsPressedBackgroundBrush"
+                     Color="{StaticResource ConversationPreviewMouseLeftButtonDownBackgroundColor}"/>
+    <SolidColorBrush x:Key="ConversationPreviewIsCheckedBackgroundBrush"
+                     Color="{StaticResource ConversationPreviewIsCheckedBackgroundColor}"/>
+    <SolidColorBrush x:Key="ConversationPreviewForegroundBrush"
+                     Color="White"/>
+    <SolidColorBrush x:Key="ConversationPreviewForegroundSecondaryBrush"
+                     Color="{StaticResource ConversationPreviewForegroundSecondaryColor}"/>
+
+    <SolidColorBrush x:Key="UserPreviewBackgroundBrush"
+                     Color="{StaticResource UserPreviewBackgroundColor}"/>
+    <SolidColorBrush x:Key="UserPreviewMouseOverBackgroundBrush"
+                     Color="{StaticResource ConversationPreviewMouseOverBackgroundColor}"/>
+    <SolidColorBrush x:Key="UserPreviewIsPressedBackgroundBrush"
+                     Color="{StaticResource UserPreviewMouseLeftButtonDownBackgroundColor}"/>
+    <SolidColorBrush x:Key="UserPreviewForegroundBrush"
+                     Color="White"/>
+</ResourceDictionary>

@@ -1,0 +1,263 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:converters="clr-namespace:YetAnotherMessenger.Misc.Converters">
+
+    <Style x:Key="Switch"
+           TargetType="ToggleButton">
+        
+        <Style.Resources>
+            <Thickness x:Key="SwitchBorderThickness">10</Thickness>
+            <Thickness x:Key="SwitchBorderMargin">-10</Thickness>
+
+            <system:Double x:Key="SwitchBorderDropShadowEffectBlurRadius">10</system:Double>
+            <system:Double x:Key="SwitchKnobDropShadowEffectBlurRadius">5</system:Double>
+            <system:Double x:Key="SwitchKnobDropShadowEffectOpacity">0.5</system:Double>
+            <system:Double x:Key="SwitchKnobRadius">10</system:Double>
+
+            <converters:KnobWidthConverter x:Key="KnobWidthConverter"/>
+            <converters:KnobTranslateTransformConverter x:Key="KnobTranslateTransformConverter"/>
+        </Style.Resources>
+
+        <Setter Property="Foreground" Value="{StaticResource AccentGradientBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource SwitchButtonBorderBrush}"/>
+        <Setter Property="Background" Value="{StaticResource SwitchButtonBackgroundBrush}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Padding" Value="5"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="ToggleButton">
+
+                    <Border x:Name="Button"
+                        BorderBrush="Transparent"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="10"
+                        ClipToBounds="True"
+                        Cursor="{TemplateBinding Cursor}"
+                        SnapsToDevicePixels="True">
+
+                        <Border x:Name="Border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{StaticResource SwitchBorderThickness}"
+                            Background="Transparent"
+                            CornerRadius="20"
+                            Margin="{StaticResource SwitchBorderMargin}"
+                            Padding="{TemplateBinding Padding}">
+
+                            <Border.Effect>
+                                <DropShadowEffect 
+                                    BlurRadius="{StaticResource SwitchBorderDropShadowEffectBlurRadius}"
+                                    ShadowDepth="0"/>
+                            </Border.Effect>
+
+                            <Border x:Name="KnobPath">
+                                <Rectangle x:Name="Knob"
+                                           RadiusX="{StaticResource SwitchKnobRadius}"
+                                           RadiusY="{StaticResource SwitchKnobRadius}"
+                                           Width="{Binding ElementName=KnobPath, Path=ActualWidth, Converter={StaticResource KnobWidthConverter}}"
+                                           Fill="{TemplateBinding Foreground}"
+                                           HorizontalAlignment="Left">
+
+                                    <Rectangle.Tag>
+                                        <system:Double>0.0</system:Double>
+                                    </Rectangle.Tag>
+
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect
+                                            BlurRadius="{StaticResource SwitchKnobDropShadowEffectBlurRadius}"
+                                            Opacity="{StaticResource SwitchKnobDropShadowEffectOpacity}"
+                                            ShadowDepth="0"/>
+                                    </Rectangle.Effect>
+
+                                    <Rectangle.RenderTransform>
+                                        <TranslateTransform x:Name="KnobTransform">
+                                            <TranslateTransform.X>
+                                                <MultiBinding Converter="{StaticResource KnobTranslateTransformConverter}" ConverterParameter="0.5" ConverterCulture="en-US">
+                                                    <Binding Path="ActualWidth" ElementName="KnobPath"/>
+                                                    <Binding Path="Tag" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Rectangle}"/>
+                                                </MultiBinding>
+                                            </TranslateTransform.X>
+                                        </TranslateTransform>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                            </Border>
+                        </Border>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Checked">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="Knob"
+                                        Storyboard.TargetProperty="Tag"
+                                        To="1"
+                                        Duration="0:0:0.5">
+
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase
+                                                 EasingMode="EaseInOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="Unchecked">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="Knob"
+                                        Storyboard.TargetProperty="Tag"
+                                        To="0"
+                                        Duration="0:0:0.5">
+
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase
+                                                EasingMode="EaseInOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ToggleSwitch"
+       TargetType="ToggleButton">
+
+        <Style.Resources>
+            <Thickness x:Key="ToggleSwitchBorderThickness">10</Thickness>
+            <Thickness x:Key="ToggleSwitchBorderMargin">-10</Thickness>
+            <Thickness x:Key="ToggleSwitchKnobPathPadding">7, 0, 7, 0</Thickness>
+
+            <system:Double x:Key="ToggleSwitchBorderDropShadowEffectBlurRadius">10</system:Double>
+            <system:Double x:Key="ToggleSwitchKnobDropShadowEffectBlurRadius">5</system:Double>
+            <system:Double x:Key="ToggleSwitchKnobDropShadowEffectOpacity">0.5</system:Double>
+            <system:Double x:Key="ToggleSwitchKnobRadius">10</system:Double>
+
+            <system:Boolean x:Key="ToggleSwitchButtonClipToBounds">True</system:Boolean>
+
+            <converters:KnobWidthConverter x:Key="KnobWidthConverter"/>
+            <converters:KnobTranslateTransformConverter x:Key="KnobTranslateTransformConverter"/>
+        </Style.Resources>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="ToggleButton">
+
+                    <Border x:Name="Button"
+                        BorderBrush="Transparent"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="10"
+                        ClipToBounds="True"
+                        Cursor="Hand"
+                        SnapsToDevicePixels="True">
+
+                        <Border x:Name="Border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{StaticResource ToggleSwitchBorderThickness}"
+                            Background="Transparent"
+                            CornerRadius="20"
+                            Margin="{StaticResource ToggleSwitchBorderMargin}"
+                            Padding="{TemplateBinding Padding}">
+
+                            <Border.Effect>
+                                <DropShadowEffect 
+                                BlurRadius="{StaticResource ToggleSwitchBorderDropShadowEffectBlurRadius}"
+                                ShadowDepth="0"/>
+                            </Border.Effect>
+
+                            <Border x:Name="KnobPath">
+                                <Ellipse x:Name="Knob"
+                                    Width="{Binding ElementName=KnobPath, Path=ActualWidth, Converter={StaticResource KnobWidthConverter}}"
+                                    Height="{Binding ElementName=KnobPath, Path=ActualHeight}"
+                                    Fill="{StaticResource ToggleSwitchButtonUncheckedKnobBrush}"
+                                    HorizontalAlignment="Left">
+
+                                    <Ellipse.Tag>
+                                        <system:Double>0.0</system:Double>
+                                    </Ellipse.Tag>
+
+                                    <Ellipse.Effect>
+                                        <DropShadowEffect
+                                            BlurRadius="{StaticResource ToggleSwitchKnobDropShadowEffectBlurRadius}"
+                                            Opacity="{StaticResource ToggleSwitchKnobDropShadowEffectOpacity}"
+                                            ShadowDepth="0"/>
+                                    </Ellipse.Effect>
+
+                                    <Ellipse.RenderTransform>
+                                        <TranslateTransform x:Name="KnobTransform">
+                                            <TranslateTransform.X>
+                                                <MultiBinding Converter="{StaticResource KnobTranslateTransformConverter}" ConverterParameter="0.5" ConverterCulture="en-US">
+                                                    <Binding Path="ActualWidth" ElementName="KnobPath"/>
+                                                    <Binding Path="Tag" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Ellipse}"/>
+                                                </MultiBinding>
+                                            </TranslateTransform.X>
+                                        </TranslateTransform>
+                                    </Ellipse.RenderTransform>
+                                </Ellipse>
+                            </Border>
+                        </Border>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Checked">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="Knob"
+                                        Storyboard.TargetProperty="Tag"
+                                        To="1"
+                                        Duration="0:0:0.3">
+
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase
+                                                EasingMode="EaseInOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Knob"
+                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                        To="{StaticResource AccentColor2}"
+                                        Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="Unchecked">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="Knob"
+                                        Storyboard.TargetProperty="Tag"
+                                        To="0"
+                                        Duration="0:0:0.3">
+
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase
+                                                EasingMode="EaseInOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Knob"
+                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                        To="{StaticResource ToggleSwitchButtonUncheckedKnobColor}"
+                                        Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

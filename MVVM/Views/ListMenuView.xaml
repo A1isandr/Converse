@@ -1,0 +1,196 @@
+﻿<rxui:ReactiveUserControl x:Class="YetAnotherMessenger.MVVM.Views.ListMenuView"
+                          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                          xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                          xmlns:local="clr-namespace:YetAnotherMessenger.MVVM.Views"
+                          xmlns:rxui="http://reactiveui.net"
+                          x:TypeArguments="vm:ListMenuViewModel"
+                          xmlns:yam="clr-namespace:YetAnotherMessenger"
+                          xmlns:views="clr-namespace:YetAnotherMessenger.MVVM.Views"
+                          xmlns:vm="clr-namespace:YetAnotherMessenger.MVVM.ViewModels"
+                          xmlns:converters="clr-namespace:YetAnotherMessenger.Misc.Converters"
+                          xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+                          mc:Ignorable="d" 
+                          d:DesignHeight="600" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <converters:RectConverter x:Key="RectConverter"/>
+    </UserControl.Resources>
+
+    <Grid
+        UseLayoutRounding="True">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border x:Name="MenuBorder"
+            Padding="10, 5, 10, 5"
+            Margin="5"
+            CornerRadius="20"
+            Background="{StaticResource MenuBackgroundBrush}">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="MainMenuButton"
+                    Grid.Column="0"
+                    Content="{Binding Geometry, Source={StaticResource MenuIcon}}"
+                    Width="35"
+                    Style="{StaticResource SvgResponsiveButton}"
+                    Margin="0, 0, 10, 0"/>
+
+                <local:SearchBoxView
+                    Grid.Column="1"/>
+            </Grid>
+        </Border>
+
+        <Border x:Name="PreviewBorder"
+            Grid.Row="1"
+            Margin="5"
+            CornerRadius="20">
+
+            <Border.Clip>
+                <RectangleGeometry 
+                    RadiusX="20"
+                    RadiusY="20">
+
+                    <RectangleGeometry.Rect>
+                        <MultiBinding Converter="{StaticResource RectConverter}">
+                            <Binding ElementName="PreviewBorder" Path="ActualWidth"/>
+                            <Binding ElementName="PreviewBorder" Path="ActualHeight"/>
+                        </MultiBinding>
+                    </RectangleGeometry.Rect>
+                </RectangleGeometry>
+            </Border.Clip>
+
+            <Grid>
+                <Label x:Name="SearchInProgressLabel"
+                    Content=". . ."
+                    FontSize="35"
+                    FontWeight="ExtraBold"
+                    Foreground="{StaticResource AccentGradientBrush}"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"/>
+
+                <ScrollViewer
+                    HorizontalScrollBarVisibility="Disabled"
+                    VerticalScrollBarVisibility="Auto"
+                    Style="{StaticResource SimpleScrollBar}">
+
+                    <StackPanel x:Name="StackPanel"
+                        Orientation="Vertical">
+
+                        <Border x:Name="ConversationsBorder"
+                            Background="{StaticResource MenuBackgroundBrush}"
+                            CornerRadius="20">
+
+                            <ItemsControl x:Name="ConversationPreviewsPresenter">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel
+                                            Orientation="Vertical"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                        </Border>
+
+                        <Border x:Name="ConversationSearchBorder"
+                            Background="{StaticResource MenuBackgroundBrush}"
+                            Margin="0, 0, 0, 10"
+                            CornerRadius="20">
+
+                            <StackPanel
+                                Orientation="Vertical">
+
+                                <Label
+                                    Content="Conversations"
+                                    FontSize="14"
+                                    FontWeight="Medium"
+                                    Foreground="{StaticResource AccentBrush1}"
+                                    HorizontalAlignment="Center"
+                                    Margin="0, 0, 0, 10"/>
+
+                                <ItemsControl x:Name="ConversationSearchPreviewsPresenter">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel
+                                                Orientation="Vertical"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Border>
+
+                        <Border x:Name="GlobalSearchBorder"
+                            Background="{StaticResource MenuBackgroundBrush}"
+                            Padding="0, 5, 0, 0"
+                            Margin="0, 0, 0, 10"
+                            CornerRadius="20">
+
+                            <StackPanel
+                                Orientation="Vertical">
+
+                                <Label
+                                    Content="Global search"
+                                    FontSize="14"
+                                    FontWeight="Medium"
+                                    Foreground="{StaticResource AccentBrush1}"
+                                    HorizontalAlignment="Center"
+                                    Margin="0, 0, 0, 10"/>
+
+                                <ItemsControl x:Name="GlobalSearchPreviewsPresenter">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel
+                                                Orientation="Vertical"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Border>
+
+                        <!--<Border x:Name="MessagesBorder"
+                                Background="{StaticResource MenuBackgroundBrush}"
+                                Padding="0, 5, 0, 5"
+                                CornerRadius="20">
+
+                                <StackPanel
+                                    Orientation="Vertical">
+
+                                    <Border
+                                        CornerRadius="10"
+                                        HorizontalAlignment="Center"
+                                        Background="{StaticResource SearchResultHeaderBackgroundBrush}"
+                                        Margin="0, 0, 0, 10">
+
+                                        <Label
+                                            Content="Messages"
+                                            FontSize="14"
+                                            FontWeight="Medium"
+                                            Foreground="{StaticResource AccentGradientBrush"/>
+                                    </Border>
+
+                                    <ItemsControl x:Name="MessagesSearchResultPresenter"
+                                        HorizontalContentAlignment="Stretch">
+
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel
+                                                    Orientation="Vertical"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                    </ItemsControl>
+                                </StackPanel>
+                        </Border>-->
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+    </Grid>
+</rxui:ReactiveUserControl>

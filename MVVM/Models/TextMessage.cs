@@ -8,8 +8,8 @@ using ReactiveUI.Fody.Helpers;
 
 namespace YetAnotherMessenger.MVVM.Models
 {
-	public class TextMessage(List<object>? attachments = null) : Message
+	public class TextMessage : Message
 	{
-		public List<object>? Attachments { get; set; } = attachments;
+		public List<Attachment>? Attachments { get; init; }
 	}
 }

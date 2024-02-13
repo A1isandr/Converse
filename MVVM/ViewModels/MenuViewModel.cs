@@ -22,14 +22,12 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 			}
 		}
 
-		private ConversationListMenuViewModel ConversationListMenuVM { get; set; } = ConversationListMenuViewModel.Instance;
+		public ListMenuViewModel ListMenuVM { get; set; } = ListMenuViewModel.Instance;
 
-		private MainMenuViewModel MainMenuVM { get; set; } = MainMenuViewModel.Instance;
+		public MainMenuViewModel MainMenuVM { get; set; } = MainMenuViewModel.Instance;
 
-		[Reactive]
-		public bool IsMainMenuOpen { get; set; }
+		[Reactive] public bool IsMainMenuOpen { get; set; }
 
-		[Reactive]
-		public bool IsChatListOpen { get; set; } = true;
+		[Reactive] public bool IsChatListOpen { get; set; } = true;
 	}
 }

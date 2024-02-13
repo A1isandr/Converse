@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--Brushes-->
+    <SolidColorBrush x:Key="AuthenticationWindowBackgroundBrush"
+                     Color="#121212"/>
+
+    <SolidColorBrush x:Key="AuthenticationBorderBackgroundBrush"
+                     Color="#1f1f1f"/>
+
+    <SolidColorBrush x:Key="AuthenticationToggleButtonBorderBrush"
+                     Color="#141414"/>
+    <SolidColorBrush x:Key="AuthenticationToggleButtonBackgroundBrush"
+                     Color="#4d4d4d"/>
+</ResourceDictionary>

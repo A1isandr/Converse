@@ -7,12 +7,12 @@
                           xmlns:rxui="http://reactiveui.net"
                           xmlns:vm="clr-namespace:YetAnotherMessenger.MVVM.ViewModels"
                           x:TypeArguments="vm:ConversationPreviewViewModel"
-                          mc:Ignorable="d" 
+                          mc:Ignorable="d"
                           d:DesignHeight="100" d:DesignWidth="250">
 
     <RadioButton x:Name="RadioButton" GroupName="ChatPreview"
-                 Style="{StaticResource MenuRadioButton}"
-                 Cursor="Hand">
+                 Cursor="Hand"
+                 Style="{StaticResource MenuRadioButton}">
 
         <Grid>
             <Grid.RowDefinitions>
@@ -37,7 +37,7 @@
                        Grid.Column="1"
                        FontSize="14"
                        FontWeight="Medium"
-                       Foreground="{StaticResource ChatPreviewForegroundBrush}"
+                       Foreground="{StaticResource ConversationPreviewForegroundBrush}"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        TextTrimming="CharacterEllipsis"/>
@@ -46,14 +46,14 @@
                        Grid.Row="0"
                        Grid.Column="1"
                        FontSize="12"
-                       Foreground="{StaticResource ChatPreviewForegroundSecondaryBrush}"
+                       Foreground="{StaticResource ConversationPreviewForegroundSecondaryBrush}"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"/>
 
             <TextBlock x:Name="LastMessage"
                        Grid.Row="1"
                        FontSize="14"
-                       Foreground="{StaticResource ChatPreviewForegroundSecondaryBrush}"
+                       Foreground="{StaticResource ConversationPreviewForegroundSecondaryBrush}"
                        Grid.Column="1"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"

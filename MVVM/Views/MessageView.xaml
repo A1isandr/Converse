@@ -58,7 +58,7 @@
                 VerticalAlignment="Top">
 
                 <Label x:Name="SenderName"
-                    Foreground="{StaticResource MessageForegroundBrush}"
+                    Foreground="{StaticResource MessageForegroundPrimaryBrush}"
                     FontSize="14"
                     FontWeight="Medium"/>
 
@@ -96,12 +96,11 @@
                 Grid.Row="0"
                 Grid.RowSpan="2"
                 Grid.Column="1"
-                Cursor="Hand"
                 Width="35"
                 Height="35"
                 HorizontalAlignment="Right"
                 Content="{Binding Geometry, Source={StaticResource MoreIcon}}"
-                Style="{StaticResource CommonSvgResponsiveButton}"
+                Style="{StaticResource SvgResponsiveButton}"
                 Visibility="Collapsed"/>
         </Grid>
     </Border>

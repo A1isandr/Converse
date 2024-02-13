@@ -19,8 +19,12 @@ namespace YetAnotherMessenger.MVVM.Models
 		[MaxLength(25)]
 		public required string Password { get; set; }
 
-		public UserProfile Profile { get; set; }
+		public bool IsSystem { get; set; }
 
-		public List<Conversation>? Conversations { get; set; }
+		public UserProfile? Profile { get; set; }
+
+		public List<Conversation> Conversations { get; set; } = [];
+
+		public List<Message> Messages { get; set; } = [];
 	}
 }

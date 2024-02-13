@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reactive;
-using System.Reactive.Disposables;
-using System.Reactive.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Windows.Devices.Sms;
-using ReactiveMarbles.ObservableEvents;
-using ReactiveUI;
+﻿using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
-using System.Diagnostics;
+using System.Reactive;
+using System.Reactive.Linq;
+using System.Windows.Input;
+using YetAnotherMessenger.Misc;
+using YetAnotherMessenger.MVVM.Models;
 
 namespace YetAnotherMessenger.MVVM.ViewModels
 {
@@ -28,8 +21,6 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 			}
 		}
 
-		public ReactiveCommand<Key, Unit> CRLFCommand { get; }
-
 		public ReactiveCommand<Key, Unit> SendMessageCommand { get; }
 
 		[Reactive] 
@@ -37,10 +28,40 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 
 		public MessageBoxViewModel()
 		{
-			var canExecute = this.WhenAnyValue(x => x.MessageDraft,
-				messageDraft => !string.IsNullOrEmpty(messageDraft));
+			var canExecute = this
+				.WhenAnyValue(x => x.MessageDraft)
+				.Select(messageDraft => !string.IsNullOrEmpty(messageDraft));
 
-			SendMessageCommand = ReactiveCommand.CreateFromObservable<Key, Unit>((_) => Observable.Return(Unit.Default), canExecute);
+			SendMessageCommand = ReactiveCommand.CreateFromObservable<Key, Unit>((_) =>
+			{
+				using ApplicationContext db = new();
+
+				var conversation = ConversationViewModel.Instance.Conversation;
+
+				if (conversation!.Messages.Count == 0)
+				{
+					foreach (var user in conversation.Participants)
+					{
+						user.Conversations.Add(conversation);
+					}
+
+					db.Users.UpdateRange(conversation.Participants);
+					db.Conversations.Add(conversation);
+					db.SaveChanges();
+				}
+
+				var message = new TextMessageFactory().MessageBuilder(MessageDraft!, AppConfig.CurrentUser);
+
+				db.Users.Update(AppConfig.CurrentUser);
+				db.MessageContents.Add(message.Content!);
+				db.Messages.Add(message);
+
+				conversation.Messages.Add(message);
+				db.Conversations.Update(conversation);
+
+				db.SaveChanges();
+				return Observable.Return(Unit.Default);
+			}, canExecute);
 		}
 	}
 }

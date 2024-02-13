@@ -11,7 +11,7 @@
 
                     <Border x:Name="RadioButtonBorder"
                         Padding="7"
-                        Background="{StaticResource ChatPreviewBackgroundBrush}"
+                        Background="{StaticResource ConversationPreviewBackgroundBrush}"
                         BorderThickness="2"
                         BorderBrush="Transparent"
                         CornerRadius="20">
@@ -28,7 +28,14 @@
                             <Setter
                                 TargetName="RadioButtonBorder"
                                 Property="Background"
-                                Value="{StaticResource ChatPreviewMouseOverBackgroundBrush}"/>
+                                Value="{StaticResource ConversationPreviewMouseOverBackgroundBrush}"/>
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter
+                                TargetName="RadioButtonBorder"
+                                Property="Background"
+                                Value="{StaticResource ConversationPreviewIsPressedBackgroundBrush}"/>
                         </Trigger>
 
                         <Trigger Property="IsChecked" Value="True">
@@ -40,7 +47,7 @@
                             <Setter 
                                 TargetName="RadioButtonBorder"
                                 Property="Background"
-                                Value="{StaticResource ChatPreviewIsCheckedBackgroundBrush}"/>
+                                Value="{StaticResource ConversationPreviewIsCheckedBackgroundBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

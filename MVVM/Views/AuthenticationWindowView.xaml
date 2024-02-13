@@ -1,0 +1,125 @@
+﻿<rxui:ReactiveUserControl x:Class="YetAnotherMessenger.MVVM.Views.AuthenticationWindowView"
+                          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                          xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                          xmlns:local="clr-namespace:YetAnotherMessenger.MVVM.Views"
+                          xmlns:rxui="http://reactiveui.net"
+                          xmlns:vm="clr-namespace:YetAnotherMessenger.MVVM.ViewModels"
+                          x:TypeArguments="vm:AuthenticationWindowViewModel"
+                          xmlns:views="clr-namespace:YetAnotherMessenger.MVVM.Views"
+                          xmlns:converters="clr-namespace:YetAnotherMessenger.Misc.Converters"
+                          mc:Ignorable="d"
+                          Width="500"
+                          d:DesignHeight="700" d:DesignWidth="500">
+
+    <UserControl.Resources>
+        <converters:RectConverter x:Key="RectConverter"/>
+    </UserControl.Resources>
+
+    <Grid
+        UseLayoutRounding="True">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border
+            Grid.Row="0"
+            Height="50"
+            Style="{StaticResource ViewWrapper}"
+            Margin="0, 0, 0, 10">
+            
+            <Grid>
+                <Grid
+                    HorizontalAlignment="Center">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <ToggleButton x:Name="ToggleButton"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Width="300"
+                        IsThreeState="False"
+                        Style="{StaticResource Switch}"
+                        Padding="5, 3, 5, 3"
+                        Margin="0, 5, 0, 5"/>
+
+                    <Label
+                        Grid.Column="0"
+                        Content="Log In"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        IsHitTestVisible="False"/>
+
+                    <Label
+                        Grid.Column="1"
+                        Content="Register"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        IsHitTestVisible="False"/>
+                </Grid>
+
+                <Button x:Name="CloseWindowButton"
+                    Content="{Binding Geometry, Source={StaticResource CloseIcon}}"
+                    Width="35"
+                    Height="35"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource SvgResponsiveButton}"
+                    Margin="0, 0, 10, 0"/>
+            </Grid>
+        </Border>
+        
+        <Border
+            Grid.Row="1"
+            Style="{StaticResource ViewWrapper}">
+
+            <Border>
+
+                <Border.Clip>
+                    <RectangleGeometry 
+                        RadiusX="20"
+                        RadiusY="20">
+
+                        <RectangleGeometry.Rect>
+                            <MultiBinding Converter="{StaticResource RectConverter}">
+                                <Binding Path="ActualWidth" RelativeSource="{RelativeSource FindAncestor, AncestorType=Border}"/>
+                                <Binding Path="ActualHeight" RelativeSource="{RelativeSource FindAncestor, AncestorType=Border}"/>
+                            </MultiBinding>
+                        </RectangleGeometry.Rect>
+                    </RectangleGeometry>
+                </Border.Clip>
+                
+                <ScrollViewer
+                    Style="{StaticResource SimpleScrollBar}">
+                    <Grid>
+                        <Expander x:Name="LogInWindowExpander"
+                                  ExpandDirection="Left"
+                                  IsExpanded="True"
+                                  Style="{StaticResource SlideExpander}">
+
+                            <views:LogInWindowView/>
+                        </Expander>
+
+                        <Expander x:Name="RegistrationWindowExpander"
+                                  ExpandDirection="Right"
+                                  Style="{StaticResource SlideExpander}">
+
+                            <views:RegistrationWindowView/>
+                        </Expander>
+                    </Grid>
+                </ScrollViewer>
+            </Border>
+        </Border>
+    </Grid>
+</rxui:ReactiveUserControl>

@@ -38,7 +38,7 @@ namespace YetAnotherMessenger.MVVM.Views
 			{
 				this.OneWayBind(ViewModel,
 						viewModel => viewModel.IsChatListOpen,
-						view => view.ChatListMenuExpander.IsExpanded)
+						view => view.ListMenuExpander.IsExpanded)
 					.DisposeWith(disposables);
 
 				this.OneWayBind(ViewModel,
@@ -49,74 +49,15 @@ namespace YetAnotherMessenger.MVVM.Views
 
 			MainMenuView.CloseMainMenuButton.Click += (_, _) =>
 			{
-				ViewModel.IsMainMenuOpen = !ViewModel.IsMainMenuOpen;
-				ViewModel.IsChatListOpen = !ViewModel.IsChatListOpen;
+				ViewModel.IsMainMenuOpen = false;
+				ViewModel.IsChatListOpen = true;
 			};
 
-			ChatListMenuView.MainMenuButton.Click += (_, _) =>
+			ListMenuView.MainMenuButton.Click += (_, _) =>
 			{
-				ViewModel.IsChatListOpen = !ViewModel.IsChatListOpen;
-				ViewModel.IsMainMenuOpen = !ViewModel.IsMainMenuOpen;
+				ViewModel.IsChatListOpen = false;
+				ViewModel.IsMainMenuOpen = true;
 			};
-		}
-
-		private void MenuExpander_OnCollapsed(object sender, RoutedEventArgs e)
-		{
-			var menu = (Expander)sender;
-			var targetOffsetLeft = menu.ActualWidth;
-			var targetOffsetRight = menu.ActualWidth;
-
-			switch (menu.ExpandDirection)
-			{
-				case ExpandDirection.Left:
-					targetOffsetRight *= -1;
-					break;
-				case ExpandDirection.Right:
-					targetOffsetLeft *= -1;
-					break;
-			}
-
-			Animator.SlideAnimation
-			(
-				target: menu,
-				targetOffsetLeft: targetOffsetLeft,
-				targetOffsetRight: targetOffsetRight,
-				beginTime: TimeSpan.FromMilliseconds(0),
-				duration: TimeSpan.FromMilliseconds(300),
-				fillBehavior: FillBehavior.Stop,
-				easingFunction: new QuadraticEase{EasingMode = EasingMode.EaseIn},
-				onComplete: (_, _) => { menu.Visibility = Visibility.Hidden; }
-			);
-		}
-
-		private void MenuExpander_OnExpanded(object sender, RoutedEventArgs e)
-		{
-			var menu = (Expander)sender;
-
-			Animator.SlideAnimation
-			(
-				target: menu,
-				targetOffsetLeft: 0,
-				targetOffsetRight: 0,
-				beginTime: TimeSpan.FromMilliseconds(150),
-				duration: TimeSpan.FromMilliseconds(300),
-				fillBehavior: FillBehavior.HoldEnd,
-				easingFunction: new QuadraticEase { EasingMode = EasingMode.EaseOut },
-				onStart: () =>
-				{
-					switch (menu.ExpandDirection)
-					{
-						case ExpandDirection.Left:
-							menu.Margin = new Thickness(MenuWrapper.ActualWidth, 0, -MenuWrapper.ActualWidth, 0);
-							break;
-						case ExpandDirection.Right:
-							menu.Margin = new Thickness(-MenuWrapper.ActualWidth, 0, MenuWrapper.ActualWidth, 0);
-							break;
-					}
-
-					menu.Visibility = Visibility.Visible;
-				}
-			);
 		}
 	}
 }

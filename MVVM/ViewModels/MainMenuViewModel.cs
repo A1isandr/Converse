@@ -22,11 +22,6 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 			}
 		}
 
-		public ReactiveCommand<Unit, Unit> CloseMainMenuCommand { get; }
 
-		public MainMenuViewModel()
-		{
-			CloseMainMenuCommand = ReactiveCommand.Create<Unit, Unit>(_ => Unit.Default);
-		}
 	}
 }

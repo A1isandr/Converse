@@ -1,0 +1,93 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--Colors-->
+        <!--ViewWrapper-->
+        <Color x:Key="ViewWrapperDropShadowEffectColor">Black</Color>
+
+        <!--CommonButton-->
+        <Color x:Key="CommonButtonBackgroundColor">Transparent</Color>
+        <Color x:Key="CommonButtonMouseOverBackgroundColor" 
+               R="64" G="64" B="64" A="150"/>
+        <Color x:Key="CommonButtonPressedBackgroundColor">#404040</Color>
+
+        <!--SvgResponsiveButton-->
+        <Color x:Key="SvgResponsiveButtonFillColor" 
+               R="255" G="255" B="255" A="200"/>
+        <Color x:Key="SvgResponsiveButtonMouseOverFillColor"
+               R="70" G="195" B="219" A="255"/>
+        
+        <!--SwitchButton-->
+        <Color x:Key="SwitchButtonBackgroundColor">#4d4d4d</Color>
+        <Color x:Key="SwitchButtonBorderColor">#141414</Color>
+        
+        <!--ToggleSwitchButton-->
+        <Color x:Key="ToggleSwitchButtonUncheckedKnobColor" 
+               R="255" G="255" B="255" A="200"/>
+
+        <!--Accent-->
+        <Color x:Key="AccentColor1">DeepSkyBlue</Color>
+        <Color x:Key="AccentColor2">DodgerBlue</Color>
+    
+    <!--Brushes-->
+        <!--SolidColorBrushes-->
+            <!--ViewWrapper-->
+            <SolidColorBrush x:Key="ViewWrapperBrush"
+                             Color="#141414"/>
+        
+            <!--CommonButton-->
+            <SolidColorBrush x:Key="CommonButtonBackgroundBrush"
+                             Color="{StaticResource CommonButtonBackgroundColor}"/>
+            <SolidColorBrush x:Key="CommonButtonMouseOverBackgroundBrush"
+                             Color="{StaticResource CommonButtonMouseOverBackgroundColor}"/>
+            <SolidColorBrush x:Key="CommonButtonPressedBackgroundBrush"
+                             Color="{StaticResource CommonButtonPressedBackgroundColor}"/>
+
+            <!--SvgResponsiveButton-->
+            <SolidColorBrush x:Key="SvgResponsiveButtonFillBrush"
+                            Color="{StaticResource SvgResponsiveButtonFillColor}"/>
+
+            <!--CommonTextBox-->
+            <SolidColorBrush x:Key="CommonTextBoxBackgroundBrush"
+                             Color="#4d4d4d"/>
+            <SolidColorBrush x:Key="CommonTextBoxForegroundBrush"
+                             Color="White"/>
+            <SolidColorBrush x:Key="CommonTextBoxCaretBrush"
+                             Color="White"/>
+        
+            <!--CommonPasswordBox-->
+            <SolidColorBrush x:Key="CommonPasswordBoxBackgroundBrush"
+                             Color="#4d4d4d"/>
+            <SolidColorBrush x:Key="CommonPasswordBoxForegroundBrush"
+                             Color="White"/>
+            <SolidColorBrush x:Key="CommonPasswordBoxCaretBrush"
+                             Color="White"/>
+            
+            <!--SwitchButton-->
+            <SolidColorBrush x:Key="SwitchButtonBackgroundBrush"
+                             Color="{StaticResource SwitchButtonBackgroundColor}"/>
+            <SolidColorBrush x:Key="SwitchButtonBorderBrush"
+                             Color="{StaticResource SwitchButtonBorderColor}"/>
+            
+            <!--ToggleSwitchButton-->
+            <SolidColorBrush x:Key="ToggleSwitchButtonUncheckedKnobBrush"
+                             Color="{StaticResource ToggleSwitchButtonUncheckedKnobColor}"/>
+        
+            <!--Accent-->
+            <SolidColorBrush x:Key="AccentBrush1"
+                             Color="{StaticResource AccentColor1}"/>
+            <SolidColorBrush x:Key="AccentBrush2"
+                             Color="{StaticResource AccentColor2}"/>
+    
+        <!--LinearGradientBrushes-->
+            <!--Accent-->
+            <LinearGradientBrush x:Key="AccentGradientBrush"
+                                 StartPoint="0,0" 
+                                 EndPoint="1,0">
+
+                <GradientStop Color="{StaticResource AccentColor2}" 
+                              Offset="0.0"/>
+                <GradientStop Color="{StaticResource AccentColor1}" 
+                              Offset="0.7"/>
+            </LinearGradientBrush>
+</ResourceDictionary>
