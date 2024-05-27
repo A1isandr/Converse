@@ -44,7 +44,7 @@ namespace YetAnotherMessenger.MVVM.Views
 					duration: TimeSpan.FromMilliseconds(300),
 					easingFunction: new QuadraticEase { EasingMode = EasingMode.EaseInOut }
 				)
-				.End();
+				.Build();
 
 			ViewModel = SearchBoxViewModel.Instance;
 
@@ -79,7 +79,7 @@ namespace YetAnotherMessenger.MVVM.Views
 						duration: TimeSpan.FromMilliseconds(300),
 						easingFunction: new QuadraticEase { EasingMode = EasingMode.EaseInOut }
 					)
-					.End()
+					.Build()
 					.Begin();
 			}
 			else if (textBox.Text.Length == e.Changes.First().AddedLength)

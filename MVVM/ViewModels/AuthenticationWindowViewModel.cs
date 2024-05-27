@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Windows.Navigation;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using YetAnotherMessenger.Misc;
+using YetAnotherMessenger.MVVM.Models;
 
 namespace YetAnotherMessenger.MVVM.ViewModels
 {
@@ -33,32 +35,34 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 		public ReactiveCommand<Unit, Unit> CloseSelfCommand { get; }
 
 		[Reactive]
-		public bool ToggleButtonIsChecked { get; set; }
-
-		private readonly ObservableAsPropertyHelper<bool> _isLogInWindowOpen;
-		public bool IsLogInWindowOpen => _isLogInWindowOpen.Value;
-
-		[Reactive]
 		public bool IsOpen { get; private set; }
+
+		private readonly ObservableAsPropertyHelper<bool> _isNotBusy;
+		public bool IsNotBusy => _isNotBusy.Value;
 
 		public AuthenticationWindowViewModel()
 		{
+			//var canClose = this
+			//	.WhenAnyValue(x => AuthorizationService.GetToken().Result)
+			//	.Select(token => token is not null);
+
 			OpenSelfCommand = ReactiveCommand.CreateFromObservable<Unit, Unit>(_ =>
 			{
 				IsOpen = !IsOpen;
+
 				return Observable.Return(Unit.Default);
 			});
 
 			CloseSelfCommand = ReactiveCommand.CreateFromObservable<Unit, Unit>(_ =>
 			{
 				IsOpen = !IsOpen;
+
 				return Observable.Return(Unit.Default);
 			});
 
-			_isLogInWindowOpen = this
-				.WhenAnyValue(x => x.ToggleButtonIsChecked)
-				.Select(state => state)
-				.ToProperty(this, x => x.IsLogInWindowOpen);
+			_isNotBusy = LogInWindowVM.LogInCommand.IsExecuting
+				.Select(state => !state)
+				.ToProperty(this, x => x.IsNotBusy);
 		}
 	}
 }

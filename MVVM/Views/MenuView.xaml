@@ -36,14 +36,14 @@
 
             <Grid>
                 <Expander x:Name="ListMenuExpander"
-                          ExpandDirection="Right"
+                          ExpandDirection="Left"
                           Style="{StaticResource SlideExpander}">
 
                     <local:ListMenuView x:Name="ListMenuView"/>
                 </Expander>
 
                 <Expander x:Name="MainMenuExpander"
-                          ExpandDirection="Left"
+                          ExpandDirection="Right"
                           Style="{StaticResource SlideExpander}">
 
                     <local:MainMenuView x:Name="MainMenuView"/>

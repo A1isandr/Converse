@@ -11,6 +11,9 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 {
 	public class ListMenuViewModel : ReactiveObject
 	{
+		#region Properties
+
+
 		private static ListMenuViewModel? _instance;
 		/// <summary>
 		/// Returns the singleton instance.
@@ -34,7 +37,7 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 		[Reactive]
 		public ObservableCollection<ConversationPreviewViewModel> ConversationSearchResults { get; private set; } = [];
 
-		[Reactive] 
+		[Reactive]
 		public ObservableCollection<UserPreviewViewModel> GlobalSearchResults { get; private set; } = [];
 
 		//[Reactive]
@@ -52,40 +55,51 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 		private readonly ObservableAsPropertyHelper<bool> _isAnyGlobalSearchResults;
 		public bool IsAnyGlobalSearchResults => _isAnyGlobalSearchResults.Value;
 
+		private readonly ObservableAsPropertyHelper<bool> _isAnyConversationPreviews;
+		public bool IsAnyConversationPreviews => _isAnyConversationPreviews.Value;
+
+
+		#endregion
+
+
+		#region Constructors
+
+
 		private ListMenuViewModel()
 		{
-			var db = new ApplicationContext();
-
-			ConversationPreviews = 
+			ConversationPreviews =
 			[
-				.. db.Conversations.Include(conversation => conversation.Messages)
-								   .ThenInclude(message => message.Content)
-								   .Include(conversation => conversation.Participants)
-								   .ThenInclude(user => user.Profile)
-								   .Select(chat => new ConversationPreviewViewModel { Conversation = chat })
-								   .OrderBy(chat => chat.Conversation.LastActivityTime)
+				//.. db.Conversations
+				//	.Include(conversation => conversation.Messages)
+				//	.ThenInclude(message => message.Content)
+				//	.Include(conversation => conversation.Participants)
+				//	.ThenInclude(user => user.Profile)
+				//	.Select(chat => new ConversationPreviewViewModel { Conversation = chat })
+				//	.OrderBy(chat => chat.Conversation.LastActivityTimeUtc)
 			];
 
-			SearchCommand = ReactiveCommand.CreateFromObservable<string, Unit>( (term) =>
+			SearchCommand = ReactiveCommand.CreateFromObservable<string, Unit>((term) =>
 			{
 				ConversationSearchResults =
 				[
-					.. ConversationPreviews.Where(result => result.Conversation.ConversationName.ToLower().Contains(term))
-										   .OrderBy(result => result.Conversation.LastActivityTime)
+					.. ConversationPreviews
+						.Where(result => result.Conversation.ConversationName.ToLower().Contains(term))
+						.OrderBy(result => result.Conversation.LastActivityTimeUtc)
 				];
 
 				if (!IsAnyConversationSearchResults)
 				{
 					GlobalSearchResults =
 					[
-						.. db.Users.Include(user => user.Profile)
-								   .Where(user => !user.IsSystem)
-								   .ToList()
-								   .Where(user => user.Profile!.FullName.Contains(term, StringComparison.CurrentCultureIgnoreCase) || user.Username.Contains(term, StringComparison.CurrentCultureIgnoreCase))
-								   .Select(user => new UserPreviewViewModel { User = user })
+						//.. db.Users
+						//	.Include(user => user.Profile)
+						//	.Where(user => !user.IsSystem)
+						//	.ToList()
+						//	.Where(user => user.Profile!.FullName.Contains(term, StringComparison.CurrentCultureIgnoreCase) || user.Username.Contains(term, StringComparison.CurrentCultureIgnoreCase))
+						//	.Select(user => new UserPreviewViewModel { User = user })
 					];
 				}
-				
+
 				//MessagePreviews =
 				//[
 				//	.. db.Messages.Include(message => message.Content)
@@ -107,6 +121,7 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 				.Select(term => term?.Trim().ToLower())
 				.DistinctUntilChanged()
 				.Where(term => !string.IsNullOrWhiteSpace(term))
+				.DistinctUntilChanged()
 				.ObserveOn(RxApp.MainThreadScheduler)
 				.InvokeCommand(SearchCommand!);
 
@@ -126,7 +141,7 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 
 			_isAnyConversationSearchResults = this
 				.WhenAnyValue(x => x.ConversationSearchResults)
-				.Select(conversations => conversations.Any())
+				.Select(conversations => !conversations.Any())
 				.ToProperty(this, x => x.IsAnyConversationSearchResults);
 
 			_isAnyGlobalSearchResults = this
@@ -134,7 +149,15 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 				.Select(globalSearchResults => globalSearchResults.Any())
 				.ToProperty(this, x => x.IsAnyGlobalSearchResults);
 
+			_isAnyConversationPreviews = this
+				.WhenAnyValue(x => x.ConversationPreviews)
+				.Select(conversationPreviews => conversationPreviews.Any() && !IsSearching)
+				.ToProperty(this, x => x.IsAnyConversationPreviews);
+
 			_isSearchInProgress = SearchCommand.IsExecuting.ToProperty(this, x => x.IsSearchInProgress);
 		}
+
+
+		#endregion
 	}
 }

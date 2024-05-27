@@ -29,60 +29,65 @@
             Grid.Row="0"
             Height="50"
             Style="{StaticResource ViewWrapper}"
+            Padding="5"
             Margin="0, 0, 0, 10">
-            
-            <Grid>
-                <Grid
-                    HorizontalAlignment="Center">
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+            <Border
+                Background="{StaticResource AuthenticationBorderBackgroundBrush}"
+                CornerRadius="20">
 
-                    <ToggleButton x:Name="ToggleButton"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Width="300"
-                        IsThreeState="False"
-                        Style="{StaticResource Switch}"
-                        Padding="5, 3, 5, 3"
-                        Margin="0, 5, 0, 5"/>
+                <Grid>
+                    <Grid
+                        HorizontalAlignment="Center">
 
-                    <Label
-                        Grid.Column="0"
-                        Content="Log In"
-                        FontSize="20"
-                        FontWeight="Bold"
-                        Foreground="White"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        IsHitTestVisible="False"/>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
 
-                    <Label
-                        Grid.Column="1"
-                        Content="Register"
-                        FontSize="20"
-                        FontWeight="Bold"
-                        Foreground="White"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        IsHitTestVisible="False"/>
+                        <ToggleButton x:Name="ToggleButton"
+                                      Grid.Column="0"
+                                      Grid.ColumnSpan="2"
+                                      Width="300"
+                                      IsThreeState="False"
+                                      Style="{StaticResource Switch}"/>
+
+                        <Label
+                            Grid.Column="0"
+                            Content="Log In"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            IsHitTestVisible="False"/>
+
+                        <Label
+                            Grid.Column="1"
+                            Content="Register"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            IsHitTestVisible="False"/>
+                    </Grid>
+
+                    <Button x:Name="CloseWindowButton"
+                            Content="{Binding Geometry, Source={StaticResource CloseIcon}}"
+                            Width="35"
+                            Height="35"
+                            HorizontalAlignment="Right"
+                            Style="{StaticResource SvgResponsiveButton}"
+                            Margin="0, 0, 10, 0"/>
                 </Grid>
-
-                <Button x:Name="CloseWindowButton"
-                    Content="{Binding Geometry, Source={StaticResource CloseIcon}}"
-                    Width="35"
-                    Height="35"
-                    HorizontalAlignment="Right"
-                    Style="{StaticResource SvgResponsiveButton}"
-                    Margin="0, 0, 10, 0"/>
-            </Grid>
+            </Border>
         </Border>
         
         <Border
             Grid.Row="1"
-            Style="{StaticResource ViewWrapper}">
+            Style="{StaticResource ViewWrapper}"
+            Padding="10">
 
             <Border>
 
@@ -102,9 +107,10 @@
                 
                 <ScrollViewer
                     Style="{StaticResource SimpleScrollBar}">
+
                     <Grid>
                         <Expander x:Name="LogInWindowExpander"
-                                  ExpandDirection="Left"
+                                  ExpandDirection="Right"
                                   IsExpanded="True"
                                   Style="{StaticResource SlideExpander}">
 
@@ -112,7 +118,7 @@
                         </Expander>
 
                         <Expander x:Name="RegistrationWindowExpander"
-                                  ExpandDirection="Right"
+                                  ExpandDirection="Left"
                                   Style="{StaticResource SlideExpander}">
 
                             <views:RegistrationWindowView/>

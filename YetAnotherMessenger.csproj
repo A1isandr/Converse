@@ -38,14 +38,16 @@
 
   <ItemGroup>
     <PackageReference Include="Emoji.Wpf" Version="0.3.4" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.0" />
     <PackageReference Include="ReactiveMarbles.ObservableEvents.SourceGenerator" Version="1.3.1" />
-    <PackageReference Include="ReactiveUI" Version="19.5.39" />
-    <PackageReference Include="ReactiveUI.Fody" Version="19.5.39" />
-    <PackageReference Include="ReactiveUI.WPF" Version="19.5.39" />
-    <PackageReference Include="SharpVectors" Version="1.8.2" />
+    <PackageReference Include="ReactiveUI" Version="19.5.41" />
+    <PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
+    <PackageReference Include="ReactiveUI.WPF" Version="19.5.41" />
     <PackageReference Include="Splat" Version="14.8.12" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -91,12 +93,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="bin\Debug\net8.0-windows10.0.22621.0\Logs\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="bin\Debug\net8.0-windows10.0.22621.0\app.config" />
-    <None Include="bin\Debug\net8.0-windows10.0.22621.0\Logs\DBLog.txt" />
+    <Folder Include="bin\Debug\net8.0-windows10.0.22621.0\" />
   </ItemGroup>
 
 </Project>

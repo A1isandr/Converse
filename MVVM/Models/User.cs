@@ -1,22 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Security;
 
 namespace YetAnotherMessenger.MVVM.Models
 {
 	public class User
 	{
-		public int Id { get; init; }
+		public string Id { get; set; } = string.Empty;
 
-		[MaxLength(50)]
 		public required string Username { get; set; }
 
-		[MaxLength(25)]
 		public required string Password { get; set; }
 
 		public bool IsSystem { get; set; }

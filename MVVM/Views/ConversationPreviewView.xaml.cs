@@ -30,7 +30,7 @@ namespace YetAnotherMessenger.MVVM.Views
 			this.WhenActivated(disposables =>
 			{
 				this.OneWayBind(ViewModel,
-						viewModel => viewModel.Avatar,
+						viewModel => viewModel.Conversation.Avatar,
 						view => view.Avatar.Source,
 						url => new BitmapImage(url))
 					.DisposeWith(disposables);
@@ -57,71 +57,5 @@ namespace YetAnotherMessenger.MVVM.Views
 					.DisposeWith(disposables);
 			});
 		}
-
-		//private void ChatPreview_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-		//{
-		//	var chatPreview = (RadioButton)sender;
-
-		//	Point relativePoint = chatPreview.TranslatePoint(new Point(0, 0), this);
-
-		//	Point mousePosition = e.GetPosition(this);
-
-		//	Ellipse wave = new Ellipse
-		//	{
-		//		Width = 0,
-		//		Height = 0,
-		//		Fill = new SolidColorBrush(Colors.Red),
-		//		StrokeThickness = 1,
-		//		Clip = new RectangleGeometry(new Rect(relativePoint, new Size(chatPreview.ActualWidth, chatPreview.ActualHeight)), 10, 10)
-		//	};
-
-		//	wave.SetValue(Canvas.LeftProperty, mousePosition.X);
-		//	wave.SetValue(Canvas.TopProperty, mousePosition.Y);
-		//	wave.SetValue(Panel.ZIndexProperty, -1);
-		//	ChatPreviewGrid.Children.Add(wave);
-
-		//	DoubleAnimation waveWidthAnimation = new DoubleAnimation
-		//	{
-		//		From = wave.ActualWidth,
-		//		To = chatPreview.ActualWidth + 100,
-		//		Duration = TimeSpan.FromMilliseconds(1000),
-		//		EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
-		//	};
-
-		//	DoubleAnimation waveHeightAnimation = new DoubleAnimation
-		//	{
-		//		From = wave.ActualHeight,
-		//		To = chatPreview.ActualHeight + 100,
-		//		Duration = TimeSpan.FromMilliseconds(1000),
-		//		EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
-		//	};
-
-		//	DoubleAnimation waveOpacityAnimation = new DoubleAnimation
-		//	{
-		//		From = 1,
-		//		To = 0,
-		//		Duration = TimeSpan.FromMilliseconds(2000),
-		//		EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
-		//	};
-
-		//	Storyboard storyboard = new Storyboard();
-
-		//	storyboard.Completed += (s, e) => ChatPreviewGrid.Children.Remove(wave);
-
-		//	storyboard.Children.Add(waveWidthAnimation);
-		//	storyboard.Children.Add(waveHeightAnimation);
-		//	storyboard.Children.Add(waveOpacityAnimation);
-
-		//	Storyboard.SetTarget(waveWidthAnimation, wave);
-		//	Storyboard.SetTargetProperty(waveWidthAnimation, new PropertyPath(WidthProperty));
-
-		//	Storyboard.SetTarget(waveHeightAnimation, wave);
-		//	Storyboard.SetTargetProperty(waveHeightAnimation, new PropertyPath(HeightProperty));
-
-		//	Storyboard.SetTarget(waveOpacityAnimation, wave);
-		//	Storyboard.SetTargetProperty(waveOpacityAnimation, new PropertyPath(OpacityProperty));
-
-		//	storyboard.Begin();
-		//}
 	}
 }

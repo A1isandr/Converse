@@ -12,7 +12,7 @@
 
             <system:Double x:Key="SwitchBorderDropShadowEffectBlurRadius">10</system:Double>
             <system:Double x:Key="SwitchKnobDropShadowEffectBlurRadius">5</system:Double>
-            <system:Double x:Key="SwitchKnobDropShadowEffectOpacity">0.5</system:Double>
+            <system:Double x:Key="SwitchKnobDropShadowEffectOpacity">0</system:Double>
             <system:Double x:Key="SwitchKnobRadius">10</system:Double>
 
             <converters:KnobWidthConverter x:Key="KnobWidthConverter"/>
@@ -63,13 +63,6 @@
                                     <Rectangle.Tag>
                                         <system:Double>0.0</system:Double>
                                     </Rectangle.Tag>
-
-                                    <Rectangle.Effect>
-                                        <DropShadowEffect
-                                            BlurRadius="{StaticResource SwitchKnobDropShadowEffectBlurRadius}"
-                                            Opacity="{StaticResource SwitchKnobDropShadowEffectOpacity}"
-                                            ShadowDepth="0"/>
-                                    </Rectangle.Effect>
 
                                     <Rectangle.RenderTransform>
                                         <TranslateTransform x:Name="KnobTransform">
@@ -132,20 +125,21 @@
        TargetType="ToggleButton">
 
         <Style.Resources>
-            <Thickness x:Key="ToggleSwitchBorderThickness">10</Thickness>
-            <Thickness x:Key="ToggleSwitchBorderMargin">-10</Thickness>
-            <Thickness x:Key="ToggleSwitchKnobPathPadding">7, 0, 7, 0</Thickness>
-
-            <system:Double x:Key="ToggleSwitchBorderDropShadowEffectBlurRadius">10</system:Double>
             <system:Double x:Key="ToggleSwitchKnobDropShadowEffectBlurRadius">5</system:Double>
-            <system:Double x:Key="ToggleSwitchKnobDropShadowEffectOpacity">0.5</system:Double>
-            <system:Double x:Key="ToggleSwitchKnobRadius">10</system:Double>
+            <system:Double x:Key="ToggleSwitchKnobDropShadowEffectOpacity">1</system:Double>
 
             <system:Boolean x:Key="ToggleSwitchButtonClipToBounds">True</system:Boolean>
 
             <converters:KnobWidthConverter x:Key="KnobWidthConverter"/>
             <converters:KnobTranslateTransformConverter x:Key="KnobTranslateTransformConverter"/>
         </Style.Resources>
+        
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Foreground" Value="{StaticResource ToggleSwitchButtonKnobBrush}"></Setter>
+        <Setter Property="Background" Value="{StaticResource ToggleSwitchButtonBackgroundBrush}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Padding" Value="3"/>
 
         <Setter Property="Template">
             <Setter.Value>
@@ -153,55 +147,38 @@
                     TargetType="ToggleButton">
 
                     <Border x:Name="Button"
-                        BorderBrush="Transparent"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        CornerRadius="13"
                         Background="{TemplateBinding Background}"
-                        CornerRadius="10"
-                        ClipToBounds="True"
-                        Cursor="Hand"
+                        Cursor="{TemplateBinding Cursor}"
                         SnapsToDevicePixels="True">
 
-                        <Border x:Name="Border"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{StaticResource ToggleSwitchBorderThickness}"
-                            Background="Transparent"
-                            CornerRadius="20"
-                            Margin="{StaticResource ToggleSwitchBorderMargin}"
+                        <Border x:Name="KnobBorder"
+                            HorizontalAlignment="Left"
+                            Width="{Binding ElementName=Button, Path=ActualWidth, Converter={StaticResource KnobWidthConverter}}"
                             Padding="{TemplateBinding Padding}">
 
-                            <Border.Effect>
-                                <DropShadowEffect 
-                                BlurRadius="{StaticResource ToggleSwitchBorderDropShadowEffectBlurRadius}"
-                                ShadowDepth="0"/>
-                            </Border.Effect>
+                            <Border.Tag>
+                                <system:Double>0.0</system:Double>
+                            </Border.Tag>
 
-                            <Border x:Name="KnobPath">
+                            <Border.RenderTransform>
+                                <TranslateTransform x:Name="KnobTransform">
+                                    <TranslateTransform.X>
+                                        <MultiBinding Converter="{StaticResource KnobTranslateTransformConverter}" ConverterParameter="0.5" ConverterCulture="en-US">
+                                            <Binding Path="ActualWidth" ElementName="Button"/>
+                                            <Binding Path="Tag" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Border}"/>
+                                        </MultiBinding>
+                                    </TranslateTransform.X>
+                                </TranslateTransform>
+                            </Border.RenderTransform>
+
+                            <Border x:Name="KnobBox">
                                 <Ellipse x:Name="Knob"
-                                    Width="{Binding ElementName=KnobPath, Path=ActualWidth, Converter={StaticResource KnobWidthConverter}}"
-                                    Height="{Binding ElementName=KnobPath, Path=ActualHeight}"
-                                    Fill="{StaticResource ToggleSwitchButtonUncheckedKnobBrush}"
-                                    HorizontalAlignment="Left">
-
-                                    <Ellipse.Tag>
-                                        <system:Double>0.0</system:Double>
-                                    </Ellipse.Tag>
-
-                                    <Ellipse.Effect>
-                                        <DropShadowEffect
-                                            BlurRadius="{StaticResource ToggleSwitchKnobDropShadowEffectBlurRadius}"
-                                            Opacity="{StaticResource ToggleSwitchKnobDropShadowEffectOpacity}"
-                                            ShadowDepth="0"/>
-                                    </Ellipse.Effect>
-
-                                    <Ellipse.RenderTransform>
-                                        <TranslateTransform x:Name="KnobTransform">
-                                            <TranslateTransform.X>
-                                                <MultiBinding Converter="{StaticResource KnobTranslateTransformConverter}" ConverterParameter="0.5" ConverterCulture="en-US">
-                                                    <Binding Path="ActualWidth" ElementName="KnobPath"/>
-                                                    <Binding Path="Tag" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Ellipse}"/>
-                                                </MultiBinding>
-                                            </TranslateTransform.X>
-                                        </TranslateTransform>
-                                    </Ellipse.RenderTransform>
+                                    Width="{Binding ElementName=KnobBox, Path=ActualWidth}"
+                                    Height="{Binding ElementName=KnobBox, Path=ActualHeight}"
+                                    Fill="{TemplateBinding Foreground}">
                                 </Ellipse>
                             </Border>
                         </Border>
@@ -212,7 +189,7 @@
                             <BeginStoryboard>
                                 <Storyboard>
                                     <DoubleAnimation
-                                        Storyboard.TargetName="Knob"
+                                        Storyboard.TargetName="KnobBorder"
                                         Storyboard.TargetProperty="Tag"
                                         To="1"
                                         Duration="0:0:0.3">
@@ -224,10 +201,16 @@
                                     </DoubleAnimation>
 
                                     <ColorAnimation
-                                        Storyboard.TargetName="Knob"
-                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                        Storyboard.TargetName="Button"
+                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                         To="{StaticResource AccentColor2}"
-                                        Duration="0:0:0.3"/>
+                                        Duration="0:0:0.5">
+
+                                        <ColorAnimation.EasingFunction>
+                                            <CubicEase
+                                                EasingMode="EaseInOut"/>
+                                        </ColorAnimation.EasingFunction>
+                                    </ColorAnimation>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -236,7 +219,7 @@
                             <BeginStoryboard>
                                 <Storyboard>
                                     <DoubleAnimation
-                                        Storyboard.TargetName="Knob"
+                                        Storyboard.TargetName="KnobBorder"
                                         Storyboard.TargetProperty="Tag"
                                         To="0"
                                         Duration="0:0:0.3">
@@ -248,10 +231,16 @@
                                     </DoubleAnimation>
 
                                     <ColorAnimation
-                                        Storyboard.TargetName="Knob"
-                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
-                                        To="{StaticResource ToggleSwitchButtonUncheckedKnobColor}"
-                                        Duration="0:0:0.3"/>
+                                        Storyboard.TargetName="Button"
+                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                        To="{StaticResource ToggleSwitchButtonUncheckedBackgroundColor}"
+                                        Duration="0:0:0.5">
+
+                                        <ColorAnimation.EasingFunction>
+                                            <CubicEase
+                                                EasingMode="EaseInOut"/>
+                                        </ColorAnimation.EasingFunction>
+                                    </ColorAnimation>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>

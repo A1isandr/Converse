@@ -47,6 +47,30 @@
                                 Property="BorderBrush"
                                 Value="{StaticResource AccentGradientBrush}"/>
                         </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                            To="{StaticResource CommonButtonDisabledBackgroundColor}"
+                                            Duration="0:0:0"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                            To="{StaticResource AccentColor2}"
+                                            Duration="0:0:0.5"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -101,6 +125,8 @@
            TargetType="Button"
            BasedOn="{StaticResource SvgResponsiveButton}">
         
+        <Setter Property="Width" Value="35"/>
+        <Setter Property="Height" Value="25"/>
         <Setter Property="Foreground" Value="{StaticResource HeaderButtonsForegroundFillBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="{StaticResource HeaderButtonsBackgroundBrush}"/>

@@ -58,6 +58,7 @@
                                             Storyboard.TargetProperty="Tag"
                                             To="0"
                                             Duration="0:0:0.5">
+
                                             <DoubleAnimation.EasingFunction>
                                                 <CubicEase EasingMode="EaseInOut"/>
                                             </DoubleAnimation.EasingFunction>
@@ -74,6 +75,7 @@
                                             Storyboard.TargetProperty="Tag"
                                             To="1"
                                             Duration="0:0:0.5">
+
                                             <DoubleAnimation.EasingFunction>
                                                 <CubicEase EasingMode="EaseInOut"/>
                                             </DoubleAnimation.EasingFunction>

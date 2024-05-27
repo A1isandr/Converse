@@ -7,6 +7,8 @@
     <Color x:Key="SearchBoxLabelForegroundColor"
            R="153" G="153" B="153" A="150"/>
 
+    <Color x:Key="NoConversationPreviewsColor">#1f1f1f</Color>
+
     <Color x:Key="ConversationPreviewBackgroundColor">Transparent</Color>
     <Color x:Key="ConversationPreviewMouseOverBackgroundColor"
            R="64" G="64" B="64" A="150"/>
@@ -35,6 +37,9 @@
                      Color="{StaticResource SearchBoxForegroundColor}"/>
     <SolidColorBrush x:Key="SearchBoxLabelForegroundBrush"
                      Color="{StaticResource SearchBoxLabelForegroundColor}"/>
+    
+    <SolidColorBrush x:Key="NoConversationPreviewsBackgroundBrush"
+                     Color="{StaticResource NoConversationPreviewsColor}"/>
 
     <SolidColorBrush x:Key="MenuButtonBackgroundBrush"
                      Color="#4d4d4d"/>

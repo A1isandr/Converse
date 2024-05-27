@@ -10,6 +10,7 @@
         <Color x:Key="CommonButtonMouseOverBackgroundColor" 
                R="64" G="64" B="64" A="150"/>
         <Color x:Key="CommonButtonPressedBackgroundColor">#404040</Color>
+        <Color x:Key="CommonButtonDisabledBackgroundColor">#636363</Color>
 
         <!--SvgResponsiveButton-->
         <Color x:Key="SvgResponsiveButtonFillColor" 
@@ -19,11 +20,11 @@
         
         <!--SwitchButton-->
         <Color x:Key="SwitchButtonBackgroundColor">#4d4d4d</Color>
-        <Color x:Key="SwitchButtonBorderColor">#141414</Color>
+        <Color x:Key="SwitchButtonBorderColor">#1f1f1f</Color>
         
         <!--ToggleSwitchButton-->
-        <Color x:Key="ToggleSwitchButtonUncheckedKnobColor" 
-               R="255" G="255" B="255" A="200"/>
+        <Color x:Key="ToggleSwitchButtonKnobColor">White</Color>
+        <Color x:Key="ToggleSwitchButtonUncheckedBackgroundColor"> #4d4d4d</Color>
 
         <!--Accent-->
         <Color x:Key="AccentColor1">DeepSkyBlue</Color>
@@ -42,6 +43,8 @@
                              Color="{StaticResource CommonButtonMouseOverBackgroundColor}"/>
             <SolidColorBrush x:Key="CommonButtonPressedBackgroundBrush"
                              Color="{StaticResource CommonButtonPressedBackgroundColor}"/>
+            <SolidColorBrush x:Key="CommonButtonDisabledBackgroundBrush"
+                             Color="{StaticResource CommonButtonDisabledBackgroundColor}"/>
 
             <!--SvgResponsiveButton-->
             <SolidColorBrush x:Key="SvgResponsiveButtonFillBrush"
@@ -70,8 +73,10 @@
                              Color="{StaticResource SwitchButtonBorderColor}"/>
             
             <!--ToggleSwitchButton-->
-            <SolidColorBrush x:Key="ToggleSwitchButtonUncheckedKnobBrush"
-                             Color="{StaticResource ToggleSwitchButtonUncheckedKnobColor}"/>
+            <SolidColorBrush x:Key="ToggleSwitchButtonBackgroundBrush"
+                             Color="{StaticResource ToggleSwitchButtonUncheckedBackgroundColor}"/>
+            <SolidColorBrush x:Key="ToggleSwitchButtonKnobBrush"
+                             Color="{StaticResource ToggleSwitchButtonKnobColor}"/>
         
             <!--Accent-->
             <SolidColorBrush x:Key="AccentBrush1"

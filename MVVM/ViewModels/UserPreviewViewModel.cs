@@ -16,7 +16,7 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 {
 	public class UserPreviewViewModel : ReactiveObject
 	{
-		public User User { get; init; } = AppConfig.CurrentUser;
+		public User User { get; init; }
 
 		public ReactiveCommand<Unit, Unit> StartNewConversation { get; }
 
@@ -27,7 +27,7 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 				ConversationViewModel.Instance.Conversation = new Conversation
 				{
 					ConversationName = User.Profile!.FullName,
-					Participants = [User, AppConfig.CurrentUser]
+					Participants = [User]
 				};
 
 				SearchBoxViewModel.Instance.ClearSearchTextCommand.Execute(Unit.Default);
@@ -37,8 +37,8 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 
 			StartNewConversation.ThrownExceptions.Subscribe(error =>
 			{
-					MessageBox.Show($"{error.InnerException?.Message}\n----------\n{error.StackTrace}");
-					Clipboard.SetText(error.InnerException!.Message);
+				MessageBox.Show($"{error.InnerException?.Message}\n----------\n{error.StackTrace}");
+				Clipboard.SetText(error.InnerException!.Message);
 			});
 		}
 	}

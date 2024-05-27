@@ -23,8 +23,6 @@ namespace YetAnotherMessenger.MVVM.ViewModels
 
 		public Message LastMessage => Conversation.Messages.Last();
 
-		public Uri Avatar => Conversation.Participants.First(x => x != AppConfig.CurrentUser).Profile!.Avatar;
-
 		public string LastMessagePrescription
 		{
 			get

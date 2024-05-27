@@ -75,7 +75,7 @@ namespace YetAnotherMessenger.Misc
 			return this;
 		}
 
-		public Storyboard End()
+		public Storyboard Build()
 		{
 			return _storyboard;
 		}

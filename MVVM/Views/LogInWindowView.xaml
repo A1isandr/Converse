@@ -11,10 +11,8 @@
                           d:DesignHeight="450" d:DesignWidth="500">
 
     <Border
-        CornerRadius="20"
         Background="{StaticResource AuthenticationBorderBackgroundBrush}"
-        Padding="10"
-        Margin="10">
+        Padding="10">
         
         <Grid
             VerticalAlignment="Center">
@@ -45,7 +43,7 @@
                     FontWeight="Bold"
                     Foreground="White"/>
 
-                <TextBox
+                <TextBox x:Name="UsernameBox"
                     Height="40"
                     MaxLength="50"
                     Style="{StaticResource CommonTextBox}"
@@ -56,15 +54,14 @@
                     FontWeight="Bold"
                     Foreground="White"/>
 
-                <PasswordBox
+                <PasswordBox x:Name="PasswordBox"
                     Height="40"
                     MaxLength="25"
                     Style="{StaticResource CommonPasswordBox}"/>
             </StackPanel>
 
-            <Button
+            <Button x:Name="LogInButton"
                 Grid.Row="2"
-                Content="Log in"
                 FontSize="18"
                 FontWeight="Bold"
                 Foreground="White"

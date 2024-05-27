@@ -25,18 +25,17 @@
             Margin="5"
             Background="{StaticResource MainMenuBackgroundBrush}">
 
-            <Grid>
+            <StackPanel>
                 <Button x:Name="CloseMainMenuButton"
-                    Content="{Binding Geometry, Source={StaticResource CloseIcon}}"
+                    Content="{Binding Geometry, Source={StaticResource ArrowBackIcon}}"
                     Width="35"
                     Height="35"
                     VerticalAlignment="Top"
-                    HorizontalAlignment="Right"
-                    Panel.ZIndex="1"
-                    Style="{StaticResource SvgResponsiveButton}"/>
+                    HorizontalAlignment="Left"
+                    Style="{StaticResource SvgResponsiveButton}"
+                    Margin="5, 0, 0, 0"/>
                 
-                <Border
-                    Panel.ZIndex="0">
+                <Border>
                     
                     <StackPanel
                         Orientation="Vertical">
@@ -56,9 +55,17 @@
 
                                     <Path
                                         Data="{Binding Geometry, Source={StaticResource AccountAddIcon}}"
-                                        Fill="{StaticResource AccentGradientBrush}"
+                                        Fill="{StaticResource AccentBrush2}"
                                         VerticalAlignment="Center"
-                                        Margin="0, 0, 20, 0"/>
+                                        Margin="0, 0, 20, 0">
+
+                                        <Path.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleX="-1"/>
+                                                <TranslateTransform X="25"/>
+                                            </TransformGroup>
+                                        </Path.RenderTransform>
+                                    </Path>
 
                                     <TextBlock
                                         Text="New Account"
@@ -71,7 +78,7 @@
                         </Button>
                     </StackPanel>
                 </Border>
-            </Grid>
+            </StackPanel>
         </Border>
 
         <Border
@@ -95,7 +102,7 @@
 
                             <Path
                                 Data="{Binding Geometry, Source={StaticResource GroupAddIcon}}"
-                                Fill="{StaticResource AccentGradientBrush}"
+                                Fill="{StaticResource AccentBrush2}"
                                 VerticalAlignment="Center"
                                 Margin="0, 0, 20, 0"/>
 
@@ -121,7 +128,7 @@
 
                             <Path
                                 Data="{Binding Geometry, Source={StaticResource SettingsIcon}}"
-                                Fill="{StaticResource AccentGradientBrush}"
+                                Fill="{StaticResource AccentBrush2}"
                                 VerticalAlignment="Center"
                                 Margin="0, 0, 20, 0"/>
 
@@ -152,7 +159,7 @@
                                 <Path
                                     Grid.Column="0"
                                     Data="{Binding Geometry, Source={StaticResource DarkModeIcon}}"
-                                    Fill="{StaticResource AccentGradientBrush}"
+                                    Fill="{StaticResource AccentBrush2}"
                                     VerticalAlignment="Center"
                                     Margin="0, 0, 20, 0"/>
 
@@ -166,14 +173,8 @@
 
                                 <ToggleButton
                                     Grid.Column="2"
-                                    Width="50"
-                                    Height="27"
                                     HorizontalAlignment="Right"
-                                    Foreground="{StaticResource AccentGradientBrush}"
-                                    Background="{StaticResource AuthenticationToggleButtonBackgroundBrush}"
-                                    BorderBrush="{StaticResource MainMenuBackgroundBrush}"
-                                    Style="{StaticResource ToggleSwitch}"
-                                    Padding="3"/>
+                                    Style="{StaticResource ToggleSwitch}"/>
                             </Grid>
                         </Button.Content>
                     </Button>

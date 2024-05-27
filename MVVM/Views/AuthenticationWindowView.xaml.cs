@@ -37,6 +37,11 @@ namespace YetAnotherMessenger.MVVM.Views
 						view => view.CloseWindowButton)
 					.DisposeWith(disposables);
 
+				this.OneWayBind(ViewModel,
+						viewModel => viewModel.IsNotBusy,
+						view => view.IsEnabled)
+					.DisposeWith(disposables);
+
 				ToggleButton
 					.Events()
 					.Checked

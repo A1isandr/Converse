@@ -47,7 +47,7 @@ namespace YetAnotherMessenger
 					duration: TimeSpan.FromMilliseconds(300),
 					easingFunction: new CubicEase() { EasingMode = EasingMode.EaseOut }
 				)
-				.End();
+				.Build();
 
 			_lighteningStoryboard = new StoryboardBuilder()
 				.AddDoubleAnimation
@@ -61,7 +61,7 @@ namespace YetAnotherMessenger
 					easingFunction: new CubicEase() { EasingMode = EasingMode.EaseOut }
 				)
 				.AddOnCompleteAction((_, _) => BackgroundBlackOutEffectBorder.Visibility = Visibility.Collapsed)
-				.End();
+				.Build();
 
 			ViewModel = new MainWindowViewModel();
 
@@ -80,21 +80,8 @@ namespace YetAnotherMessenger
 						view => view.AuthenticationWindow.Visibility)
 					.DisposeWith(disposables);
 			});
-		}
 
-		private void Header_MouseDown(object sender, MouseButtonEventArgs e)
-		{
-			if (WindowState == WindowState.Maximized)
-			{
-				var mouseWindowRelativeCoords = Mouse.GetPosition(this);
-
-				Left = mouseWindowRelativeCoords.X;
-				Top = mouseWindowRelativeCoords.Y - 5;
-
-				WindowState = WindowState.Normal;
-			}
-
-			DragMove();
+			AuthenticationWindowViewModel.Instance.OpenSelfCommand.Execute();
 		}
 
 		private void BlurAnimation(bool isRequired)
@@ -113,6 +100,21 @@ namespace YetAnotherMessenger
 			{
 				_lighteningStoryboard.Begin();
 			}
+		}
+
+		private void Header_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			if (WindowState == WindowState.Maximized)
+			{
+				var mouseWindowRelativeCoords = Mouse.GetPosition(this);
+
+				Left = mouseWindowRelativeCoords.X;
+				Top = mouseWindowRelativeCoords.Y - 5;
+
+				WindowState = WindowState.Normal;
+			}
+
+			DragMove();
 		}
 
 		private void CloseWindowButton_Click(object sender, RoutedEventArgs e)
@@ -150,6 +152,10 @@ namespace YetAnotherMessenger
 
 					break;
 				}
+				case WindowState.Minimized:
+					break;
+				default:
+					throw new ArgumentOutOfRangeException(nameof(sender));
 			}
 		}
 

@@ -45,19 +45,27 @@ namespace YetAnotherMessenger.MVVM.Views
 						viewModel => viewModel.IsMainMenuOpen,
 						view => view.MainMenuExpander.IsExpanded)
 					.DisposeWith(disposables);
+
+				MainMenuView.CloseMainMenuButton
+					.Events()
+					.Click
+					.Subscribe(_ =>
+					{
+						ViewModel.IsMainMenuOpen = false;
+						ViewModel.IsChatListOpen = true;
+					})
+					.DisposeWith(disposables);
+
+				ListMenuView.MainMenuButton
+					.Events()
+					.Click
+					.Subscribe(_ =>
+					{
+						ViewModel.IsChatListOpen = false;
+						ViewModel.IsMainMenuOpen = true;
+					})
+					.DisposeWith(disposables);
 			});
-
-			MainMenuView.CloseMainMenuButton.Click += (_, _) =>
-			{
-				ViewModel.IsMainMenuOpen = false;
-				ViewModel.IsChatListOpen = true;
-			};
-
-			ListMenuView.MainMenuButton.Click += (_, _) =>
-			{
-				ViewModel.IsChatListOpen = false;
-				ViewModel.IsMainMenuOpen = true;
-			};
 		}
 	}
 }

@@ -11,8 +11,6 @@ namespace YetAnotherMessenger.Misc
 	{
 		public Conversation ConversationBuilder(string conversationName)
 		{
-			using ApplicationContext db = new();
-
 			return new Conversation
 			{
 				

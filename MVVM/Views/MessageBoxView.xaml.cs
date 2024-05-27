@@ -17,10 +17,7 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using ReactiveUI;
-using SharpVectors.Dom.Svg;
 using YetAnotherMessenger.MVVM.ViewModels;
-using SharpVectors.Converters;
-using SharpVectors.Renderers.Wpf;
 using System.Reflection.Metadata;
 using System.Windows.Media.Animation;
 using YetAnotherMessenger.Misc;
@@ -53,7 +50,7 @@ namespace YetAnotherMessenger.MVVM.Views
 					duration: TimeSpan.FromMilliseconds(300),
 					easingFunction: new QuadraticEase { EasingMode = EasingMode.EaseInOut }
 				)
-				.End();
+				.Build();
 
 			ViewModel = MessageBoxViewModel.Instance;
 
@@ -103,7 +100,7 @@ namespace YetAnotherMessenger.MVVM.Views
 						fillBehavior: FillBehavior.HoldEnd,
 						easingFunction: new QuadraticEase { EasingMode = EasingMode.EaseInOut }
 					)
-					.End()
+					.Build()
 					.Begin();
 			}
 			else if (textBox.Text.Length == e.Changes.First().AddedLength)

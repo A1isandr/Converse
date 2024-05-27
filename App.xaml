@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:YetAnotherMessenger"
              StartupUri="MainWindow.xaml">
+
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -28,7 +29,7 @@
                 <ResourceDictionary Source="/Resources/Styles/Label.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/PasswordBox.xaml"/>
 
-                <ResourceDictionary Source="/Resources/lang.en-EN.xaml"/>
+                <ResourceDictionary Source="/Resources/lang.en-US.xaml"/>
                 <ResourceDictionary Source="/Resources/lang.ru-RU.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

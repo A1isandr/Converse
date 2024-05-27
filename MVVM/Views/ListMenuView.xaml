@@ -78,12 +78,30 @@
                     VerticalAlignment="Top"
                     HorizontalAlignment="Center"/>
 
+                <Border
+                    CornerRadius="10"
+                    Background="{StaticResource NoConversationPreviewsBackgroundBrush}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="10, 0, 10, 0"
+                    Padding="10, 5, 10, 5">
+
+                    <TextBlock
+                        Text="No Conversations Yet"
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Foreground="White"
+                        HorizontalAlignment="Center">
+
+                    </TextBlock>
+                </Border>
+
                 <ScrollViewer
                     HorizontalScrollBarVisibility="Disabled"
                     VerticalScrollBarVisibility="Auto"
                     Style="{StaticResource SimpleScrollBar}">
 
-                    <StackPanel x:Name="StackPanel"
+                    <StackPanel
                         Orientation="Vertical">
 
                         <Border x:Name="ConversationsBorder"

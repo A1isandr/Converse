@@ -17,7 +17,7 @@ namespace YetAnotherMessenger.Misc.Converters
         {
             if (value is not null)
             {
-                return parameter is not null ? (double)value * _ratio - ((Thickness)parameter).Left : (double)value * _ratio;
+                return parameter is not null ? (double)value * _ratio - System.Convert.ToDouble(parameter) : (double)value * _ratio;
             }
 
             return DependencyProperty.UnsetValue;

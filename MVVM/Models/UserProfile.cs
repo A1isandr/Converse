@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace YetAnotherMessenger.MVVM.Models
 {
 	public class UserProfile
 	{
-		public string FullName => $"{FirstName} {LastName}";
-
-		public int Id { get; init; }
+		[MaxLength(50)]
+		public required string Id { get; init; }
 
 		[MaxLength(25)]
-		public  required string FirstName { get; set; }
+		public required string FirstName { get; set; }
 
 		[MaxLength(25)]
 		public string? LastName { get; set; }
@@ -23,6 +17,9 @@ namespace YetAnotherMessenger.MVVM.Models
 
 		public User User { get; init; }
 
-		public int UserId { get; init; }
-	}
+		[MaxLength(50)]
+		public string UserId { get; init; }
+
+		public string FullName => $"{FirstName} {LastName}";
+}
 }

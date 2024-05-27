@@ -19,7 +19,7 @@
                             WindowStartupLocation="CenterScreen"
                             Title="Converse"
                             Icon="pack://application:,,,/Resources/Images/icon.png"
-                            Height="600" Width="1000"
+                            Height="700" Width="1000"
                             MinHeight="500" MinWidth="700"
                             Background="Transparent">
 
@@ -43,95 +43,91 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Grid Name="Header" 
-                Grid.Row="0" 
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                Background="{StaticResource HeaderBackgroundBrush}"
-                Margin="10, 0, 10, 0"
-                MouseDown="Header_MouseDown">
+            <Border  Name="Header"
+                     Grid.Row="0"
+                     CornerRadius="10"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Stretch"
+                     Background="{StaticResource HeaderBackgroundBrush}"
+                     Margin="5, 0, 5, 0"
+                     MouseDown="Header_MouseDown">
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-                <Border Name="WindowIcon"
-                    Grid.Column="0"
-                    Background="{StaticResource WindowIconBackgroundBrush}"
-                    CornerRadius="10"
-                    HorizontalAlignment="Left"
-                    Width="Auto"
-                    Padding="2"
-                    Margin="0, 5, 5, 5">
-                    
-                    <Image
-                        Width="20"
-                        Height="20"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Source="{Binding ElementName=Window, Path=Icon}"
-                        />
-                </Border>
-                
+                    <Border Name="WindowIcon"
+                        Grid.Column="0"
+                        Background="{StaticResource WindowIconBackgroundBrush}"
+                        CornerRadius="10"
+                        HorizontalAlignment="Left"
+                        Width="Auto"
+                        Padding="2"
+                        Margin="0, 5, 5, 5">
 
-                <Border Name="WindowTitle"
-                    Grid.Column="1"
-                    Background="{StaticResource WindowTitleBackgroundBrush}"
-                    CornerRadius="10"
-                    HorizontalAlignment="Left"
-                    Width="Auto"
-                    Padding="10, 5, 10, 5"
-                    Margin="5, 5, 10, 5"
-                    SnapsToDevicePixels="True">
-                    
-                    <TextBlock 
-                        Text="{Binding ElementName=Window, Path=Title}"
-                        Foreground="{StaticResource AccentGradientBrush}"
-                        FontSize="14"
-                        FontWeight="ExtraBold"
-                        TextAlignment="Left"
-                        VerticalAlignment="Center"
-                        TextTrimming="CharacterEllipsis" />
-                </Border>
+                        <Image
+                            Width="20"
+                            Height="20"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Source="{Binding ElementName=Window, Path=Icon}"/>
+                    </Border>
 
-                <StackPanel Name="HeaderButtonsGrid" 
-                    Grid.Column="2"
-                    Orientation="Horizontal">
 
-                    <Button Name="MinWindowButton"
-                        Height="25"
-                        Width="35"
-                        Panel.ZIndex="1"
-                        Content="{Binding Geometry, Source={StaticResource WindowMinimizeIcon}}"
-                        Style="{StaticResource WindowHeaderButton}"
-                        Margin="5"
-                        Click="MinWindowButton_Click"/>
+                    <Border Name="WindowTitle"
+                        Grid.Column="1"
+                        Background="{StaticResource WindowTitleBackgroundBrush}"
+                        CornerRadius="10"
+                        HorizontalAlignment="Left"
+                        Width="Auto"
+                        Padding="10, 5, 10, 5"
+                        Margin="5, 5, 10, 5"
+                        SnapsToDevicePixels="True">
 
-                    <Button Name="MaxWindowButton"
-                        Height="25"
-                        Width="35"
-                        Panel.ZIndex="1"
-                        Content="{Binding Geometry, Source={StaticResource WindowMaximizeIcon}}"
-                        Style="{StaticResource WindowHeaderButton}"
-                        Margin="5"
-                        Click="MaxWindowButton_Click"/>
+                        <TextBlock 
+                            Text="{Binding ElementName=Window, Path=Title}"
+                            Foreground="{StaticResource AccentGradientBrush}"
+                            FontSize="14"
+                            FontWeight="ExtraBold"
+                            TextAlignment="Left"
+                            VerticalAlignment="Center"
+                            TextTrimming="CharacterEllipsis" />
+                    </Border>
 
-                    <Button Name="CloseWindowButton"
-                        Height="25"
-                        Width="35"
-                        Panel.ZIndex="0"
-                        Content="{Binding Geometry, Source={StaticResource CloseIcon}}"
-                        Style="{StaticResource CloseWindowHeaderButton}"
-                        Margin="5"
-                        Click="CloseWindowButton_Click"/>
-                </StackPanel>
-            </Grid>
+                    <StackPanel Name="HeaderButtonsGrid" 
+                        Grid.Column="2"
+                        Orientation="Horizontal">
+
+                        <Button Name="MinWindowButton"
+                            Panel.ZIndex="1"
+                            Content="{Binding Geometry, Source={StaticResource WindowMinimizeIcon}}"
+                            Style="{StaticResource WindowHeaderButton}"
+                            Margin="5"
+                            Click="MinWindowButton_Click"/>
+
+                        <Button Name="MaxWindowButton"
+                            Panel.ZIndex="1"
+                            Content="{Binding Geometry, Source={StaticResource WindowMaximizeIcon}}"
+                            Style="{StaticResource WindowHeaderButton}"
+                            Margin="5"
+                            Click="MaxWindowButton_Click"/>
+
+                        <Button Name="CloseWindowButton"
+                            Panel.ZIndex="0"
+                            Content="{Binding Geometry, Source={StaticResource CloseIcon}}"
+                            Style="{StaticResource CloseWindowHeaderButton}"
+                            Margin="5, 5, 0, 5"
+                            Click="CloseWindowButton_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
 
             <Grid Name="Main"
                 Grid.Row="1"
-                Margin="10, 0, 10, 10">
+                Margin="5, 0, 5, 5">
                 
                 <ContentControl>
                     <ContentControl.Effect>
